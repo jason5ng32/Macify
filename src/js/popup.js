@@ -391,7 +391,7 @@ function videoSettingsSuggestion(videoStatus) {
 }
 
 // 搜索框
-async function initSearch({modelType}) {
+async function initSearch() {
   const searchInput = document.getElementById("search");
   let lineHeight = 18; // 单行高度设置为 18pt
   let currentLines = 1; // 初始行数为 1
@@ -418,7 +418,7 @@ async function initSearch({modelType}) {
       } else {
         activeSearch = "ChatGPT";
       }
-      let searchURL = `https://chatgpt.com/?q={query}&hints=search&model=${modelType}`
+      let searchURL = `https://chatgpt.com/?prompt={query}&hints=search`
       switch (activeSearch) {
         case 'Google':
           searchURL = `https://www.google.com/search?q={query}`;

@@ -14,7 +14,6 @@
   "fontChoice": "Dosis",
   "videoSourceUrl": "http://localhost:18000/videos/",
   "weatherAPIKEY": "",
-  "modelType": "gpt-4o",
   "refreshButton": true,
   "tempUnit": "celsius",
   "authorInfo": true,
