@@ -8,6 +8,7 @@
     reportAppleProxyFailure,
     isAppleProxyFailed,
   } from '../lib/video-source.js';
+  import { nowPlaying } from '../lib/now-playing.svelte.js';
 
   let items = $state([]);
   let currentIndex = $state(-1);
@@ -55,6 +56,10 @@
     settings.videoSourceUrl;
     settings.reverseProxy;
     loadPlaylist();
+  });
+
+  $effect(() => {
+    nowPlaying.item = current;
   });
 
   function nextVideo() {

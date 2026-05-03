@@ -3,6 +3,7 @@
   import { loadLanguage, resolveLanguage } from "../lib/i18n.svelte.js";
   import Clock from "../components/Clock.svelte";
   import VideoBackground from "../components/VideoBackground.svelte";
+  import VideoMetadata from "../components/VideoMetadata.svelte";
   import Weather from "../components/Weather.svelte";
   import TopSites from "../components/TopSites.svelte";
   import ZenMode from "../components/ZenMode.svelte";
@@ -14,6 +15,7 @@
 </script>
 
 <VideoBackground />
+<VideoMetadata />
 <Weather />
 <TopSites />
 <ZenMode />

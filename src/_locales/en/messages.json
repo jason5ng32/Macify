@@ -90,6 +90,7 @@
   "options_show_topsites_short": { "message": "Top Sites" },
   "options_show_zen_short": { "message": "Zen Mode button" },
   "options_show_refresh_short": { "message": "Refresh button" },
+  "options_show_video_meta_short": { "message": "Video info" },
 
   "video_apple_help_title": { "message": "Why might Apple's server need extra setup?" },
   "video_apple_help_intro": { "message": "Chrome doesn't always trust Apple's sylvan.apple.com certificate, so direct video loading may fail. Two ways to make it work:" },

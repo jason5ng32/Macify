@@ -70,6 +70,7 @@
     { key: 'showTopSites', label: 'options_show_topsites_short' },
     { key: 'showZenMode', label: 'options_show_zen_short' },
     { key: 'refreshButton', label: 'options_show_refresh_short' },
+    { key: 'showVideoMetadata', label: 'options_show_video_meta_short' },
   ];
 
   function set(key) {

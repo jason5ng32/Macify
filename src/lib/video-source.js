@@ -10,8 +10,12 @@ const APPLE_PROXY_HOST = 'https://applescreensaver.macify.workers.dev';
 const LOCAL_CACHE_KEY = 'localVideoList';
 const LOCAL_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 const SUPPORTED_FORMATS = ['.mov', '.mp4'];
+const UUID_RE = /([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/i;
 
 let appleProxyFailedThisSession = false;
+
+// id → metadata lookup, populated once at module load.
+const idIndex = new Map(videos.map((v) => [v.id, v]));
 
 export function reportAppleProxyFailure() {
   appleProxyFailedThisSession = true;
@@ -26,6 +30,28 @@ function applyProxy(url, useProxy) {
   return url.replace(APPLE_HOST, APPLE_PROXY_HOST);
 }
 
+function metaFromVideo(v) {
+  return {
+    id: v.id,
+    name: v.name,
+    category: v.category,
+    subcategories: v.subcategories,
+    timeOfDay: v.timeOfDay,
+    previewImage: v.previewImage,
+  };
+}
+
+function metaForLocalUrl(url) {
+  // macOS names downloaded aerial files by their Apple asset UUID
+  // (e.g. /videos/6D6834A4-2F0F-479A-B053-7D4DC5CB8EB7.mov), so we
+  // can recover the same metadata as for Apple-hosted videos.
+  const filename = url.split('/').pop() || '';
+  const m = filename.match(UUID_RE);
+  if (!m) return null;
+  const v = idIndex.get(m[1].toUpperCase());
+  return v ? metaFromVideo(v) : null;
+}
+
 export async function getPlaylist({ videoSrc, videoSourceUrl, reverseProxy }) {
   if (videoSrc === 'local') {
     return getLocalPlaylist(videoSourceUrl);
@@ -35,19 +61,12 @@ export async function getPlaylist({ videoSrc, videoSourceUrl, reverseProxy }) {
 
 function getApplePlaylist(reverseProxy) {
   const useProxy = reverseProxy && !appleProxyFailedThisSession;
+  const items = videos.map((v) => ({
+    url: applyProxy(v.url, useProxy),
+    meta: metaFromVideo(v),
+  }));
   return {
-    items: videos.map((v) => ({
-      url: applyProxy(v.url, useProxy),
-      meta: {
-        id: v.id,
-        shotID: v.shotID,
-        name: v.name,
-        category: v.category,
-        subcategories: v.subcategories,
-        timeOfDay: v.timeOfDay,
-        previewImage: v.previewImage,
-      },
-    })),
+    items,
     source: 'apple',
     usingProxy: useProxy,
   };
@@ -57,24 +76,24 @@ async function getLocalPlaylist(baseUrl) {
   if (!baseUrl) {
     throw new Error('Local video source URL not set');
   }
+  let urls;
   const cached = await cache.get(LOCAL_CACHE_KEY);
+  let fromCache = false;
   if (
     cached &&
     cached.baseUrl === baseUrl &&
     Date.now() - cached.ts < LOCAL_CACHE_TTL_MS
   ) {
-    return {
-      items: cached.urls.map((url) => ({ url, meta: null })),
-      source: 'local',
-      fromCache: true,
-    };
+    urls = cached.urls;
+    fromCache = true;
+  } else {
+    urls = await scrapeDirectory(baseUrl);
+    await cache.set(LOCAL_CACHE_KEY, { baseUrl, urls, ts: Date.now() });
   }
-  const urls = await scrapeDirectory(baseUrl);
-  await cache.set(LOCAL_CACHE_KEY, { baseUrl, urls, ts: Date.now() });
   return {
-    items: urls.map((url) => ({ url, meta: null })),
+    items: urls.map((url) => ({ url, meta: metaForLocalUrl(url) })),
     source: 'local',
-    fromCache: false,
+    fromCache,
   };
 }
 

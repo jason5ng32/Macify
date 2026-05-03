@@ -90,6 +90,7 @@
   "options_show_topsites_short": { "message": "常用站点" },
   "options_show_zen_short": { "message": "禅意模式按钮" },
   "options_show_refresh_short": { "message": "切换视频按钮" },
+  "options_show_video_meta_short": { "message": "视频信息" },
 
   "video_apple_help_title": { "message": "为什么苹果服务器可能需要额外配置？" },
   "video_apple_help_intro": { "message": "Chrome 不一定信任苹果 sylvan.apple.com 的证书，直连视频可能失败。两种解决方案：" },
