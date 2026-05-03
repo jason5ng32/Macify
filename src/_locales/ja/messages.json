@@ -301,5 +301,23 @@
   },
   "options_translation_download_button": {
     "message": "モデルをダウンロード"
+  },
+  "donate_section": {
+    "message": "Macify を支援"
+  },
+  "donate_explainer": {
+    "message": "Macify は無料・オープンソースです。Apple リバースプロキシは作者個人の Cloudflare アカウントで動作しています。役立っていると感じたら、少額の支援も大きな励みになります。"
+  },
+  "donate_button": {
+    "message": "GitHub でスポンサーになる"
+  },
+  "donate_pill_message": {
+    "message": "Macify を気に入っていますか？開発の支援をご検討ください。"
+  },
+  "donate_pill_cta": {
+    "message": "支援する"
+  },
+  "donate_pill_dismiss": {
+    "message": "閉じる"
   }
 }

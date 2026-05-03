@@ -301,5 +301,23 @@
   },
   "options_translation_download_button": {
     "message": "下載模型"
+  },
+  "donate_section": {
+    "message": "支持 Macify"
+  },
+  "donate_explainer": {
+    "message": "Macify 免費開源。其中 Apple 反向代理運行在作者個人的 Cloudflare 帳號上。如果你覺得有用，贊助一點點都是巨大的鼓勵。"
+  },
+  "donate_button": {
+    "message": "在 GitHub 上贊助"
+  },
+  "donate_pill_message": {
+    "message": "喜歡 Macify？歡迎贊助支持持續開發。"
+  },
+  "donate_pill_cta": {
+    "message": "去贊助"
+  },
+  "donate_pill_dismiss": {
+    "message": "關閉"
   }
 }
