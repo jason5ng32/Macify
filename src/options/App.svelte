@@ -7,6 +7,7 @@
     resolveLanguage,
   } from '../lib/i18n.svelte.js';
   import { geocodeCity } from '../lib/weather.js';
+  import VideoSetupHelp from './VideoSetupHelp.svelte';
 
   const version = chrome.runtime.getManifest().version;
 
@@ -60,6 +61,16 @@
 
   const languageOptions = ['auto', ...SUPPORTED_LANGUAGES];
 
+  // Visibility toggles, all in the Display card.
+  const displayToggles = [
+    { key: 'showTime', label: 'options_show_clock_short' },
+    { key: 'showWeather', label: 'options_show_weather_short' },
+    { key: 'showMotto', label: 'options_show_motto_short' },
+    { key: 'showTopSites', label: 'options_show_topsites_short' },
+    { key: 'showZenMode', label: 'options_show_zen_short' },
+    { key: 'refreshButton', label: 'options_show_refresh_short' },
+  ];
+
   function set(key) {
     return (event) => {
       const target = event.currentTarget;
@@ -75,7 +86,7 @@
       <img
         src="../res/icon.png"
         alt=""
-        class="h-12 w-12 rounded-md shadow-sm ring-1 ring-slate-200"
+        class="h-12 w-12 rounded-xl shadow-sm ring-1 ring-slate-200"
       />
       <div>
         <h1 class="text-2xl font-semibold text-slate-900">
@@ -87,7 +98,38 @@
       </div>
     </header>
 
-    <!-- Video -->
+    <!-- Display: all visibility toggles in one place -->
+    <section
+      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+    >
+      <h2
+        class="mb-1 flex items-center gap-2 text-base font-semibold text-slate-900"
+      >
+        <span aria-hidden="true">👁️</span>
+        {t('options_display_section')}
+      </h2>
+      <p class="mb-4 text-xs text-slate-500">
+        {t('options_display_hint')}
+      </p>
+
+      <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+        {#each displayToggles as toggle}
+          <label
+            class="flex items-center justify-between gap-3 py-1 text-sm text-slate-700"
+          >
+            <span>{t(toggle.label)}</span>
+            <input
+              type="checkbox"
+              class="h-4 w-4 cursor-pointer accent-blue-600"
+              checked={settings[toggle.key]}
+              onchange={set(toggle.key)}
+            />
+          </label>
+        {/each}
+      </div>
+    </section>
+
+    <!-- Video: source + sub-config + inline setup help -->
     <section
       class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
     >
@@ -125,9 +167,6 @@
               onchange={set('reverseProxy')}
             />
           </label>
-          <p class="text-xs leading-relaxed text-slate-500">
-            {t('options_video_reverse_proxy_note')}
-          </p>
         {:else}
           <label class="flex items-center gap-3">
             <span class="whitespace-nowrap text-sm text-slate-700">
@@ -140,66 +179,13 @@
               onchange={set('videoSourceUrl')}
             />
           </label>
-          <p class="text-xs leading-relaxed text-slate-500">
-            {t('options_video_local_note')}
-          </p>
         {/if}
 
-        <label class="flex items-center justify-between gap-4">
-          <span class="text-sm text-slate-700">
-            {t('options_video_show_refresh')}
-          </span>
-          <input
-            type="checkbox"
-            class="h-4 w-4 cursor-pointer accent-blue-600"
-            checked={settings.refreshButton}
-            onchange={set('refreshButton')}
-          />
-        </label>
+        <VideoSetupHelp src={settings.videoSrc} />
       </div>
     </section>
 
-    <!-- Time -->
-    <section
-      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
-    >
-      <h2
-        class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
-      >
-        <span aria-hidden="true">🕒</span>
-        {t('options_time_section')}
-      </h2>
-
-      <div class="space-y-3">
-        <label class="flex items-center justify-between gap-4">
-          <span class="text-sm text-slate-700">
-            {t('options_show_time')}
-          </span>
-          <input
-            type="checkbox"
-            class="h-4 w-4 cursor-pointer accent-blue-600"
-            checked={settings.showTime}
-            onchange={set('showTime')}
-          />
-        </label>
-
-        <label class="flex items-center justify-between gap-4">
-          <span class="text-sm text-slate-700">
-            {t('options_hour_system')}
-          </span>
-          <select
-            class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
-            value={settings.hourSystem}
-            onchange={set('hourSystem')}
-          >
-            <option value="12">{t('options_hour_12')}</option>
-            <option value="24">{t('options_hour_24')}</option>
-          </select>
-        </label>
-      </div>
-    </section>
-
-    <!-- Weather -->
+    <!-- Weather: city + temp unit -->
     <section
       class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
     >
@@ -211,18 +197,6 @@
       </h2>
 
       <div class="space-y-3">
-        <label class="flex items-center justify-between gap-4">
-          <span class="text-sm text-slate-700">
-            {t('options_show_weather')}
-          </span>
-          <input
-            type="checkbox"
-            class="h-4 w-4 cursor-pointer accent-blue-600"
-            checked={settings.showWeather}
-            onchange={set('showWeather')}
-          />
-        </label>
-
         <div class="space-y-1.5">
           <label class="flex items-center gap-3">
             <span class="whitespace-nowrap text-sm text-slate-700">
@@ -240,7 +214,7 @@
               type="button"
               onclick={onValidateCity}
               disabled={validatingCity}
-              class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus:ring-2 focus:ring-blue-500/40 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
+              class="cursor-pointer rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus:ring-2 focus:ring-blue-500/40 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
             >
               {validatingCity
                 ? t('options_weather_save_loading')
@@ -274,84 +248,32 @@
             >
           </select>
         </label>
-
-        <p class="text-xs leading-relaxed text-slate-500">
-          {t('options_weather_note')}
-        </p>
       </div>
     </section>
 
-    <!-- Top Sites -->
+    <!-- Time: hour system -->
     <section
       class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
     >
       <h2
         class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
       >
-        <span aria-hidden="true">📌</span>
-        {t('options_topsites_section')}
-      </h2>
-
-      <div class="space-y-3">
-        <label class="flex items-center justify-between gap-4">
-          <span class="text-sm text-slate-700">
-            {t('options_show_topsites')}
-          </span>
-          <input
-            type="checkbox"
-            class="h-4 w-4 cursor-pointer accent-blue-600"
-            checked={settings.showTopSites}
-            onchange={set('showTopSites')}
-          />
-        </label>
-      </div>
-    </section>
-
-    <!-- Motto -->
-    <section
-      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
-    >
-      <h2
-        class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
-      >
-        <span aria-hidden="true">💬</span>
-        {t('options_motto_section')}
-      </h2>
-
-      <div class="space-y-3">
-        <label class="flex items-center justify-between gap-4">
-          <span class="text-sm text-slate-700">
-            {t('options_show_motto')}
-          </span>
-          <input
-            type="checkbox"
-            class="h-4 w-4 cursor-pointer accent-blue-600"
-            checked={settings.showMotto}
-            onchange={set('showMotto')}
-          />
-        </label>
-      </div>
-    </section>
-
-    <!-- Zen Mode -->
-    <section
-      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
-    >
-      <h2
-        class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
-      >
-        <span aria-hidden="true">🧘</span>
-        {t('options_zen_section')}
+        <span aria-hidden="true">🕒</span>
+        {t('options_time_section')}
       </h2>
 
       <label class="flex items-center justify-between gap-4">
-        <span class="text-sm text-slate-700">{t('options_show_zen')}</span>
-        <input
-          type="checkbox"
-          class="h-4 w-4 cursor-pointer accent-blue-600"
-          checked={settings.showZenMode}
-          onchange={set('showZenMode')}
-        />
+        <span class="text-sm text-slate-700">
+          {t('options_hour_system')}
+        </span>
+        <select
+          class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+          value={settings.hourSystem}
+          onchange={set('hourSystem')}
+        >
+          <option value="12">{t('options_hour_12')}</option>
+          <option value="24">{t('options_hour_24')}</option>
+        </select>
       </label>
     </section>
 

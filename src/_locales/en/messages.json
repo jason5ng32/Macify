@@ -1,6 +1,6 @@
 {
   "ext_name": { "message": "Macify" },
-  "ext_description": { "message": "Transform Chrome's new tab into a macOS aerial screensaver." },
+  "ext_description": { "message": "Transform Chrome's new tab into macOS's gorgeous aerial screensaver videos." },
   "options_title": { "message": "Macify Settings" },
   "options_version_label": { "message": "Version" },
   "options_language_section": { "message": "Language" },
@@ -80,5 +80,30 @@
 
   "options_zen_section": { "message": "Zen Mode" },
   "options_show_zen": { "message": "Show Zen mode button on new tab" },
-  "zen_label": { "message": "Zen Mode (fullscreen + ambient music)" }
+  "zen_label": { "message": "Zen Mode (fullscreen + ambient music)" },
+
+  "options_display_section": { "message": "Display" },
+  "options_display_hint": { "message": "Choose what appears on the new tab page." },
+  "options_show_clock_short": { "message": "Clock" },
+  "options_show_weather_short": { "message": "Weather" },
+  "options_show_motto_short": { "message": "Motto" },
+  "options_show_topsites_short": { "message": "Top Sites" },
+  "options_show_zen_short": { "message": "Zen Mode button" },
+  "options_show_refresh_short": { "message": "Refresh button" },
+
+  "video_apple_help_title": { "message": "Why might Apple's server need extra setup?" },
+  "video_apple_help_intro": { "message": "Chrome doesn't always trust Apple's sylvan.apple.com certificate, so direct video loading may fail. Two ways to make it work:" },
+  "video_apple_help_option1_title": { "message": "Option 1 — Use the reverse proxy (easy)" },
+  "video_apple_help_option1_body": { "message": "Tick the \"Use reverse proxy\" checkbox above. Macify will route requests through a Cloudflare Worker that handles the certificate dance for you. Zero local setup." },
+  "video_apple_help_option2_title": { "message": "Option 2 — Trust Apple's certificate manually (cleanest)" },
+  "video_apple_help_option2_body_pre": { "message": "Open" },
+  "video_apple_help_option2_body_post": { "message": "in Chrome once. You'll see a security warning — click Advanced, then \"Proceed to sylvan.apple.com (unsafe)\". Chrome remembers your trust and direct connection works from then on." },
+
+  "video_local_help_title": { "message": "Set up a local Apache server (one-time)" },
+  "video_local_step1": { "message": "Open System Settings → Screen Saver → Aerial. Click each video you want to download. Each is 500 MB – 1 GB; downloads can take a while and may need retries." },
+  "video_local_step2": { "message": "Save the following as videoserver.conf somewhere stable (replace YOUR_MAC_USER_NAME with your actual macOS username):" },
+  "video_local_step3": { "message": "Symlink the config into Apache's drop-in folder:" },
+  "video_local_step4": { "message": "Restart Apache:" },
+  "video_local_step5_pre": { "message": "The default URL above (" },
+  "video_local_step5_post": { "message": ") should now serve your downloaded videos." }
 }

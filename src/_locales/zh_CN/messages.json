@@ -1,6 +1,6 @@
 {
   "ext_name": { "message": "Macify" },
-  "ext_description": { "message": "把 Chrome 新标签页变成 macOS 航拍屏保。" },
+  "ext_description": { "message": "将 Chrome 的新标签页变成 macOS 的华丽航拍屏保视频。" },
   "options_title": { "message": "Macify 设置" },
   "options_version_label": { "message": "版本" },
   "options_language_section": { "message": "语言" },
@@ -80,5 +80,30 @@
 
   "options_zen_section": { "message": "禅意模式" },
   "options_show_zen": { "message": "在新标签页显示禅意模式按钮" },
-  "zen_label": { "message": "禅意模式（全屏 + 背景音乐）" }
+  "zen_label": { "message": "禅意模式（全屏 + 背景音乐）" },
+
+  "options_display_section": { "message": "显示" },
+  "options_display_hint": { "message": "选择新标签页显示哪些元素。" },
+  "options_show_clock_short": { "message": "时钟" },
+  "options_show_weather_short": { "message": "天气" },
+  "options_show_motto_short": { "message": "格言" },
+  "options_show_topsites_short": { "message": "常用站点" },
+  "options_show_zen_short": { "message": "禅意模式按钮" },
+  "options_show_refresh_short": { "message": "切换视频按钮" },
+
+  "video_apple_help_title": { "message": "为什么苹果服务器可能需要额外配置？" },
+  "video_apple_help_intro": { "message": "Chrome 不一定信任苹果 sylvan.apple.com 的证书，直连视频可能失败。两种解决方案：" },
+  "video_apple_help_option1_title": { "message": "方案 1 — 启用反向代理（简单）" },
+  "video_apple_help_option1_body": { "message": "勾选上方「使用反向代理」，Macify 会通过 Cloudflare Worker 代为请求并处理证书问题。无需任何本地配置。" },
+  "video_apple_help_option2_title": { "message": "方案 2 — 手动信任苹果证书（最干净）" },
+  "video_apple_help_option2_body_pre": { "message": "在 Chrome 里打开" },
+  "video_apple_help_option2_body_post": { "message": "一次。会出现安全警告——点「高级」，然后点「继续访问 sylvan.apple.com（不安全）」。Chrome 会记住你的信任，之后直连就没问题了。" },
+
+  "video_local_help_title": { "message": "搭建本地 Apache 服务器（一次性配置）" },
+  "video_local_step1": { "message": "打开系统设置 → 屏幕保护程序 → 航拍，点击你想下载的视频。每个 500 MB – 1 GB，下载较慢且可能需要重试。" },
+  "video_local_step2": { "message": "将以下内容保存为 videoserver.conf，放到一个稳定的目录（替换 YOUR_MAC_USER_NAME 为你的 macOS 用户名）：" },
+  "video_local_step3": { "message": "把配置文件软链到 Apache 的 drop-in 配置目录：" },
+  "video_local_step4": { "message": "重启 Apache：" },
+  "video_local_step5_pre": { "message": "上方默认地址（" },
+  "video_local_step5_post": { "message": "）现在应该能列出你下载的视频了。" }
 }
