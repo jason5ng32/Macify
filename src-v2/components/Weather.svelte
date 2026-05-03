@@ -75,7 +75,7 @@
 
     {#if hovering}
       <div
-        class="forecast-panel"
+        class="absolute top-full right-0 w-[300px] rounded-[10px] border border-white/[0.14] bg-black/40 p-4 text-sm text-white shadow-[0_8px_32px_rgba(0,0,0,0.25)]"
         role="tooltip"
         transition:fly={{ x: 30, opacity: 0, duration: 240 }}
       >
@@ -126,6 +126,20 @@
                 </div>
               {/if}
 
+              {#if showAir}
+              {@const lvl = aqiLevel(air.aqi)}
+              <div class="detail">
+                <span class="detail-icon" aria-hidden="true">🌫</span>
+                <span class="detail-label">{t('weather_air_quality')}</span>
+                <span class="detail-value">
+                  {#if air.aqi != null}AQI {air.aqi}{#if lvl}
+                      · {t(`weather_aqi_${lvl}`)}{/if}{/if}{#if air.aqi != null && air.pm25 != null}
+                    ·
+                  {/if}{#if air.pm25 != null}PM2.5 {air.pm25}{/if}
+                </span>
+              </div>
+            {/if}
+
               {#if showSunrise}
                 <div class="detail">
                   <span class="detail-icon" aria-hidden="true">🌅</span>
@@ -145,19 +159,7 @@
                 </div>
               {/if}
 
-              {#if showAir}
-                {@const lvl = aqiLevel(air.aqi)}
-                <div class="detail">
-                  <span class="detail-icon" aria-hidden="true">🌫</span>
-                  <span class="detail-label">{t('weather_air_quality')}</span>
-                  <span class="detail-value">
-                    {#if air.aqi != null}AQI {air.aqi}{#if lvl}
-                        · {t(`weather_aqi_${lvl}`)}{/if}{/if}{#if air.aqi != null && air.pm25 != null}
-                      ·
-                    {/if}{#if air.pm25 != null}PM2.5 {air.pm25}{/if}
-                  </span>
-                </div>
-              {/if}
+
             </div>
           </section>
         {/if}
@@ -194,8 +196,8 @@
 <style>
   .weather {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
+    top: 1.5rem;
+    right: 1.5rem;
     /* 16px invisible padding bridges the visual gap between the temp
        and the panel, so cursor traversal doesn't fire mouseleave. */
     padding-bottom: 16px;
@@ -225,21 +227,6 @@
     margin-top: 0.1rem;
   }
 
-  .forecast-panel {
-    position: absolute;
-    top: 100%; /* sits below the padded weather box */
-    right: 0;
-    padding: 0.85rem 1rem;
-    background: rgba(0, 0, 0, 0.38);
-    backdrop-filter: blur(22px) saturate(160%);
-    -webkit-backdrop-filter: blur(22px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 10px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    min-width: 280px;
-    font-size: 0.9rem;
-    text-shadow: none;
-  }
   .location {
     font-size: 0.75rem;
     opacity: 0.6;

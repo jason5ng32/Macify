@@ -1,9 +1,6 @@
 {
   "ext_name": { "message": "Macify" },
   "ext_description": { "message": "Transform Chrome's new tab into a macOS aerial screensaver." },
-
-  "newtab_bootstrap_message": { "message": "Phase 02 · Section A · Storage and i18n bootstrap" },
-
   "options_title": { "message": "Macify Settings" },
   "options_version_label": { "message": "Version" },
   "options_language_section": { "message": "Language" },
@@ -11,9 +8,6 @@
   "options_language_auto": { "message": "Follow browser" },
   "options_language_en": { "message": "English" },
   "options_language_zh_CN": { "message": "简体中文" },
-
-  "options_placeholder": { "message": "Settings UI will be filled in across the upcoming sections of Phase 02." },
-
   "options_time_section": { "message": "Time" },
   "options_show_time": { "message": "Show clock on new tab" },
   "options_hour_system": { "message": "Hour system" },
@@ -24,8 +18,8 @@
   "options_video_source": { "message": "Source" },
   "options_video_source_apple": { "message": "Apple server" },
   "options_video_source_local": { "message": "Local server" },
-  "options_video_reverse_proxy": { "message": "Use reverse proxy (Cloudflare Worker)" },
-  "options_video_reverse_proxy_note": { "message": "If sylvan.apple.com isn't trusted by your system, the reverse proxy fetches videos for you. It auto-falls back to direct if the worker is unreachable." },
+  "options_video_reverse_proxy": { "message": "Use reverse proxy" },
+  "options_video_reverse_proxy_note": { "message": "If sylvan.apple.com isn't trusted by your system, the reverse proxy fetches videos for you." },
   "options_video_local_url": { "message": "Local server URL" },
   "options_video_local_note": { "message": "Run an Apache server on localhost serving Apple aerial .mov / .mp4 files. See the README for setup." },
   "options_video_show_refresh": { "message": "Show refresh button on new tab" },
@@ -42,7 +36,7 @@
   "options_weather_temp_unit": { "message": "Temperature unit" },
   "options_weather_celsius": { "message": "Celsius (°C)" },
   "options_weather_fahrenheit": { "message": "Fahrenheit (°F)" },
-  "options_weather_note": { "message": "Powered by Open-Meteo. No API key required." },
+  "options_weather_note": { "message": "Weather information from Open-Meteo." },
   "options_weather_city_hint": { "message": "Type a city name (English works best) and press Enter or click Save. We verify against the weather service before saving." },
   "options_weather_save": { "message": "Save" },
   "options_weather_save_loading": { "message": "Verifying…" },
@@ -77,6 +71,10 @@
 
   "options_motto_section": { "message": "Motto" },
   "options_show_motto": { "message": "Show motto on new tab" },
-  "options_motto_note": { "message": "A short quote shown below the clock. Online quotes from zenquotes.io are cached for 24h; if offline, a small bundled set is used." },
-  "motto_refresh_hint": { "message": "Click for another" }
+  "motto_refresh_hint": { "message": "Click for another" },
+
+  "options_topsites_section": { "message": "Top Sites" },
+  "options_show_topsites": { "message": "Show top sites on new tab" },
+  "topsites_label": { "message": "Top Sites" },
+  "topsites_empty": { "message": "No top sites yet — visit some pages first." }
 }

@@ -1,9 +1,6 @@
 {
   "ext_name": { "message": "Macify" },
   "ext_description": { "message": "把 Chrome 新标签页变成 macOS 航拍屏保。" },
-
-  "newtab_bootstrap_message": { "message": "Phase 02 · Section A · 存储与 i18n 基础" },
-
   "options_title": { "message": "Macify 设置" },
   "options_version_label": { "message": "版本" },
   "options_language_section": { "message": "语言" },
@@ -11,9 +8,6 @@
   "options_language_auto": { "message": "跟随浏览器" },
   "options_language_en": { "message": "English" },
   "options_language_zh_CN": { "message": "简体中文" },
-
-  "options_placeholder": { "message": "设置界面会在 Phase 02 后续 Sections 中陆续完善。" },
-
   "options_time_section": { "message": "时间" },
   "options_show_time": { "message": "在新标签页显示时钟" },
   "options_hour_system": { "message": "时制" },
@@ -24,8 +18,8 @@
   "options_video_source": { "message": "视频源" },
   "options_video_source_apple": { "message": "苹果服务器" },
   "options_video_source_local": { "message": "本地服务器" },
-  "options_video_reverse_proxy": { "message": "使用反向代理 (Cloudflare Worker)" },
-  "options_video_reverse_proxy_note": { "message": "如果系统不信任 sylvan.apple.com 的证书，反向代理会替你拉取视频。Worker 不可达时会自动回退到直连。" },
+  "options_video_reverse_proxy": { "message": "使用反向代理" },
+  "options_video_reverse_proxy_note": { "message": "如果系统不信任 sylvan.apple.com 的证书，反向代理会替你拉取视频。" },
   "options_video_local_url": { "message": "本地服务器地址" },
   "options_video_local_note": { "message": "在本机跑一个 Apache 服务器，托管苹果航拍屏保的 .mov / .mp4 文件。配置参考 README。" },
   "options_video_show_refresh": { "message": "在新标签页显示切换按钮" },
@@ -42,7 +36,7 @@
   "options_weather_temp_unit": { "message": "温度单位" },
   "options_weather_celsius": { "message": "摄氏度 (°C)" },
   "options_weather_fahrenheit": { "message": "华氏度 (°F)" },
-  "options_weather_note": { "message": "由 Open-Meteo 提供，无需 API Key。" },
+  "options_weather_note": { "message": "天气信息来源于 Open-Meteo。" },
   "options_weather_city_hint": { "message": "输入城市名（英文匹配最准），按 Enter 或点保存。会先去天气服务校验后再保存。" },
   "options_weather_save": { "message": "保存" },
   "options_weather_save_loading": { "message": "校验中…" },
@@ -77,6 +71,10 @@
 
   "options_motto_section": { "message": "格言" },
   "options_show_motto": { "message": "在新标签页显示格言" },
-  "options_motto_note": { "message": "在时钟下方显示一句短语。zenquotes.io 拉取的格言缓存 24 小时；离线时使用本地打包的精选集。" },
-  "motto_refresh_hint": { "message": "点击换一句" }
+  "motto_refresh_hint": { "message": "点击换一句" },
+
+  "options_topsites_section": { "message": "常用站点" },
+  "options_show_topsites": { "message": "在新标签页显示常用站点" },
+  "topsites_label": { "message": "常用站点" },
+  "topsites_empty": { "message": "暂无常用站点 —— 先去访问一些网页吧。" }
 }

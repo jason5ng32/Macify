@@ -1,10 +1,11 @@
 <script>
-  import { settings } from '../lib/settings.svelte.js';
-  import { loadLanguage, resolveLanguage } from '../lib/i18n.svelte.js';
-  import Clock from '../components/Clock.svelte';
-  import VideoBackground from '../components/VideoBackground.svelte';
-  import Weather from '../components/Weather.svelte';
-  import Motto from '../components/Motto.svelte';
+  import { settings } from "../lib/settings.svelte.js";
+  import { loadLanguage, resolveLanguage } from "../lib/i18n.svelte.js";
+  import Clock from "../components/Clock.svelte";
+  import VideoBackground from "../components/VideoBackground.svelte";
+  import Weather from "../components/Weather.svelte";
+  import TopSites from "../components/TopSites.svelte";
+  import Motto from "../components/Motto.svelte";
 
   $effect(() => {
     loadLanguage(resolveLanguage(settings.userLanguage));
@@ -13,13 +14,19 @@
 
 <VideoBackground />
 <Weather />
+<TopSites />
 
-<main>
-  <div class="centered">
-    <Clock />
+<!-- Clock anchored at fixed viewport position; doesn't shift when motto length changes -->
+<div
+  class="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center flex flex-col items-center justify-center min-h-[240px] h-[240px] gap-4"
+>
+  <div>
+    <Clock class="min-h-[120px] h-[120px]" />
+  </div>
+  <div class="min-h-[120px] h-[120px]">
     <Motto />
   </div>
-</main>
+</div>
 
 <style>
   :global(body) {
@@ -28,15 +35,5 @@
     color: #eee;
     font-family: system-ui, sans-serif;
     overflow: hidden;
-  }
-  main {
-    min-height: 100vh;
-  }
-  .centered {
-    position: absolute;
-    top: 44%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
   }
 </style>

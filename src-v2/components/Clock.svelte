@@ -45,6 +45,7 @@
     font-size: 0.4em;
     margin-left: 0.4em;
     opacity: 0.8;
-    vertical-align: 0.6em;
+    /* default vertical-align: baseline → AM/PM sits at the bottom of the
+       hour digits instead of being lifted up. */
   }
 </style>

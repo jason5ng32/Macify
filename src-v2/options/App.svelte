@@ -281,6 +281,32 @@
       </div>
     </section>
 
+    <!-- Top Sites -->
+    <section
+      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+    >
+      <h2
+        class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
+      >
+        <span aria-hidden="true">📌</span>
+        {t('options_topsites_section')}
+      </h2>
+
+      <div class="space-y-3">
+        <label class="flex items-center justify-between gap-4">
+          <span class="text-sm text-slate-700">
+            {t('options_show_topsites')}
+          </span>
+          <input
+            type="checkbox"
+            class="h-4 w-4 cursor-pointer accent-blue-600"
+            checked={settings.showTopSites}
+            onchange={set('showTopSites')}
+          />
+        </label>
+      </div>
+    </section>
+
     <!-- Motto -->
     <section
       class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
@@ -304,9 +330,6 @@
             onchange={set('showMotto')}
           />
         </label>
-        <p class="text-xs leading-relaxed text-slate-500">
-          {t('options_motto_note')}
-        </p>
       </div>
     </section>
 
