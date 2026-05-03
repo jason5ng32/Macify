@@ -9,6 +9,7 @@
   import ZenMode from "../components/ZenMode.svelte";
   import RefreshButton from "../components/RefreshButton.svelte";
   import Motto from "../components/Motto.svelte";
+  import DonatePill from "../components/DonatePill.svelte";
 
   $effect(() => {
     loadLanguage(resolveLanguage(settings.userLanguage));
@@ -18,6 +19,7 @@
 <VideoBackground />
 <VideoMetadata />
 <Weather />
+<DonatePill />
 
 <!-- Bottom-left button stack. flex-col-reverse anchors the first DOM
      child at the bottom; subsequent buttons appear above it. -->

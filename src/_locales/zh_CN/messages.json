@@ -301,5 +301,23 @@
   },
   "options_translation_download_button": {
     "message": "下载模型"
+  },
+  "donate_section": {
+    "message": "支持 Macify"
+  },
+  "donate_explainer": {
+    "message": "Macify 免费开源。其中 Apple 反向代理运行在作者个人的 Cloudflare 账户上。如果你觉得有用，赞助一点点都是巨大的鼓励。"
+  },
+  "donate_button": {
+    "message": "在 GitHub 上赞助"
+  },
+  "donate_pill_message": {
+    "message": "喜欢 Macify？欢迎赞助支持持续开发。"
+  },
+  "donate_pill_cta": {
+    "message": "去赞助"
+  },
+  "donate_pill_dismiss": {
+    "message": "关闭"
   }
 }

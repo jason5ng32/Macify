@@ -301,5 +301,23 @@
   },
   "options_translation_download_button": {
     "message": "Descargar modelo"
+  },
+  "donate_section": {
+    "message": "Apoya Macify"
+  },
+  "donate_explainer": {
+    "message": "Macify es gratis y de código abierto. El proxy inverso al servidor de Apple se ejecuta en mi cuenta personal de Cloudflare. Si te resulta útil, un pequeño patrocinio ayuda mucho."
+  },
+  "donate_button": {
+    "message": "Patrocinar en GitHub"
+  },
+  "donate_pill_message": {
+    "message": "¿Te gusta Macify? Considera apoyar el desarrollo."
+  },
+  "donate_pill_cta": {
+    "message": "Patrocinar"
+  },
+  "donate_pill_dismiss": {
+    "message": "Cerrar"
   }
 }

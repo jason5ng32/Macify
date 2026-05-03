@@ -301,5 +301,23 @@
   },
   "options_translation_download_button": {
     "message": "Download model now"
+  },
+  "donate_section": {
+    "message": "Support Macify"
+  },
+  "donate_explainer": {
+    "message": "Macify is free and open source. The Apple-server reverse proxy runs on my personal Cloudflare account. If you find it useful, a small sponsorship goes a long way."
+  },
+  "donate_button": {
+    "message": "Sponsor on GitHub"
+  },
+  "donate_pill_message": {
+    "message": "Enjoying Macify? Consider supporting development."
+  },
+  "donate_pill_cta": {
+    "message": "Sponsor"
+  },
+  "donate_pill_dismiss": {
+    "message": "Dismiss"
   }
 }
