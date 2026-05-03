@@ -16,6 +16,14 @@ let messages = $state({});
 function detectBrowserLanguage() {
   const ui = chrome.i18n.getUILanguage().toLowerCase();
   if (ui.startsWith('zh-cn') || ui.startsWith('zh-hans')) return 'zh_CN';
+  if (
+    ui.startsWith('zh-tw') ||
+    ui.startsWith('zh-hk') ||
+    ui.startsWith('zh-hant')
+  )
+    return 'zh_TW';
+  if (ui.startsWith('ja')) return 'ja';
+  if (ui.startsWith('es')) return 'es';
   return 'en';
 }
 

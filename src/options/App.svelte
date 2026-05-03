@@ -88,7 +88,7 @@
       <img
         src="../res/icon.png"
         alt=""
-        class="h-12 w-12 rounded-xl shadow-sm ring-1 ring-slate-200"
+        class="h-12 w-12 rounded-md shadow-sm ring-1 ring-slate-200"
       />
       <div>
         <h1 class="text-2xl font-semibold text-slate-900">

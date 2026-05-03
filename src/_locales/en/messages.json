@@ -26,6 +26,15 @@
   "options_language_zh_CN": {
     "message": "简体中文"
   },
+  "options_language_zh_TW": {
+    "message": "繁體中文"
+  },
+  "options_language_ja": {
+    "message": "日本語"
+  },
+  "options_language_es": {
+    "message": "Español"
+  },
   "options_time_section": {
     "message": "Time"
   },
