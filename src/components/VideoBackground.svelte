@@ -9,14 +9,15 @@
     isAppleProxyFailed,
   } from '../lib/video-source.js';
 
-  let urls = $state([]);
+  let items = $state([]);
   let currentIndex = $state(-1);
   let opacity = $state(0);
   let errorMessage = $state('');
   let consecutiveErrors = 0;
   let proxyFallbackUsedThisLoad = false;
 
-  const currentUrl = $derived(currentIndex >= 0 ? urls[currentIndex] : '');
+  const current = $derived(currentIndex >= 0 ? items[currentIndex] : null);
+  const currentUrl = $derived(current?.url ?? '');
 
   async function loadPlaylist({ forceRefresh = false } = {}) {
     errorMessage = '';
@@ -30,15 +31,15 @@
               videoSourceUrl: settings.videoSourceUrl,
               reverseProxy: settings.reverseProxy,
             });
-      urls = result.urls;
-      if (urls.length === 0) {
+      items = result.items;
+      if (items.length === 0) {
         errorMessage =
           settings.videoSrc === 'local'
             ? t('error_video_local_empty')
             : t('error_video_apple');
         return;
       }
-      currentIndex = Math.floor(Math.random() * urls.length);
+      currentIndex = Math.floor(Math.random() * items.length);
       opacity = 0;
     } catch (e) {
       console.error('Playlist load failed:', e);
@@ -57,10 +58,10 @@
   });
 
   function nextVideo() {
-    if (urls.length === 0) return;
+    if (items.length === 0) return;
     opacity = 0;
     setTimeout(() => {
-      currentIndex = (currentIndex + 1) % urls.length;
+      currentIndex = (currentIndex + 1) % items.length;
     }, 650);
   }
 
@@ -95,7 +96,7 @@
       return;
     }
 
-    if (consecutiveErrors <= 3 && urls.length > 1) {
+    if (consecutiveErrors <= 3 && items.length > 1) {
       nextVideo();
       return;
     }

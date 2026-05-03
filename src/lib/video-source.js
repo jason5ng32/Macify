@@ -1,13 +1,14 @@
-import videoSrcMap from '../data/videosrc.json';
+import videos from '../data/videos.json';
 import { cache } from './storage.js';
 
-const APPLE_DIRECT_PREFIX = 'https://sylvan.apple.com/Videos/';
-const APPLE_PROXY_PREFIX = 'https://applescreensaver.macify.workers.dev/Videos/';
+// Apple's modern aerial CDN. Reverse proxy mode swaps the host;
+// the path stays the same (Worker must accept /itunes-assets/* and
+// the legacy /Videos/* — see scripts/build-videos.mjs header).
+const APPLE_HOST = 'https://sylvan.apple.com';
+const APPLE_PROXY_HOST = 'https://applescreensaver.macify.workers.dev';
 
 const LOCAL_CACHE_KEY = 'localVideoList';
 const LOCAL_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
-
-const VIDEO_FILENAMES = Object.values(videoSrcMap);
 const SUPPORTED_FORMATS = ['.mov', '.mp4'];
 
 let appleProxyFailedThisSession = false;
@@ -20,6 +21,11 @@ export function isAppleProxyFailed() {
   return appleProxyFailedThisSession;
 }
 
+function applyProxy(url, useProxy) {
+  if (!useProxy) return url;
+  return url.replace(APPLE_HOST, APPLE_PROXY_HOST);
+}
+
 export async function getPlaylist({ videoSrc, videoSourceUrl, reverseProxy }) {
   if (videoSrc === 'local') {
     return getLocalPlaylist(videoSourceUrl);
@@ -29,9 +35,19 @@ export async function getPlaylist({ videoSrc, videoSourceUrl, reverseProxy }) {
 
 function getApplePlaylist(reverseProxy) {
   const useProxy = reverseProxy && !appleProxyFailedThisSession;
-  const prefix = useProxy ? APPLE_PROXY_PREFIX : APPLE_DIRECT_PREFIX;
   return {
-    urls: VIDEO_FILENAMES.map((f) => prefix + f),
+    items: videos.map((v) => ({
+      url: applyProxy(v.url, useProxy),
+      meta: {
+        id: v.id,
+        shotID: v.shotID,
+        name: v.name,
+        category: v.category,
+        subcategories: v.subcategories,
+        timeOfDay: v.timeOfDay,
+        previewImage: v.previewImage,
+      },
+    })),
     source: 'apple',
     usingProxy: useProxy,
   };
@@ -47,11 +63,19 @@ async function getLocalPlaylist(baseUrl) {
     cached.baseUrl === baseUrl &&
     Date.now() - cached.ts < LOCAL_CACHE_TTL_MS
   ) {
-    return { urls: cached.urls, source: 'local', fromCache: true };
+    return {
+      items: cached.urls.map((url) => ({ url, meta: null })),
+      source: 'local',
+      fromCache: true,
+    };
   }
   const urls = await scrapeDirectory(baseUrl);
   await cache.set(LOCAL_CACHE_KEY, { baseUrl, urls, ts: Date.now() });
-  return { urls, source: 'local', fromCache: false };
+  return {
+    items: urls.map((url) => ({ url, meta: null })),
+    source: 'local',
+    fromCache: false,
+  };
 }
 
 export async function refreshLocalPlaylist(baseUrl) {

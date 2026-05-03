@@ -10,7 +10,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "zip": "node scripts/zip.js",
-    "build:quotes": "node scripts/build-quotes.mjs"
+    "build:quotes": "node scripts/build-quotes.mjs",
+    "build:videos": "node scripts/build-videos.mjs"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.4.0",
