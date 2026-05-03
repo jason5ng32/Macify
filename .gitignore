@@ -1,5 +1,14 @@
 
 .DS_Store
 Screenshots/
+.plan/
 
 localvideoserver.conf
+
+node_modules/
+dist/
+releases/
+*.zip
+
+# Private AI context (per-machine, not for the public repo)
+local-context.md

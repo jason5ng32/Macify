@@ -1,299 +1,269 @@
 {
-  "sys_name": {
-    "message": "Macify - macOS 屏保视频标签页"
+  "ext_name": {
+    "message": "Macify"
   },
-  "sys_description": {
-    "message": "将 Chrome 的新标签页变成 macOS 屏保的华丽航拍视频。"
+  "ext_description": {
+    "message": "将 Chrome 的新标签页变成 macOS 的华丽航拍屏保视频。"
   },
-  "pop_load_top_sites": {
-    "message": "正在加载高频网站..."
+  "options_title": {
+    "message": "Macify 设置"
   },
-  "pop_now": {
-    "message": "现在"
+  "options_version_label": {
+    "message": "版本"
   },
-  "pop_today": {
-    "message": "今天"
-  },
-  "pop_t_1": {
-    "message": "明天"
-  },
-  "pop_t_2": {
-    "message": "后天"
-  },
-  "pop_ask_chat_gpt": {
-    "message": "ChatGPT..."
-  },
-  "pop_load_motto": {
-    "message": "正在加载格言..."
-  },
-  "pop_github": {
-    "message": "Github 项目地址"
-  },
-  "pop_refresh_video": {
-    "message": "刷新视频"
-  },
-  "pop_weather": {
-    "message": "天气"
-  },
-  "pop_top_sites": {
-    "message": "热门网站"
-  },
-  "pop_zen_mode": {
-    "message": "禅模式"
-  },
-  "error_video_source": {
-    "message": "未找到可切换的视频。"
-  },
-  "message_video_1": {
-    "message": "看起来您正在使用本地视频服务器，但获取视频失败。请确保您已设置正确的 URL。请按照此处的&nbsp;<a href=\"instructions.html\" target=_blank >说明</a>&nbsp;进行操作。"
-  },
-  "message_video_2": {
-    "message": "看起来您正在使用 Apple 服务器作为视频源，但尚未信任 Apple 的根证书。请按照此处的&nbsp;<a href=\"instructions.html\" target=_blank >说明</a>&nbsp;进行操作。"
-  },
-  "message_video_3": {
-    "message": "看起来您正在使用我们的反向代理。使用 Macify 更好的方法是设置本地服务器或直接使用 Apple 的服务器。请按照此处的&nbsp;<a href=\"instructions.html\" target=_blank >说明</a>&nbsp;进行操作。"
-  },
-  "set_options_title": {
-    "message": "Macify 新标签页设置"
-  },
-  "set_options_note": {
-    "message": "<a href=\"instructions.html\" target=\"_blank\">使用说明</a> | <a href=\"changelogs_cn.html\" target=\"_blank\">更新日志</a> | <a href=\"https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe\" target=\"_blank\">评价 Macify</a>"
-  },
-  "set_note": {
-    "message": "如果您选择从 Apple 服务器获取视频，Chrome 可能不信任 Apple 的根证书，因此您可以暂时使用我的 Cloudflare 反向代理来获取视频（选中下面的复选框）。但是，我无法保证此服务的长期可用性。因此，我强烈建议您按照<a href=\"instructions.html\" target=_blank>说明</a>让 Chrome 信任 Apple 的证书。"
-  },
-  "set_videos": {
-    "message": "视频"
-  },
-  "set_video_source": {
-    "message": "视频源"
-  },
-  "set_apple_server": {
-    "message": "Apple 服务器"
-  },
-  "set_local_server": {
-    "message": "本地服务器"
-  },
-  "set_reverse_proxy": {
-    "message": "反向代理"
-  },
-  "set_local_videos_list_url": {
-    "message": "本地视频源 URL"
-  },
-  "set_video_note": {
-    "message": "使用此扩展的更好方法是设置本地 HTTP 服务，请按照 <a href=\"instructions.html\" target=_blank>说明</a> 进行操作。"
-  },
-  "set_weather": {
-    "message": "天气"
-  },
-  "set_show_weather": {
-    "message": "显示天气"
-  },
-  "set_city_name": {
-    "message": "城市名称（英文）"
-  },
-  "set_temp_unit": {
-    "message": "温度单位"
-  },
-  "set_celsius": {
-    "message": "摄氏度（°C）"
-  },
-  "set_fahrenheit": {
-    "message": "华氏度（°F）"
-  },
-  "set_weather_api": {
-    "message": "Weatherapi.com API"
-  },
-  "set_your_weather_api_key": {
-    "message": "输入您自己的 API KEY"
-  },
-  "set_weather_note": {
-    "message": "前往<a href=\"https://www.weatherapi.com/\" target=_blank>weatherapi.com</a>获取您的免费 API 密钥。"
-  },
-  "set_ask_chatgpt": {
-    "message": "问问 ChatGPT"
-  },
-  "set_show_chatgpt": {
-    "message": "显示 ChatGPT"
-  },
-  "set_default_model": {
-    "message": "GPT 默认模型"
-  },
-  "set_show_search": {
-    "message": "显示搜索框"
-  },
-  "set_search_option": {
-    "message": "搜索选项"
-  },
-  "set_delay_time": {
-    "message": "输入延迟时间（毫秒）"
-  },
-  "set_delay_note": {
-    "message": "2000 或以上会更好。"
-  },
-  "set_time": {
-    "message": "时间"
-  },
-  "set_show_clock": {
-    "message": "显示时钟"
-  },
-  "set_hour_system": {
-    "message": "小时制"
-  },
-  "set_12_hour": {
-    "message": "12 小时制"
-  },
-  "set_24_hour": {
-    "message": "24 小时制"
-  },
-  "set_clock_note": {
-    "message": "仅在显示时钟时生效。"
-  },
-  "set_chatgpt_note": {
-    "message": "目前 ChatGPT Search 仅支持 GPT-4o 和 GPT-4o-mini。"
-  },
-  "set_top_sites": {
-    "message": "高频网站"
-  },
-  "set_show_top_sites": {
-    "message": "显示高频网站"
-  },
-  "set_histories_within": {
-    "message": "计算历史记录范围"
-  },
-  "set_1_month": {
-    "message": "1 个月"
-  },
-  "set_2_weeks": {
-    "message": "2 周"
-  },
-  "set_1_week": {
-    "message": "1 周"
-  },
-  "set_3_days": {
-    "message": "3 天"
-  },
-  "set_1_day": {
-    "message": "1 天"
-  },
-  "set_history_permission": {
-    "message": "启用此功能需要历史记录权限。"
-  },
-  "set_others": {
-    "message": "其它"
-  },
-  "set_choose_font": {
-    "message": "选择字体"
-  },
-  "set_system_default": {
-    "message": "系统默认字体"
-  },
-  "set_show_motto": {
-    "message": "显示格言"
-  },
-  "set_show_refresh_button": {
-    "message": "显示刷新按钮"
-  },
-  "set_show_zen_button": {
-    "message": "显示禅按钮"
-  },
-  "set_show_author_info": {
-    "message": "显示作者信息"
-  },
-  "set_save": {
-    "message": "保存"
-  },
-  "error_get_motto": {
-    "message": "获取格言失败。"
-  },
-  "error_get_weather": {
-    "message": "获取天气失败。请检查 API 密钥和城市名称，然后重试。"
-  },
-  "error_video_url": {
-    "message": "请输入视频源 URL"
-  },
-  "error_delay_time": {
-    "message": "延迟时间必须是介于 1 和 10000 之间的整数。"
-  },
-  "error_weather": {
-    "message": "请输入城市名称和 weatherapi.com API KEY"
-  },
-  "error_weather_api_key": {
-    "message": "API 密钥长度必须至少为 30 个字符，并且只能由字母和数字组成。"
-  },
-  "error_history_permission": {
-    "message": "启用此功能需要授权历史记录权限。"
-  },
-  "message_saved": {
-    "message": "设置已保存"
-  },
-  "set_language": {
+  "options_language_section": {
     "message": "语言"
   },
-  "set_language_selector": {
-    "message": "选择语言"
+  "options_language_label": {
+    "message": "显示语言"
   },
-  "set_motto": {
+  "options_language_auto": {
+    "message": "跟随浏览器"
+  },
+  "options_language_en": {
+    "message": "English"
+  },
+  "options_language_zh_CN": {
+    "message": "简体中文"
+  },
+  "options_language_zh_TW": {
+    "message": "繁體中文"
+  },
+  "options_language_ja": {
+    "message": "日本語"
+  },
+  "options_language_es": {
+    "message": "Español"
+  },
+  "options_time_section": {
+    "message": "时间"
+  },
+  "options_hour_system": {
+    "message": "时制"
+  },
+  "options_hour_12": {
+    "message": "12 小时制"
+  },
+  "options_hour_24": {
+    "message": "24 小时制"
+  },
+  "options_video_section": {
+    "message": "视频"
+  },
+  "options_video_source": {
+    "message": "视频源"
+  },
+  "options_video_source_apple": {
+    "message": "苹果服务器"
+  },
+  "options_video_source_local": {
+    "message": "本地服务器"
+  },
+  "options_video_reverse_proxy": {
+    "message": "使用反向代理"
+  },
+  "options_video_local_url": {
+    "message": "本地服务器地址"
+  },
+  "refresh_video": {
+    "message": "切换视频"
+  },
+  "error_video_apple": {
+    "message": "无法从苹果服务器加载视频。可在设置里打开反向代理，或手动信任 sylvan.apple.com 的证书。"
+  },
+  "error_video_local": {
+    "message": "无法连接本地视频服务器，请在设置中检查地址。"
+  },
+  "error_video_local_empty": {
+    "message": "本地服务器可达，但没找到 .mov / .mp4 文件。"
+  },
+  "options_weather_section": {
+    "message": "天气"
+  },
+  "options_weather_city": {
+    "message": "城市"
+  },
+  "options_weather_city_placeholder": {
+    "message": "如 Beijing、Tokyo、San Francisco"
+  },
+  "options_weather_temp_unit": {
+    "message": "温度单位"
+  },
+  "options_weather_celsius": {
+    "message": "摄氏度 (°C)"
+  },
+  "options_weather_fahrenheit": {
+    "message": "华氏度 (°F)"
+  },
+  "options_weather_city_hint": {
+    "message": "输入城市名（英文匹配最准），按 Enter 或点保存。会先去天气服务校验后再保存。"
+  },
+  "options_weather_save": {
+    "message": "保存"
+  },
+  "options_weather_save_loading": {
+    "message": "校验中…"
+  },
+  "options_weather_save_success": {
+    "message": "已保存。"
+  },
+  "options_weather_city_required": {
+    "message": "请输入城市名。"
+  },
+  "options_weather_city_invalid": {
+    "message": "找不到这个城市，请换一个更标准的写法重试。"
+  },
+  "weather_today": {
+    "message": "今日"
+  },
+  "weather_tomorrow": {
+    "message": "明日"
+  },
+  "weather_day_after": {
+    "message": "后日"
+  },
+  "weather_upcoming": {
+    "message": "未来"
+  },
+  "weather_feels_like": {
+    "message": "体感"
+  },
+  "weather_precip": {
+    "message": "降水"
+  },
+  "weather_wind": {
+    "message": "风"
+  },
+  "weather_uv": {
+    "message": "紫外线"
+  },
+  "weather_sunrise": {
+    "message": "日出"
+  },
+  "weather_sunset": {
+    "message": "日落"
+  },
+  "weather_uv_low": {
+    "message": "弱"
+  },
+  "weather_uv_moderate": {
+    "message": "中等"
+  },
+  "weather_uv_high": {
+    "message": "强"
+  },
+  "weather_uv_very_high": {
+    "message": "很强"
+  },
+  "weather_uv_extreme": {
+    "message": "极强"
+  },
+  "weather_air_quality": {
+    "message": "空气"
+  },
+  "weather_aqi_good": {
+    "message": "优"
+  },
+  "weather_aqi_moderate": {
+    "message": "良"
+  },
+  "weather_aqi_unhealthy_sensitive": {
+    "message": "敏感人群不宜"
+  },
+  "weather_aqi_unhealthy": {
+    "message": "不健康"
+  },
+  "weather_aqi_very_unhealthy": {
+    "message": "非常不健康"
+  },
+  "weather_aqi_hazardous": {
+    "message": "危险"
+  },
+  "motto_refresh_hint": {
+    "message": "点击换一句"
+  },
+  "topsites_label": {
+    "message": "常用站点"
+  },
+  "topsites_empty": {
+    "message": "暂无常用站点 —— 先去访问一些网页吧。"
+  },
+  "zen_label": {
+    "message": "禅意模式（全屏 + 背景音乐）"
+  },
+  "options_display_section": {
+    "message": "显示"
+  },
+  "options_display_hint": {
+    "message": "选择新标签页显示哪些元素。"
+  },
+  "options_show_clock_short": {
+    "message": "时钟"
+  },
+  "options_show_weather_short": {
+    "message": "天气"
+  },
+  "options_show_motto_short": {
     "message": "格言"
   },
-  "set_google_api": {
-    "message": "Google 翻译 API KEY"
+  "options_show_topsites_short": {
+    "message": "常用站点"
   },
-  "set_your_google_api_key": {
-    "message": "填入你的 Google Cloud 翻译 API KEY"
+  "options_show_zen_short": {
+    "message": "禅意模式按钮"
   },
-  "error_google_api_key": {
-    "message": "API 密钥长度必须至少为 39 个字符。"
+  "options_show_refresh_short": {
+    "message": "切换视频按钮"
   },
-  "set_google_api_note": {
-    "message": "如果你希望将格言翻译成你的语言，请前往<a href=\"https://console.cloud.google.com/apis/api/translate.googleapis.com/\" target=_blank>Google Cloud</a>获取您的翻译 API 密钥。"
+  "options_show_video_meta_short": {
+    "message": "视频信息"
   },
-  "set_translate_motto": {
-    "message": "翻译格言"
+  "video_apple_help_title": {
+    "message": "为什么苹果服务器可能需要额外配置？"
   },
-  "pop_ask": {
-    "message": "问问"
+  "video_apple_help_intro": {
+    "message": "Chrome 不一定信任苹果 sylvan.apple.com 的证书，直连视频可能失败。两种解决方案："
   },
-  "error_gizmo_number": {
-    "message": "第 "
+  "video_apple_help_option1_title": {
+    "message": "方案 1 — 启用反向代理（简单）"
   },
-  "error_gizmo_configuration": {
-    "message": " 个 GPTs 设置错误。请确保两个值都填写或都留空。"
+  "video_apple_help_option1_body": {
+    "message": "勾选上方「使用反向代理」，Macify 会通过 Cloudflare Worker 代为请求并处理证书问题。无需任何本地配置。"
   },
-  "set_gpts_name": {
-    "message": "GPTs 名称"
+  "video_apple_help_option2_title": {
+    "message": "方案 2 — 手动信任苹果证书（最干净）"
   },
-  "set_gpts_id": {
-    "message": "GPTs ID"
+  "video_apple_help_option2_body_pre": {
+    "message": "在 Chrome 里打开"
   },
-  "set_gizmo1_name": {
-    "message": "GPTs-1 的名称"
+  "video_apple_help_option2_body_post": {
+    "message": "一次。会出现安全警告——点「高级」，然后点「继续访问 sylvan.apple.com（不安全）」。Chrome 会记住你的信任，之后直连就没问题了。"
   },
-  "set_gizmo1_id": {
-    "message": "GPTs-1 的 ID"
+  "video_local_help_title": {
+    "message": "搭建本地 Apache 服务器（一次性配置）"
   },
-  "set_gizmo2_name": {
-    "message": "GPTs-2 的名称"
+  "video_local_step1": {
+    "message": "打开系统设置 → 屏幕保护程序 → 航拍，点击你想下载的视频。每个 500 MB – 1 GB，下载较慢且可能需要重试。"
   },
-  "set_gizmo2_id": {
-    "message": "GPTs-2 的 ID"
+  "video_local_step2": {
+    "message": "将以下内容保存为 videoserver.conf，放到一个稳定的目录（替换 YOUR_MAC_USER_NAME 为你的 macOS 用户名）："
   },
-  "set_gizmo3_name": {
-    "message": "GPTs-3 的名称"
+  "video_local_step3": {
+    "message": "把配置文件软链到 Apache 的 drop-in 配置目录："
   },
-  "set_gizmo3_id": {
-    "message": "GPTs-3 的 ID"
+  "video_local_step4": {
+    "message": "重启 Apache："
   },
-  "set_show_gizmo": {
-    "message": "显示 GPTs"
+  "video_local_step5_pre": {
+    "message": "上方默认地址（"
   },
-  "set_gizmo_note": {
-    "message": "GPTs ID 是下面这个示例 URL 中标记为绿色的部分 https://chat.openai.com/g/<span style=\"color:green;font-weight:bold;\">g-dqSxf0sSW-shan-shu-fan-yi-gong-si<\/span>。"
+  "video_local_step5_post": {
+    "message": "）现在应该能列出你下载的视频了。"
   },
-  "set_auto_enter": {
-    "message": "自动按下回车键"
+  "about_created_by": {
+    "message": "Created by Jason Ng, Dofy, Setilis"
   },
-  "error_all_gizmos_empty": {
-    "message": "所有 GPTs 都为空，至少要完整填一个。"
+  "about_github_link": {
+    "message": "GitHub 源码"
   }
 }

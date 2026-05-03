@@ -1,108 +1,136 @@
-# Chrome-macOS-Screen-Saver-Tab
+# Macify — macOS Aerial Screensavers in Chrome's New Tab
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab)
 ![GitHub](https://img.shields.io/github/license/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab)
 ![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/lgdipcalomggcjkohjhkhkbcpgladnoe)
 ![GitHub contributors](https://img.shields.io/github/contributors/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab)
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab)
 
-Transform your Chrome's new tab page by showcasing macOS's aerial screen saver videos.
+Replace Chrome's new tab page with macOS's aerial screensaver videos and a small set of calm, optional widgets. macOS is **not** required — videos are streamed from Apple's CDN and play in any platform that runs Chrome.
 
-🖥️ If you're not using macOS, fear not! This extension remains compatible.
-
-![screenshot.png](src/res/screenshot.png)
+![screenshot](docs/screenshot.png)
 
 ## Features
 
-This Chrome extension delivers the following features:
+- 🎥 **156 aerial videos** in 4K SDR, sourced from Apple's current macOS catalog (Landscapes, Cities, Underwater, Space, and more).
+- 🌤️ **Live weather** — current temperature, "feels like", 3-day forecast, sunrise/sunset, UV, wind, air quality. Powered by [Open-Meteo](https://open-meteo.com/), no API key required.
+- 📌 **Top sites** widget pulled from Chrome's built-in list (no history permission needed).
+- 💬 **Random quotes** from a curated 500-entry public-domain set.
+- 🧘 **Zen mode** — fullscreen the video with optional ambient music.
+- 🔤 **5 languages** — English, 简体中文, 繁體中文, 日本語, Español.
 
-1. 🎥 Enhance your Chrome start page and new tab view with breathtaking 4K videos, taken directly from macOS' native aerial screen savers.
-2. 🌦️ Receive up-to-the-minute weather updates accompanied by a 3-day forecast.
-3. 💬 Search everything with Google/ChatGPT/Bing/Duckduckgo.
-4. 🌟 Discover motivational quotes that change randomly with each new tab.
-5. 🔗 Compile your browsing history from the chosen timeframe and offer a quick-access list for your convenience.
-6. 😑 Zen mode, you can comfortably space out while accompanied by carefully selected music and watching videos.
+## Install
 
-![AnimatedImage.gif](screenshot.gif)
+[Install from Chrome Web Store](https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe).
 
-## Getting Started
+Or load unpacked: see [Building from source](#building-from-source).
 
-Firstly, Install Macify on Chrome web store,  [Click here](https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe?hl=zh-CN) to install.
+## Choosing a video source
 
-To get started, you need to configure the video source. We offer 3 options:
+Three options. Each section in the extension's settings page also includes a built-in step-by-step setup guide — this README only summarises.
 
-1. Manually set up a local HTTP server ( recommended ).
-2. Directly use the services of Apple Server.
-3. Connect to Apple Server using our built-in reverse proxy.
+### 1. Apple Server (default)
 
-If you're not technically inclined, consider opting for the second or third option.
+Streams directly from `sylvan.apple.com`. Chrome may not trust Apple's certificate by default; two ways to fix it:
 
-And, you will need to get your free weatherapi.com API Key, if you want to enable the weather feature.
+**Option A — Reverse proxy (default on, easiest).** Video requests are routed through a hosted Cloudflare Worker that handles the certificate dance. Zero local setup. Convenient but should not be relied on long-term — set up local hosting or trust the cert when possible.
 
-## Use Apple Server as video source
+**Option B — Trust Apple's cert manually (cleanest).** Visit [https://sylvan.apple.com](https://sylvan.apple.com) once in Chrome. You'll see a security warning — click "Advanced", then "Proceed to sylvan.apple.com (unsafe)". Chrome remembers the trust and direct connection works thereafter.
 
-Using the Apple server as a video source is a good option. However, since the URL where the screensaver videos are located is not trusted by most operating systems, you need to make the system trust the Apple server's certificate first. After that, you will be able to use the Apple server as a video source smoothly.
+![Chrome warning when trusting sylvan.apple.com](docs/chromewarnning.jpg)
 
-Simply open this address in Chrome: [https://sylvan.apple.com/](https://sylvan.apple.com/). The first time you open it, you will see a warning. Just click the *Proceed to sylvan.apple.com (unsafe)* button to ignore the warning, and that’s it.
+### 2. Local Apache server (recommended for macOS users)
 
-![chromewarnning.png](src/res/chromewarnning.jpg)
+For best performance and zero third-party dependency, host the videos yourself on macOS's own Apache.
 
-Now, you can enjoy videos from the Apple video source.
+#### Step 1 — Download the videos
 
-## Use built-in reverse proxy as video source
+Open System Settings → Screen Saver → Aerial. Click each video you want to download (each is 500MB–1GB). Downloads can be slow and may need retries.
 
-By selecting the Apple Server as the video source and enabling the reverse proxy option, you will use the built-in reverse proxy to fetch videos from Apple indirectly.
+![macOS screen saver settings](docs/systempreferrence.jpg)
 
-This is juet for temporary convenience, it is not recommended to use the built-in reverse proxy for an extended period as it is only a temporary solution.
+#### Step 2 — Configure Apache
 
-I cannot guarantee the long-term availability of this built-in reverse proxy.
+Save the following as `videoserver.conf`, replacing `YOUR_MAC_USER_NAME` with your actual macOS username:
 
-## Use local HTTP server as video source
+```apache
+LoadModule headers_module libexec/apache2/mod_headers.so
 
-It is recommended that you set up a local http server as video source if you are a macOS user.
+User YOUR_MAC_USER_NAME
+Group staff
 
-You will be able to enjoy higher quality, faster-loading 4K videos, it’s very easy to set the server up, just follow the steps that come next.
+Listen 18000
 
-### Step 1️⃣: Acquire Screen Saver Videos via System Preferences
+<VirtualHost *:18000>
+    Header always set Access-Control-Allow-Origin "*"
+    Alias /videos "/Users/YOUR_MAC_USER_NAME/Library/Application Support/com.apple.wallpaper/aerials/videos"
 
-Ensure you're connected to Internet and proceed to open System Preferences.
+    <Directory "/Users/YOUR_MAC_USER_NAME/Library/Application Support/com.apple.wallpaper/aerials/videos">
+        Options +Indexes
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
 
-Journey to the "Screensaver" settings within System Preferences. Within the aerial screensaver category, select the videos you wish to download. Bear in mind, the file size of each video spans between 500MB to 1GB; patience is required during the download process. Occasionally, downloads might experience interruptions, necessitating multiple attempts.
+Symlink it into Apache's drop-in folder and restart:
 
-![systempreferrence.jpeg](src/res/systempreferrence.jpg)
+```bash
+sudo ln -s /path/to/videoserver.conf /private/etc/apache2/other
+sudo apachectl restart
+```
 
-To conserve storage, it's advised against downloading the entire video collection.
+#### Step 3 — Point Macify at it
 
-### Step 2️⃣: Initiate a Local Server
+In Macify settings, switch the source to **Local server** and confirm the URL is `http://localhost:18000/videos/`.
 
-1. Download the `videoserver.conf` file from the [code repository](https://github.com/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab).
-2. Store it in a directory that you intend to keep intact. And make sure the directory can be read by `everyone`, permission of `drwxr-xr-x` or `755` is great. For demonstration, let's use:
+## Permissions
 
-    ```bash
-    /path/to/your/videoserver.conf
-    ```
-3. Edit the `videoserver.conf` file, change all `YOUR_MAC_USER_NAME` to your own Mac user name.
+Macify requests three permissions, all non-sensitive:
 
-    ```bash
-    /Users/YOUR_MAC_USER_NAME/Library/Application Support/com.apple.wallpaper/aerials/videos
-    ```
-4. Launch the terminal application.
-5. Link the configuration file to the Apache configuration folder:
+| Permission | Used for |
+|---|---|
+| `storage` | Persist user preferences and cache weather data. |
+| `topSites` | Read Chrome's most-visited list for the Top Sites widget. |
+| `favicon` | Show favicons next to Top Sites entries (uses Chrome's built-in cache; no external network). |
 
-    ```bash
-    sudo ln -s /path/to/your/videoserver.conf /private/etc/apache2/other
-    ```
+No `history` permission. No host permissions for arbitrary sites.
 
-6. To activate the changes, restart Apache:
+## Building from source
 
-    ```bash
-    sudo apachectl restart
-    ```
+Requirements: Node.js 20+ and npm.
 
-Your local backend service should now be operational, with port 18000 as its designated listening port.
+```bash
+git clone https://github.com/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab.git
+cd macOS-Screen-Saver-as-Chrome-New-Tab
+npm install
+npm run build
+```
 
-### Step 3️⃣: Make Changes in the Settings
+The built extension is in `dist/`. Load it via Chrome → `chrome://extensions` → Developer mode → "Load unpacked".
 
-After you set up your local video server, you need to change the server settings in the extension's option page.
+Available scripts:
 
-In the extension's option page, change the video source to "Local Server" and then enter your local address. If you are using the configuration file I provided, the default address is `http://localhost:18000/videos/`.
+- `npm run dev` — Vite dev server with HMR.
+- `npm run build` — production build.
+- `npm run zip` — package `dist/` into a Chrome Web Store-ready zip.
+- `npm run build:videos` — regenerate `src/data/videos.json` from the current macOS aerial manifest.
+- `npm run build:quotes` — regenerate `src/data/quotes.json` from the upstream quotes dataset.
+
+The stack is Vite + Svelte 5 + Tailwind 4 + `@crxjs/vite-plugin` for MV3 + `unplugin-icons` + `@iconify/json`. JS only (no TypeScript).
+
+## Translations
+
+Japanese and Spanish translations were AI-assisted as a first pass. Native-speaker review is welcome — open a PR against `src/_locales/<lang>/messages.json`.
+
+To add a new language: create `src/_locales/<langCode>/messages.json` mirroring the keys in `src/_locales/en/messages.json`. The language dropdown in settings auto-populates from the `_locales` directory.
+
+## Contributing
+
+PRs welcome — bug fixes, translations, new aerial-source adapters, performance improvements, accessibility fixes.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+## Credits
+
+Created by Jason Ng, Dofy, Setilis. Aerial videos are © Apple Inc.

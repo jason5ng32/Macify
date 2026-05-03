@@ -1,299 +1,269 @@
 {
-  "sys_name": {
-    "message": "Macify - macOS screensaver videos new tab"
+  "ext_name": {
+    "message": "Macify"
   },
-  "sys_description": {
-    "message": "Turn your Chrome's new tab page into macOS's gorgeous screensaver aerial videos."
+  "ext_description": {
+    "message": "Transform Chrome's new tab into macOS's gorgeous aerial screensaver videos."
   },
-  "pop_load_top_sites": {
-    "message": "Loading Top sites..."
+  "options_title": {
+    "message": "Macify Settings"
   },
-  "pop_now": {
-    "message": "Now"
+  "options_version_label": {
+    "message": "Version"
   },
-  "pop_today": {
-    "message": "Today"
-  },
-  "pop_t_1": {
-    "message": "T + 1"
-  },
-  "pop_t_2": {
-    "message": "T + 2"
-  },
-  "pop_ask_chat_gpt": {
-    "message": "ChatGPT..."
-  },
-  "pop_load_motto": {
-    "message": "Loading motto..."
-  },
-  "pop_github": {
-    "message": "Project's Github"
-  },
-  "pop_refresh_video": {
-    "message": "Refresh video"
-  },
-  "pop_weather": {
-    "message": "Weather"
-  },
-  "pop_top_sites": {
-    "message": "Top Sites"
-  },
-  "pop_zen_mode": {
-    "message": "Zen Mode"
-  },
-  "error_video_source": {
-    "message": "No video element found to switch source."
-  },
-  "message_video_1": {
-    "message": "It looks like you are using local video server but fetching videos failed. Please make sure you have set the correct URL.\nFollow the &nbsp;<a href=\"instructions.html\" target=_blank >instructions</a>&nbsp; here to make it work."
-  },
-  "message_video_2": {
-    "message": "It looks like you are using Apple Server as video source, but havn't trust Apple's Root Certificate yet.\nFollow the &nbsp;<a href=\"instructions.html\" target=_blank >instructions</a>&nbsp; here to make it work."
-  },
-  "message_video_3": {
-    "message": "It looks like you are our reverse proxy. The great way to use Macify is to set up local server or use Apple's Server without reverse proxy.\nFollow the &nbsp;<a href=\"instructions.html\" target=_blank >instructions</a>&nbsp; here to make it better."
-  },
-  "set_options_title": {
-    "message": "Macify new tab settings"
-  },
-  "set_options_note": {
-    "message": "<a href=\"instructions.html\" target=\"_blank\">Instructions</a> | <a href=\"changelogs.html\" target=\"_blank\">Changelogs</a> | <a href=\"https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe\" target=\"_blank\">Rate Macify</a>"
-  },
-  "set_note": {
-    "message": "If you choose to fetch videos from Apple Server, Chrome may not trust Apple's root certificate, so you can temporarily use my Cloudflare reverse proxy to fetch videos (check the checkbox below). However, I cannot guarantee the long-term availability of this service. Therefore, I strongly recommend that you follow the <a href=\"instructions.html\" target=_blank>instructions</a> to manual trust it."
-  },
-  "set_videos": {
-    "message": "Videos"
-  },
-  "set_video_source": {
-    "message": "Video Source"
-  },
-  "set_apple_server": {
-    "message": "Apple Server"
-  },
-  "set_local_server": {
-    "message": "Local Server"
-  },
-  "set_reverse_proxy": {
-    "message": "Reverse Proxy "
-  },
-  "set_local_videos_list_url": {
-    "message": "Local Videos list URL"
-  },
-  "set_video_note": {
-    "message": "The better way to use this extension is setting up a local HTTP service, following these <a href=\"instructions.html\" target=_blank>instructions</a>."
-  },
-  "set_weather": {
-    "message": "Weather"
-  },
-  "set_show_weather": {
-    "message": "Show Weather"
-  },
-  "set_city_name": {
-    "message": "City Name (EN)"
-  },
-  "set_temp_unit": {
-    "message": "Temperature Unit"
-  },
-  "set_celsius": {
-    "message": "Celsius (°C)"
-  },
-  "set_fahrenheit": {
-    "message": "Fahrenheit (°F)"
-  },
-  "set_weather_api": {
-    "message": "Weatherapi.com API"
-  },
-  "set_your_weather_api_key": {
-    "message": "Enter your own API KEY"
-  },
-  "set_weather_note": {
-    "message": "Go to <a href=\"https://www.weatherapi.com/\" target=_blank>weatherapi.com</a> to get your free API key."
-  },
-  "set_ask_chatgpt": {
-    "message": "Ask ChatGPT"
-  },
-  "set_show_chatgpt": {
-    "message": "Show ChatGPT"
-  },
-  "set_default_model": {
-    "message": "Default GPT Model"
-  },
-  "set_show_search": {
-    "message": "Show Search Box"
-  },
-  "set_search_option": {
-    "message": "Search Options"
-  },
-  "set_delay_time": {
-    "message": "Input delay time in ms"
-  },
-  "set_delay_note": {
-    "message": "2000 or more would be recommended."
-  },
-  "set_time": {
-    "message": "Time"
-  },
-  "set_show_clock": {
-    "message": "Show Clock"
-  },
-  "set_hour_system": {
-    "message": "Hour System"
-  },
-  "set_12_hour": {
-    "message": "12-Hour"
-  },
-  "set_24_hour": {
-    "message": "24-Hour"
-  },
-  "set_clock_note": {
-    "message": "Only affected when clock is shown."
-  },
-  "set_chatgpt_note": {
-    "message": "Currently ChatGPT Search only supports GPT-4o and GPT-4o-mini."
-  },
-  "set_top_sites": {
-    "message": "Top Sites"
-  },
-  "set_show_top_sites": {
-    "message": "Show Top Sites"
-  },
-  "set_histories_within": {
-    "message": "Histories within"
-  },
-  "set_1_month": {
-    "message": "1 Month"
-  },
-  "set_2_weeks": {
-    "message": "2 Weeks"
-  },
-  "set_1_week": {
-    "message": "1 Week"
-  },
-  "set_3_days": {
-    "message": "3 Days"
-  },
-  "set_1_day": {
-    "message": "1 Day"
-  },
-  "set_history_permission": {
-    "message": "History permission is required for this feature."
-  },
-  "set_others": {
-    "message": "Others"
-  },
-  "set_choose_font": {
-    "message": "Choose font"
-  },
-  "set_system_default": {
-    "message": "System Default"
-  },
-  "set_show_motto": {
-    "message": "Show Motto"
-  },
-  "set_show_refresh_button": {
-    "message": "Show Refresh Button"
-  },
-  "set_show_zen_button": {
-    "message": "Show Zen Button"
-  },
-  "set_show_author_info": {
-    "message": "Show Author Info"
-  },
-  "set_save": {
-    "message": "Save"
-  },
-  "error_get_motto": {
-    "message": "Get motto failed."
-  },
-  "error_get_weather": {
-    "message": "Get weather failed. Please check the API key and city name then try again."
-  },
-  "error_video_url": {
-    "message": "Please input Videos list URL"
-  },
-  "error_delay_time": {
-    "message": "Delay time must be an integer between 1 and 10000."
-  },
-  "error_weather": {
-    "message": "Please input City Name and weatherapi.com API KEY"
-  },
-  "error_weather_api_key": {
-    "message": "The API Key must be at least 30 characters long and consist only of letters and numbers."
-  },
-  "error_history_permission": {
-    "message": "History permission is required to enable this feature."
-  },
-  "message_saved": {
-    "message": "Settings saved"
-  },
-  "set_language": {
+  "options_language_section": {
     "message": "Language"
   },
-  "set_language_selector": {
-    "message": "Choose Language"
+  "options_language_label": {
+    "message": "Display language"
   },
-  "set_motto": {
+  "options_language_auto": {
+    "message": "Follow browser"
+  },
+  "options_language_en": {
+    "message": "English"
+  },
+  "options_language_zh_CN": {
+    "message": "简体中文"
+  },
+  "options_language_zh_TW": {
+    "message": "繁體中文"
+  },
+  "options_language_ja": {
+    "message": "日本語"
+  },
+  "options_language_es": {
+    "message": "Español"
+  },
+  "options_time_section": {
+    "message": "Time"
+  },
+  "options_hour_system": {
+    "message": "Hour system"
+  },
+  "options_hour_12": {
+    "message": "12-hour"
+  },
+  "options_hour_24": {
+    "message": "24-hour"
+  },
+  "options_video_section": {
+    "message": "Video"
+  },
+  "options_video_source": {
+    "message": "Source"
+  },
+  "options_video_source_apple": {
+    "message": "Apple server"
+  },
+  "options_video_source_local": {
+    "message": "Local server"
+  },
+  "options_video_reverse_proxy": {
+    "message": "Use reverse proxy"
+  },
+  "options_video_local_url": {
+    "message": "Local server URL"
+  },
+  "refresh_video": {
+    "message": "Switch video"
+  },
+  "error_video_apple": {
+    "message": "Couldn't load videos from Apple's server. Try enabling the reverse proxy in settings, or trust sylvan.apple.com's certificate manually."
+  },
+  "error_video_local": {
+    "message": "Couldn't reach the local video server. Check the URL in settings."
+  },
+  "error_video_local_empty": {
+    "message": "Local server reachable but no .mov / .mp4 files found."
+  },
+  "options_weather_section": {
+    "message": "Weather"
+  },
+  "options_weather_city": {
+    "message": "City"
+  },
+  "options_weather_city_placeholder": {
+    "message": "e.g. Beijing, Tokyo, San Francisco"
+  },
+  "options_weather_temp_unit": {
+    "message": "Temperature unit"
+  },
+  "options_weather_celsius": {
+    "message": "Celsius (°C)"
+  },
+  "options_weather_fahrenheit": {
+    "message": "Fahrenheit (°F)"
+  },
+  "options_weather_city_hint": {
+    "message": "Type a city name (English works best) and press Enter or click Save. We verify against the weather service before saving."
+  },
+  "options_weather_save": {
+    "message": "Save"
+  },
+  "options_weather_save_loading": {
+    "message": "Verifying…"
+  },
+  "options_weather_save_success": {
+    "message": "Saved."
+  },
+  "options_weather_city_required": {
+    "message": "City name is required."
+  },
+  "options_weather_city_invalid": {
+    "message": "Couldn't find that city. Try a more standard name."
+  },
+  "weather_today": {
+    "message": "Today"
+  },
+  "weather_tomorrow": {
+    "message": "Tomorrow"
+  },
+  "weather_day_after": {
+    "message": "Day after"
+  },
+  "weather_upcoming": {
+    "message": "Upcoming"
+  },
+  "weather_feels_like": {
+    "message": "Feels like"
+  },
+  "weather_precip": {
+    "message": "Rain"
+  },
+  "weather_wind": {
+    "message": "Wind"
+  },
+  "weather_uv": {
+    "message": "UV"
+  },
+  "weather_sunrise": {
+    "message": "Sunrise"
+  },
+  "weather_sunset": {
+    "message": "Sunset"
+  },
+  "weather_uv_low": {
+    "message": "Low"
+  },
+  "weather_uv_moderate": {
+    "message": "Moderate"
+  },
+  "weather_uv_high": {
+    "message": "High"
+  },
+  "weather_uv_very_high": {
+    "message": "Very High"
+  },
+  "weather_uv_extreme": {
+    "message": "Extreme"
+  },
+  "weather_air_quality": {
+    "message": "Air"
+  },
+  "weather_aqi_good": {
+    "message": "Good"
+  },
+  "weather_aqi_moderate": {
+    "message": "Moderate"
+  },
+  "weather_aqi_unhealthy_sensitive": {
+    "message": "Unhealthy for sensitive groups"
+  },
+  "weather_aqi_unhealthy": {
+    "message": "Unhealthy"
+  },
+  "weather_aqi_very_unhealthy": {
+    "message": "Very Unhealthy"
+  },
+  "weather_aqi_hazardous": {
+    "message": "Hazardous"
+  },
+  "motto_refresh_hint": {
+    "message": "Click for another"
+  },
+  "topsites_label": {
+    "message": "Top Sites"
+  },
+  "topsites_empty": {
+    "message": "No top sites yet — visit some pages first."
+  },
+  "zen_label": {
+    "message": "Zen Mode (fullscreen + ambient music)"
+  },
+  "options_display_section": {
+    "message": "Display"
+  },
+  "options_display_hint": {
+    "message": "Choose what appears on the new tab page."
+  },
+  "options_show_clock_short": {
+    "message": "Clock"
+  },
+  "options_show_weather_short": {
+    "message": "Weather"
+  },
+  "options_show_motto_short": {
     "message": "Motto"
   },
-  "set_google_api": {
-    "message": "Google Translation API KEY"
+  "options_show_topsites_short": {
+    "message": "Top Sites"
   },
-  "set_your_google_api_key": {
-    "message": "Enter Your Google Cloud Translation API Key"
+  "options_show_zen_short": {
+    "message": "Zen Mode button"
   },
-  "error_google_api_key": {
-    "message": "API Key length must be at least 39 characters."
+  "options_show_refresh_short": {
+    "message": "Refresh button"
   },
-  "set_google_api_note": {
-    "message": "If your browser's language is English, you don't need Cloud Translation API key."
+  "options_show_video_meta_short": {
+    "message": "Video info"
   },
-  "set_translate_motto": {
-    "message": "Translate Motto"
+  "video_apple_help_title": {
+    "message": "Why might Apple's server need extra setup?"
   },
-  "pop_ask": {
-    "message": "Ask"
+  "video_apple_help_intro": {
+    "message": "Chrome doesn't always trust Apple's sylvan.apple.com certificate, so direct video loading may fail. Two ways to make it work:"
   },
-  "error_gizmo_number": {
-    "message": "No."
+  "video_apple_help_option1_title": {
+    "message": "Option 1 — Use the reverse proxy (easy)"
   },
-  "error_gizmo_configuration": {
-    "message": "'s GPTs setting is incorrect. Please ensure both values are either filled or left blank."
+  "video_apple_help_option1_body": {
+    "message": "Tick the \"Use reverse proxy\" checkbox above. Macify will route requests through a Cloudflare Worker that handles the certificate dance for you. Zero local setup."
   },
-  "set_gpts_name": {
-    "message": "GPTs Name"
+  "video_apple_help_option2_title": {
+    "message": "Option 2 — Trust Apple's certificate manually (cleanest)"
   },
-  "set_gpts_id": {
-    "message": "GPTs ID"
+  "video_apple_help_option2_body_pre": {
+    "message": "Open"
   },
-  "set_gizmo1_name": {
-    "message": "Name of GPTs-1"
+  "video_apple_help_option2_body_post": {
+    "message": "in Chrome once. You'll see a security warning — click Advanced, then \"Proceed to sylvan.apple.com (unsafe)\". Chrome remembers your trust and direct connection works from then on."
   },
-  "set_gizmo1_id": {
-    "message": "ID of GPTs-1"
+  "video_local_help_title": {
+    "message": "Set up a local Apache server (one-time)"
   },
-  "set_gizmo2_name": {
-    "message": "Name of GPTs-2"
+  "video_local_step1": {
+    "message": "Open System Settings → Screen Saver → Aerial. Click each video you want to download. Each is 500 MB – 1 GB; downloads can take a while and may need retries."
   },
-  "set_gizmo2_id": {
-    "message": "ID of GPTs-2"
+  "video_local_step2": {
+    "message": "Save the following as videoserver.conf somewhere stable (replace YOUR_MAC_USER_NAME with your actual macOS username):"
   },
-  "set_gizmo3_name": {
-    "message": "Name of GPTs-3"
+  "video_local_step3": {
+    "message": "Symlink the config into Apache's drop-in folder:"
   },
-  "set_gizmo3_id": {
-    "message": "ID of GPTs-3"
+  "video_local_step4": {
+    "message": "Restart Apache:"
   },
-  "set_show_gizmo": {
-    "message": "Show GPTs"
+  "video_local_step5_pre": {
+    "message": "The default URL above ("
   },
-  "set_gizmo_note": {
-    "message": "The GPTs ID is the part marked in green in the example URL below https://chat.openai.com/g/<span style=\"color:green;font-weight:bold;\">g-dqSxf0sSW-shan-shu-fan-yi-gong-si</span>."
+  "video_local_step5_post": {
+    "message": ") should now serve your downloaded videos."
   },
-  "set_auto_enter": {
-    "message": "Auto press Enter"
+  "about_created_by": {
+    "message": "Created by Jason Ng, Dofy, Setilis"
   },
-  "error_all_gizmos_empty": {
-    "message": "All GPTs are empty. Please fill in at least one."
+  "about_github_link": {
+    "message": "Source on GitHub"
   }
 }

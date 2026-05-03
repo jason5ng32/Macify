@@ -1,299 +1,91 @@
 {
-  "sys_name": {
-    "message": "Macify - macOSのスクリーンセーバー動画を新しいタブに"
-  },
-  "sys_description": {
-    "message": "Chromeの新しいタブページをmacOSの美しいスクリーンセーバーの空撮動画に変えます。"
-  },
-  "pop_load_top_sites": {
-    "message": "トップサイトを読み込んでいます..."
-  },
-  "pop_now": {
-    "message": "現在"
-  },
-  "pop_today": {
-    "message": "今日"
-  },
-  "pop_t_1": {
-    "message": "明日"
-  },
-  "pop_t_2": {
-    "message": "明後日"
-  },
-  "pop_ask_chat_gpt": {
-    "message": "ChatGPTに聞く..."
-  },
-  "pop_load_motto": {
-    "message": "モットーを読み込んでいます..."
-  },
-  "pop_github": {
-    "message": "プロジェクトのGithub"
-  },
-  "pop_refresh_video": {
-    "message": "動画を更新"
-  },
-  "pop_weather": {
-    "message": "天気"
-  },
-  "pop_top_sites": {
-    "message": "トップサイト"
-  },
-  "pop_zen_mode": {
-    "message": "禅モード"
-  },
-  "error_video_source": {
-    "message": "切り替える動画要素が見つかりませんでした。"
-  },
-  "message_video_1": {
-    "message": "ローカル動画サーバーを使用していますが、動画の取得に失敗しました。正しいURLを設定していることを確認してください。\nここで&nbsp;<a href=\"instructions.html\" target=_blank >instructions</a>&nbsp;に従って動作させることができます。"
-  },
-  "message_video_2": {
-    "message": "Apple Serverを動画ソースとして使用しているようですが、Appleのルート証明書を信頼していません。\nここで&nbsp;<a href=\"instructions.html\" target=_blank >instructions</a>&nbsp;に従って動作させることができます。"
-  },
-  "message_video_3": {
-    "message": "リバースプロキシを使用しています。Macifyを使用する最良の方法は、ローカルサーバーを設定するか、リバースプロキシを使用せずにAppleのサーバーを使用することです。\nここで&nbsp;<a href=\"instructions.html\" target=_blank >instructions</a>&nbsp;に従って動作させることができます。"
-  },
-  "set_options_title": {
-    "message": "Macify新しいタブの設定"
-  },
-  "set_options_note": {
-    "message": "<a href=\"instructions.html\" target=\"_blank\">使用説明</a> | <a href=\"changelogs.html\" target=\"_blank\">更新履歴</a> | <a href=\"https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe\" target=\"_blank\">Macifyを評価する</a>"
-  },
-  "set_note": {
-    "message": "動画をApple Serverから取得する場合、ChromeはAppleのルート証明書を信頼しない場合があります。そのため、一時的に私のCloudflareリバースプロキシを使用して動画を取得できます（チェックボックスをオンにします）。ただし、このサービスの長期的な可用性を保証することはできません。したがって、手動で信頼する<a href=\"instructions.html\" target=_blank>instructions</a>に従うことを強くお勧めします。"
-  },
-  "set_videos": {
-    "message": "動画"
-  },
-  "set_video_source": {
-    "message": "動画ソース"
-  },
-  "set_apple_server": {
-    "message": "Apple Server"
-  },
-  "set_local_server": {
-    "message": "ローカルサーバー"
-  },
-  "set_reverse_proxy": {
-    "message": "リバースプロキシ"
-  },
-  "set_local_videos_list_url": {
-    "message": "ローカル動画リストURL"
-  },
-  "set_video_note": {
-    "message": "この拡張機能を使用する最良の方法は、<a href=\"instructions.html\" target=_blank>instructions</a>に従ってローカルHTTPサービスを設定することです。"
-  },
-  "set_weather": {
-    "message": "天気"
-  },
-  "set_show_weather": {
-    "message": "天気を表示"
-  },
-  "set_city_name": {
-    "message": "都市名（英語）"
-  },
-  "set_temp_unit": {
-    "message": "温度単位"
-  },
-  "set_celsius": {
-    "message": "摂氏（°C）"
-  },
-  "set_fahrenheit": {
-    "message": "華氏（°F）"
-  },
-  "set_weather_api": {
-    "message": "Weatherapi.com API"
-  },
-  "set_your_weather_api_key": {
-    "message": "API KEYを入力してください"
-  },
-  "set_weather_note": {
-    "message": "<a href=\"https://www.weatherapi.com/\" target=_blank>weatherapi.com</a>にアクセスして、無料のAPIキーを取得してください。"
-  },
-  "set_ask_chatgpt": {
-    "message": "ChatGPT"
-  },
-  "set_show_chatgpt": {
-    "message": "ChatGPTを表示"
-  },
-  "set_default_model": {
-    "message": "GPT デフォルトモデル"
-  },
-  "set_show_search": {
-    "message": "検索ボックスを表示"
-  },
-  "set_search_option": {
-    "message": "検索オプション"
-  },
-  "set_delay_time": {
-    "message": "遅延時間(ms)"
-  },
-  "set_delay_note": {
-    "message": "2000以上が推奨されます。"
-  },
-  "set_time": {
-    "message": "時間"
-  },
-  "set_show_clock": {
-    "message": "時計を表示"
-  },
-  "set_hour_system": {
-    "message": "時間制度"
-  },
-  "set_12_hour": {
-    "message": "12時間"
-  },
-  "set_24_hour": {
-    "message": "24時間"
-  },
-  "set_clock_note": {
-    "message": "時計が表示されている場合にのみ影響します。"
-  },
-  "set_chatgpt_note": {
-    "message": "ChatGPT検索は現在GPT-4oおよびGPT-4o-miniのみをサポートしています。"
-  },
-  "set_top_sites": {
-    "message": "トップサイト"
-  },
-  "set_show_top_sites": {
-    "message": "トップサイトを表示"
-  },
-  "set_histories_within": {
-    "message": "履歴範囲"
-  },
-  "set_1_month": {
-    "message": "1ヶ月"
-  },
-  "set_2_weeks": {
-    "message": "2週間"
-  },
-  "set_1_week": {
-    "message": "1週間"
-  },
-  "set_3_days": {
-    "message": "3日間"
-  },
-  "set_1_day": {
-    "message": "1日"
-  },
-  "set_history_permission": {
-    "message": "この機能を有効にするには、履歴許可が必要です。"
-  },
-  "set_others": {
-    "message": "その他"
-  },
-  "set_choose_font": {
-    "message": "フォントを選択"
-  },
-  "set_system_default": {
-    "message": "システムデフォルト"
-  },
-  "set_show_motto": {
-    "message": "モットーを表示"
-  },
-  "set_show_refresh_button": {
-    "message": "更新ボタンを表示"
-  },
-  "set_show_zen_button": {
-    "message": "禅ボタンを表示"
-  },
-  "set_show_author_info": {
-    "message": "作者情報を表示"
-  },
-  "set_save": {
-    "message": "保存"
-  },
-  "error_get_motto": {
-    "message": "モットーの取得に失敗しました。"
-  },
-  "error_get_weather": {
-    "message": "天気の取得に失敗しました。APIキーと都市名を確認してから、もう一度お試しください。"
-  },
-  "error_video_url": {
-    "message": "動画リストURLを入力してください"
-  },
-  "error_delay_time": {
-    "message": "遅延時間は1から10000の整数でなければなりません。"
-  },
-  "error_weather": {
-    "message": "都市名とweatherapi.com API KEYを入力してください"
-  },
-  "error_weather_api_key": {
-    "message": "APIキーは30文字以上で、文字と数字のみで構成されている必要があります。"
-  },
-  "error_history_permission": {
-    "message": "この機能を有効にするには、履歴許可が必要です。"
-  },
-  "message_saved": {
-    "message": "設定が保存されました"
-  },
-  "set_language": {
-    "message": "言語"
-  },
-  "set_language_selector": {
-    "message": "言語選択"
-  },
-  "set_motto": {
-    "message": "モットー"
-  },
-  "set_google_api": {
-    "message": "Google 翻訳 APIを設定する"
-  },
-  "set_your_google_api_key": {
-    "message": "あなたのGoogle 翻訳 APIキーを入力してください"
-  },
-  "error_google_api_key": {
-    "message": "APIキーの長さは少なくとも39文字でなければなりません。"
-  },
-  "set_google_api_note": {
-    "message": "格言をあなたの言語に翻訳したい場合は、<a href=\"https://console.cloud.google.com/apis/api/translate.googleapis.com/\" target=_blank>Google Cloud</a>で無料のAPIキーを取得してください。"
-  },
-  "set_translate_motto": {
-    "message": "モットーを翻訳する"
-  },
-  "pop_ask": {
-    "message": "に聞く："
-  },
-  "error_gizmo_number": {
-    "message": "第 "
-  },
-  "error_gizmo_configuration": {
-    "message": " 個の GPTs 設定が間違っています。両方の値を入力するか、空白にしてください。"
-  },
-  "set_gpts_name": {
-    "message": "GPTs 名称"
-  },
-  "set_gpts_id": {
-    "message": "GPTs ID"
-  },
-  "set_gizmo1_name": {
-    "message": "GPTs-1 の名称"
-  },
-  "set_gizmo1_id": {
-    "message": "GPTs-1 の ID"
-  },
-  "set_gizmo2_name": {
-    "message": "GPTs-2 の名称"
-  },
-  "set_gizmo2_id": {
-    "message": "GPTs-2 の ID"
-  },
-  "set_gizmo3_name": {
-    "message": "GPTs-3 の名称"
-  },
-  "set_gizmo3_id": {
-    "message": "GPTs-3 の ID"
-  },
-  "set_show_gizmo": {
-    "message": "GPTs を表示"
-  },
-  "set_gizmo_note": {
-    "message": "GPTs ID は、以下のサンプル URL にある緑色で強調された部分です https://chat.openai.com/g/<span style=\"color:green;font-weight:bold;\">g-dqSxf0sSW-shan-shu-fan-yi-gong-si<\/span>。"
-  },
-  "set_auto_enter": {
-    "message": "自動入力"
-  },
-  "error_all_gizmos_empty": {
-    "message": "GPTs が空です，少なくとも1つのGPTsを有効にしてください。"
-  }
+  "ext_name": { "message": "Macify" },
+  "ext_description": { "message": "Chromeの新しいタブをmacOSの美しいエアリアル・スクリーンセーバー動画に変えます。" },
+  "options_title": { "message": "Macify 設定" },
+  "options_version_label": { "message": "バージョン" },
+  "options_language_section": { "message": "言語" },
+  "options_language_label": { "message": "表示言語" },
+  "options_language_auto": { "message": "ブラウザに従う" },
+  "options_language_en": { "message": "English" },
+  "options_language_zh_CN": { "message": "简体中文" },
+  "options_language_zh_TW": { "message": "繁體中文" },
+  "options_language_ja": { "message": "日本語" },
+  "options_language_es": { "message": "Español" },
+  "options_time_section": { "message": "時間" },
+  "options_hour_system": { "message": "時刻表示" },
+  "options_hour_12": { "message": "12時間制" },
+  "options_hour_24": { "message": "24時間制" },
+  "options_video_section": { "message": "動画" },
+  "options_video_source": { "message": "ソース" },
+  "options_video_source_apple": { "message": "Apple サーバー" },
+  "options_video_source_local": { "message": "ローカルサーバー" },
+  "options_video_reverse_proxy": { "message": "リバースプロキシを使用" },
+  "options_video_local_url": { "message": "ローカルサーバーのURL" },
+  "refresh_video": { "message": "動画を切り替え" },
+  "error_video_apple": { "message": "Appleのサーバーから動画を読み込めませんでした。設定でリバースプロキシを有効にするか、sylvan.apple.com の証明書を手動で信頼してください。" },
+  "error_video_local": { "message": "ローカル動画サーバーに接続できません。設定でURLを確認してください。" },
+  "error_video_local_empty": { "message": "ローカルサーバーに接続できましたが、.mov / .mp4 ファイルが見つかりません。" },
+  "options_weather_section": { "message": "天気" },
+  "options_weather_city": { "message": "都市" },
+  "options_weather_city_placeholder": { "message": "例: Tokyo, San Francisco, Beijing" },
+  "options_weather_temp_unit": { "message": "温度単位" },
+  "options_weather_celsius": { "message": "摂氏 (°C)" },
+  "options_weather_fahrenheit": { "message": "華氏 (°F)" },
+  "options_weather_city_hint": { "message": "都市名を入力(英語が最も正確)し、Enterキーまたは保存ボタンを押します。天気サービスで検証してから保存します。" },
+  "options_weather_save": { "message": "保存" },
+  "options_weather_save_loading": { "message": "検証中…" },
+  "options_weather_save_success": { "message": "保存しました。" },
+  "options_weather_city_required": { "message": "都市名を入力してください。" },
+  "options_weather_city_invalid": { "message": "その都市が見つかりません。標準的な表記でお試しください。" },
+  "weather_today": { "message": "今日" },
+  "weather_tomorrow": { "message": "明日" },
+  "weather_day_after": { "message": "明後日" },
+  "weather_upcoming": { "message": "今後" },
+  "weather_feels_like": { "message": "体感" },
+  "weather_precip": { "message": "降水" },
+  "weather_wind": { "message": "風" },
+  "weather_uv": { "message": "UV" },
+  "weather_sunrise": { "message": "日の出" },
+  "weather_sunset": { "message": "日の入り" },
+  "weather_uv_low": { "message": "弱" },
+  "weather_uv_moderate": { "message": "中" },
+  "weather_uv_high": { "message": "強" },
+  "weather_uv_very_high": { "message": "非常に強い" },
+  "weather_uv_extreme": { "message": "極端" },
+  "weather_air_quality": { "message": "大気" },
+  "weather_aqi_good": { "message": "良好" },
+  "weather_aqi_moderate": { "message": "普通" },
+  "weather_aqi_unhealthy_sensitive": { "message": "敏感な人に不健康" },
+  "weather_aqi_unhealthy": { "message": "不健康" },
+  "weather_aqi_very_unhealthy": { "message": "非常に不健康" },
+  "weather_aqi_hazardous": { "message": "危険" },
+  "motto_refresh_hint": { "message": "クリックして次へ" },
+  "topsites_label": { "message": "よく見るサイト" },
+  "topsites_empty": { "message": "よく見るサイトはまだありません — まずは何ページか開いてみてください。" },
+  "zen_label": { "message": "禅モード(フルスクリーン + 環境音楽)" },
+  "options_display_section": { "message": "表示" },
+  "options_display_hint": { "message": "新しいタブに表示する要素を選択。" },
+  "options_show_clock_short": { "message": "時計" },
+  "options_show_weather_short": { "message": "天気" },
+  "options_show_motto_short": { "message": "格言" },
+  "options_show_topsites_short": { "message": "よく見るサイト" },
+  "options_show_zen_short": { "message": "禅モードボタン" },
+  "options_show_refresh_short": { "message": "切り替えボタン" },
+  "options_show_video_meta_short": { "message": "動画情報" },
+  "video_apple_help_title": { "message": "Apple のサーバーで追加設定が必要な理由" },
+  "video_apple_help_intro": { "message": "Chrome が Apple の sylvan.apple.com の証明書を信頼しないことがあり、動画の直接読み込みに失敗する可能性があります。2つの解決方法:" },
+  "video_apple_help_option1_title": { "message": "方法 1 — リバースプロキシを使う(簡単)" },
+  "video_apple_help_option1_body": { "message": "上の「リバースプロキシを使用」にチェックを入れます。Macify が Cloudflare Worker 経由でリクエストし、証明書の問題を自動で処理します。ローカル設定は不要です。" },
+  "video_apple_help_option2_title": { "message": "方法 2 — Apple の証明書を手動で信頼する(最もクリーン)" },
+  "video_apple_help_option2_body_pre": { "message": "Chrome で" },
+  "video_apple_help_option2_body_post": { "message": "を一度開きます。セキュリティ警告が表示されたら、「詳細」→「sylvan.apple.com にアクセスする (安全ではありません)」をクリック。Chrome が信頼を記憶し、以降は直接接続が機能します。" },
+  "video_local_help_title": { "message": "ローカル Apache サーバーを設定する(一回だけ)" },
+  "video_local_step1": { "message": "システム設定 → スクリーンセーバー → エアリアルを開き、ダウンロードしたい動画をクリックします。各動画は 500 MB – 1 GB あり、ダウンロードに時間がかかり、再試行が必要な場合もあります。" },
+  "video_local_step2": { "message": "以下を videoserver.conf として保存し、安定した場所に置きます(YOUR_MAC_USER_NAME を実際の macOS ユーザー名に置き換える):" },
+  "video_local_step3": { "message": "Apache の drop-in 設定フォルダにシンボリックリンクを作成します:" },
+  "video_local_step4": { "message": "Apache を再起動:" },
+  "video_local_step5_pre": { "message": "上の既定のURL(" },
+  "video_local_step5_post": { "message": ")でダウンロードした動画が配信されるはずです。" },
+  "about_created_by": { "message": "Created by Jason Ng, Dofy, Setilis" },
+  "about_github_link": { "message": "GitHub のソース" }
 }
