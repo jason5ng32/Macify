@@ -7,6 +7,12 @@
     resolveLanguage,
   } from '../lib/i18n.svelte.js';
   import { geocodeCity } from '../lib/weather.js';
+  import {
+    prepareTranslator,
+    appLangToBcp47,
+    getAvailability,
+    isTranslatorApiSupported,
+  } from '../lib/translate.js';
   import VideoSetupHelp from './VideoSetupHelp.svelte';
   import IconGithub from '~icons/mingcute/github-line';
 
@@ -72,6 +78,70 @@
     { key: 'refreshButton', label: 'options_show_refresh_short' },
     { key: 'showVideoMetadata', label: 'options_show_video_meta_short' },
   ];
+
+  // === Translation card state ===
+  // Only meaningful when resolved app language ≠ en. Re-checks on
+  // language change.
+  const targetLang = $derived(
+    appLangToBcp47(resolveLanguage(settings.userLanguage)),
+  );
+  const showTranslationCard = $derived(targetLang !== 'en');
+
+  let translationStatus = $state('checking');
+  let downloadProgress = $state(0);
+
+  $effect(() => {
+    if (!showTranslationCard) return;
+    translationStatus = 'checking';
+    downloadProgress = 0;
+    getAvailability(targetLang).then((s) => {
+      translationStatus = s;
+    });
+  });
+
+  // Click-driven (gesture-eligible) — kicks off model download with
+  // progress reporting, then re-queries availability when done.
+  function onDownloadModel() {
+    translationStatus = 'downloading';
+    downloadProgress = 0;
+    const lang = targetLang;
+    const promise = prepareTranslator(lang, (pct) => {
+      downloadProgress = pct;
+    });
+    if (!promise) {
+      translationStatus = 'unavailable';
+      return;
+    }
+    promise.then((instance) => {
+      if (!instance) {
+        translationStatus = 'unavailable';
+        return;
+      }
+      // Re-query to confirm it really landed.
+      getAvailability(lang).then((s) => {
+        translationStatus = s;
+      });
+    });
+  }
+
+  // Toggle handler — same gesture trick as before, used both as a
+  // place to opt-in AND (when applicable) to start the download.
+  function onTranslateMottoToggle(event) {
+    const enabled = event.currentTarget.checked;
+    if (enabled && targetLang !== 'en') {
+      // If the model is missing, this click is the user gesture
+      // that authorizes the download.
+      if (
+        translationStatus === 'downloadable' ||
+        translationStatus === 'unavailable'
+      ) {
+        onDownloadModel();
+      } else {
+        prepareTranslator(targetLang);
+      }
+    }
+    updateSetting('translateMotto', enabled);
+  }
 
   function set(key) {
     return (event) => {
@@ -305,6 +375,83 @@
         </select>
       </label>
     </section>
+
+    <!-- Translation: only meaningful when display language is non-English -->
+    {#if showTranslationCard}
+      <section
+        class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+      >
+        <h2
+          class="mb-1 flex items-center gap-2 text-base font-semibold text-slate-900"
+        >
+          <span aria-hidden="true">🌐</span>
+          {t('options_translation_section')}
+        </h2>
+        <p class="mb-4 text-xs leading-relaxed text-slate-500">
+          {t('options_translation_description')}
+        </p>
+
+        <label class="mb-4 flex items-center justify-between gap-4">
+          <span class="text-sm text-slate-700">
+            {t('options_translate_motto')}
+          </span>
+          <input
+            type="checkbox"
+            class="h-4 w-4 cursor-pointer accent-blue-600"
+            checked={settings.translateMotto}
+            onchange={onTranslateMottoToggle}
+          />
+        </label>
+
+        <div class="rounded-md bg-slate-50 p-3 text-xs ring-1 ring-slate-200">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-slate-500"
+              >{t('options_translation_model_label')}</span
+            >
+            <span class="font-mono text-slate-700">en → {targetLang}</span>
+          </div>
+          <div class="mt-1.5 flex items-center justify-between gap-2">
+            <span class="text-slate-500"
+              >{t('options_translation_status_label')}</span
+            >
+            <span
+              class="font-medium"
+              class:text-emerald-600={translationStatus === 'available'}
+              class:text-amber-600={translationStatus === 'downloadable'}
+              class:text-blue-600={translationStatus === 'downloading' ||
+                translationStatus === 'checking'}
+              class:text-red-600={translationStatus === 'unavailable' ||
+                translationStatus === 'no-api'}
+            >
+              {#if translationStatus === 'available'}
+                ✓ {t('options_translation_status_available')}
+              {:else if translationStatus === 'downloadable'}
+                ⬇ {t('options_translation_status_downloadable')}
+              {:else if translationStatus === 'downloading'}
+                ⏳ {t('options_translation_status_downloading')}
+                {downloadProgress}%
+              {:else if translationStatus === 'unavailable'}
+                ⚠ {t('options_translation_status_unavailable')}
+              {:else if translationStatus === 'no-api'}
+                ⚠ {t('options_translation_status_no_api')}
+              {:else}
+                {t('options_translation_status_checking')}
+              {/if}
+            </span>
+          </div>
+
+          {#if translationStatus === 'downloadable'}
+            <button
+              type="button"
+              onclick={onDownloadModel}
+              class="mt-3 w-full cursor-pointer rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-blue-700 focus:ring-2 focus:ring-blue-500/40 focus:outline-none"
+            >
+              {t('options_translation_download_button')}
+            </button>
+          {/if}
+        </div>
+      </section>
+    {/if}
 
     <footer
       class="mt-8 flex flex-col items-center gap-2 text-xs text-slate-500"

@@ -14,6 +14,7 @@ export const DEFAULTS = Object.freeze({
   videoSrc: 'apple',
   reverseProxy: true,
   showVideoMetadata: true,
+  translateMotto: false,
 });
 
 export const KNOWN_KEYS = Object.freeze(Object.keys(DEFAULTS));
