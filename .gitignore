@@ -1,5 +1,11 @@
 
 .DS_Store
 Screenshots/
+.plan/
 
 localvideoserver.conf
+
+node_modules/
+dist/
+releases/
+*.zip
