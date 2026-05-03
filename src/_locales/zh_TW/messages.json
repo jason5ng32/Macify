@@ -1,91 +1,305 @@
 {
-  "ext_name": { "message": "Macify" },
-  "ext_description": { "message": "將 Chrome 的新分頁變成 macOS 的華麗空拍螢幕保護影片。" },
-  "options_title": { "message": "Macify 設定" },
-  "options_version_label": { "message": "版本" },
-  "options_language_section": { "message": "語言" },
-  "options_language_label": { "message": "顯示語言" },
-  "options_language_auto": { "message": "跟隨瀏覽器" },
-  "options_language_en": { "message": "English" },
-  "options_language_zh_CN": { "message": "简体中文" },
-  "options_language_zh_TW": { "message": "繁體中文" },
-  "options_language_ja": { "message": "日本語" },
-  "options_language_es": { "message": "Español" },
-  "options_time_section": { "message": "時間" },
-  "options_hour_system": { "message": "時制" },
-  "options_hour_12": { "message": "12 小時制" },
-  "options_hour_24": { "message": "24 小時制" },
-  "options_video_section": { "message": "影片" },
-  "options_video_source": { "message": "影片來源" },
-  "options_video_source_apple": { "message": "蘋果伺服器" },
-  "options_video_source_local": { "message": "本地伺服器" },
-  "options_video_reverse_proxy": { "message": "使用反向代理" },
-  "options_video_local_url": { "message": "本地伺服器位址" },
-  "refresh_video": { "message": "切換影片" },
-  "error_video_apple": { "message": "無法從蘋果伺服器載入影片。可在設定中開啟反向代理,或手動信任 sylvan.apple.com 的憑證。" },
-  "error_video_local": { "message": "無法連接本地影片伺服器,請在設定中檢查位址。" },
-  "error_video_local_empty": { "message": "本地伺服器可達,但找不到 .mov / .mp4 檔案。" },
-  "options_weather_section": { "message": "天氣" },
-  "options_weather_city": { "message": "城市" },
-  "options_weather_city_placeholder": { "message": "如 Taipei、Tokyo、San Francisco" },
-  "options_weather_temp_unit": { "message": "溫度單位" },
-  "options_weather_celsius": { "message": "攝氏 (°C)" },
-  "options_weather_fahrenheit": { "message": "華氏 (°F)" },
-  "options_weather_city_hint": { "message": "輸入城市名稱(英文最準),按 Enter 或點儲存。會先向天氣服務驗證後再儲存。" },
-  "options_weather_save": { "message": "儲存" },
-  "options_weather_save_loading": { "message": "驗證中…" },
-  "options_weather_save_success": { "message": "已儲存。" },
-  "options_weather_city_required": { "message": "請輸入城市名稱。" },
-  "options_weather_city_invalid": { "message": "找不到此城市,請換一個更標準的寫法重試。" },
-  "weather_today": { "message": "今日" },
-  "weather_tomorrow": { "message": "明日" },
-  "weather_day_after": { "message": "後日" },
-  "weather_upcoming": { "message": "未來" },
-  "weather_feels_like": { "message": "體感" },
-  "weather_precip": { "message": "降水" },
-  "weather_wind": { "message": "風" },
-  "weather_uv": { "message": "紫外線" },
-  "weather_sunrise": { "message": "日出" },
-  "weather_sunset": { "message": "日落" },
-  "weather_uv_low": { "message": "弱" },
-  "weather_uv_moderate": { "message": "中等" },
-  "weather_uv_high": { "message": "強" },
-  "weather_uv_very_high": { "message": "很強" },
-  "weather_uv_extreme": { "message": "極強" },
-  "weather_air_quality": { "message": "空氣" },
-  "weather_aqi_good": { "message": "優" },
-  "weather_aqi_moderate": { "message": "良" },
-  "weather_aqi_unhealthy_sensitive": { "message": "敏感族群不宜" },
-  "weather_aqi_unhealthy": { "message": "不健康" },
-  "weather_aqi_very_unhealthy": { "message": "非常不健康" },
-  "weather_aqi_hazardous": { "message": "危險" },
-  "motto_refresh_hint": { "message": "點擊換一句" },
-  "topsites_label": { "message": "常用網站" },
-  "topsites_empty": { "message": "暫無常用網站 —— 先去訪問一些網頁吧。" },
-  "zen_label": { "message": "禪意模式(全螢幕 + 背景音樂)" },
-  "options_display_section": { "message": "顯示" },
-  "options_display_hint": { "message": "選擇新分頁顯示哪些元素。" },
-  "options_show_clock_short": { "message": "時鐘" },
-  "options_show_weather_short": { "message": "天氣" },
-  "options_show_motto_short": { "message": "格言" },
-  "options_show_topsites_short": { "message": "常用網站" },
-  "options_show_zen_short": { "message": "禪意模式按鈕" },
-  "options_show_refresh_short": { "message": "切換影片按鈕" },
-  "options_show_video_meta_short": { "message": "影片資訊" },
-  "video_apple_help_title": { "message": "為什麼蘋果伺服器可能需要額外設定?" },
-  "video_apple_help_intro": { "message": "Chrome 不一定信任蘋果 sylvan.apple.com 的憑證,直連影片可能失敗。兩種解決方案:" },
-  "video_apple_help_option1_title": { "message": "方案 1 — 啟用反向代理(簡單)" },
-  "video_apple_help_option1_body": { "message": "勾選上方「使用反向代理」,Macify 會透過 Cloudflare Worker 代為請求並處理憑證問題。無需任何本地設定。" },
-  "video_apple_help_option2_title": { "message": "方案 2 — 手動信任蘋果憑證(最乾淨)" },
-  "video_apple_help_option2_body_pre": { "message": "在 Chrome 裡開啟" },
-  "video_apple_help_option2_body_post": { "message": "一次。會出現安全性警告——點「進階」,然後點「繼續前往 sylvan.apple.com(不安全)」。Chrome 會記住你的信任,之後直連就沒問題了。" },
-  "video_local_help_title": { "message": "架設本地 Apache 伺服器(一次性設定)" },
-  "video_local_step1": { "message": "開啟系統設定 → 螢幕保護程式 → 空拍,點擊你想下載的影片。每個 500 MB – 1 GB,下載較慢且可能需要重試。" },
-  "video_local_step2": { "message": "將以下內容存為 videoserver.conf,放到一個穩定的目錄(替換 YOUR_MAC_USER_NAME 為你的 macOS 使用者名稱):" },
-  "video_local_step3": { "message": "將設定檔軟連結到 Apache 的 drop-in 設定目錄:" },
-  "video_local_step4": { "message": "重啟 Apache:" },
-  "video_local_step5_pre": { "message": "上方預設位址(" },
-  "video_local_step5_post": { "message": ")現在應該能列出你下載的影片了。" },
-  "about_created_by": { "message": "Created by Jason Ng, Dofy, Setilis" },
-  "about_github_link": { "message": "GitHub 原始碼" }
+  "ext_name": {
+    "message": "Macify"
+  },
+  "ext_description": {
+    "message": "將 Chrome 的新分頁變成 macOS 的華麗空拍螢幕保護影片。"
+  },
+  "options_title": {
+    "message": "Macify 設定"
+  },
+  "options_version_label": {
+    "message": "版本"
+  },
+  "options_language_section": {
+    "message": "語言"
+  },
+  "options_language_label": {
+    "message": "顯示語言"
+  },
+  "options_language_auto": {
+    "message": "跟隨瀏覽器"
+  },
+  "options_language_en": {
+    "message": "English"
+  },
+  "options_language_zh_CN": {
+    "message": "简体中文"
+  },
+  "options_language_zh_TW": {
+    "message": "繁體中文"
+  },
+  "options_language_ja": {
+    "message": "日本語"
+  },
+  "options_language_es": {
+    "message": "Español"
+  },
+  "options_time_section": {
+    "message": "時間"
+  },
+  "options_hour_system": {
+    "message": "時制"
+  },
+  "options_hour_12": {
+    "message": "12 小時制"
+  },
+  "options_hour_24": {
+    "message": "24 小時制"
+  },
+  "options_video_section": {
+    "message": "影片"
+  },
+  "options_video_source": {
+    "message": "影片來源"
+  },
+  "options_video_source_apple": {
+    "message": "蘋果伺服器"
+  },
+  "options_video_source_local": {
+    "message": "本地伺服器"
+  },
+  "options_video_reverse_proxy": {
+    "message": "使用反向代理"
+  },
+  "options_video_local_url": {
+    "message": "本地伺服器位址"
+  },
+  "refresh_video": {
+    "message": "切換影片"
+  },
+  "error_video_apple": {
+    "message": "無法從蘋果伺服器載入影片。可在設定中開啟反向代理,或手動信任 sylvan.apple.com 的憑證。"
+  },
+  "error_video_local": {
+    "message": "無法連接本地影片伺服器,請在設定中檢查位址。"
+  },
+  "error_video_local_empty": {
+    "message": "本地伺服器可達,但找不到 .mov / .mp4 檔案。"
+  },
+  "options_weather_section": {
+    "message": "天氣"
+  },
+  "options_weather_city": {
+    "message": "城市"
+  },
+  "options_weather_city_placeholder": {
+    "message": "如 Taipei、Tokyo、San Francisco"
+  },
+  "options_weather_temp_unit": {
+    "message": "溫度單位"
+  },
+  "options_weather_celsius": {
+    "message": "攝氏 (°C)"
+  },
+  "options_weather_fahrenheit": {
+    "message": "華氏 (°F)"
+  },
+  "options_weather_city_hint": {
+    "message": "輸入城市名稱(英文最準),按 Enter 或點儲存。會先向天氣服務驗證後再儲存。"
+  },
+  "options_weather_save": {
+    "message": "儲存"
+  },
+  "options_weather_save_loading": {
+    "message": "驗證中…"
+  },
+  "options_weather_save_success": {
+    "message": "已儲存。"
+  },
+  "options_weather_city_required": {
+    "message": "請輸入城市名稱。"
+  },
+  "options_weather_city_invalid": {
+    "message": "找不到此城市,請換一個更標準的寫法重試。"
+  },
+  "weather_today": {
+    "message": "今日"
+  },
+  "weather_tomorrow": {
+    "message": "明日"
+  },
+  "weather_day_after": {
+    "message": "後日"
+  },
+  "weather_upcoming": {
+    "message": "未來"
+  },
+  "weather_feels_like": {
+    "message": "體感"
+  },
+  "weather_precip": {
+    "message": "降水"
+  },
+  "weather_wind": {
+    "message": "風"
+  },
+  "weather_uv": {
+    "message": "紫外線"
+  },
+  "weather_sunrise": {
+    "message": "日出"
+  },
+  "weather_sunset": {
+    "message": "日落"
+  },
+  "weather_uv_low": {
+    "message": "弱"
+  },
+  "weather_uv_moderate": {
+    "message": "中等"
+  },
+  "weather_uv_high": {
+    "message": "強"
+  },
+  "weather_uv_very_high": {
+    "message": "很強"
+  },
+  "weather_uv_extreme": {
+    "message": "極強"
+  },
+  "weather_air_quality": {
+    "message": "空氣"
+  },
+  "weather_aqi_good": {
+    "message": "優"
+  },
+  "weather_aqi_moderate": {
+    "message": "良"
+  },
+  "weather_aqi_unhealthy_sensitive": {
+    "message": "敏感族群不宜"
+  },
+  "weather_aqi_unhealthy": {
+    "message": "不健康"
+  },
+  "weather_aqi_very_unhealthy": {
+    "message": "非常不健康"
+  },
+  "weather_aqi_hazardous": {
+    "message": "危險"
+  },
+  "motto_refresh_hint": {
+    "message": "點擊換一句"
+  },
+  "topsites_label": {
+    "message": "常用網站"
+  },
+  "topsites_empty": {
+    "message": "暫無常用網站 —— 先去訪問一些網頁吧。"
+  },
+  "zen_label": {
+    "message": "禪意模式(全螢幕 + 背景音樂)"
+  },
+  "options_display_section": {
+    "message": "顯示"
+  },
+  "options_display_hint": {
+    "message": "選擇新分頁顯示哪些元素。"
+  },
+  "options_show_clock_short": {
+    "message": "時鐘"
+  },
+  "options_show_weather_short": {
+    "message": "天氣"
+  },
+  "options_show_motto_short": {
+    "message": "格言"
+  },
+  "options_show_topsites_short": {
+    "message": "常用網站"
+  },
+  "options_show_zen_short": {
+    "message": "禪意模式按鈕"
+  },
+  "options_show_refresh_short": {
+    "message": "切換影片按鈕"
+  },
+  "options_show_video_meta_short": {
+    "message": "影片資訊"
+  },
+  "video_apple_help_title": {
+    "message": "為什麼蘋果伺服器可能需要額外設定?"
+  },
+  "video_apple_help_intro": {
+    "message": "Chrome 不一定信任蘋果 sylvan.apple.com 的憑證,直連影片可能失敗。兩種解決方案:"
+  },
+  "video_apple_help_option1_title": {
+    "message": "方案 1 — 啟用反向代理(簡單)"
+  },
+  "video_apple_help_option1_body": {
+    "message": "勾選上方「使用反向代理」,Macify 會透過 Cloudflare Worker 代為請求並處理憑證問題。無需任何本地設定。"
+  },
+  "video_apple_help_option2_title": {
+    "message": "方案 2 — 手動信任蘋果憑證(最乾淨)"
+  },
+  "video_apple_help_option2_body_pre": {
+    "message": "在 Chrome 裡開啟"
+  },
+  "video_apple_help_option2_body_post": {
+    "message": "一次。會出現安全性警告——點「進階」,然後點「繼續前往 sylvan.apple.com(不安全)」。Chrome 會記住你的信任,之後直連就沒問題了。"
+  },
+  "video_local_help_title": {
+    "message": "架設本地 Apache 伺服器(一次性設定)"
+  },
+  "video_local_step1": {
+    "message": "開啟系統設定 → 螢幕保護程式 → 空拍,點擊你想下載的影片。每個 500 MB – 1 GB,下載較慢且可能需要重試。"
+  },
+  "video_local_step2": {
+    "message": "將以下內容存為 videoserver.conf,放到一個穩定的目錄(替換 YOUR_MAC_USER_NAME 為你的 macOS 使用者名稱):"
+  },
+  "video_local_step3": {
+    "message": "將設定檔軟連結到 Apache 的 drop-in 設定目錄:"
+  },
+  "video_local_step4": {
+    "message": "重啟 Apache:"
+  },
+  "video_local_step5_pre": {
+    "message": "上方預設位址("
+  },
+  "video_local_step5_post": {
+    "message": ")現在應該能列出你下載的影片了。"
+  },
+  "about_created_by": {
+    "message": "Created by Jason Ng, Dofy, Setilis"
+  },
+  "about_github_link": {
+    "message": "GitHub 原始碼"
+  },
+  "options_translate_motto": {
+    "message": "翻譯格言"
+  },
+  "options_translation_section": {
+    "message": "翻譯"
+  },
+  "options_translation_description": {
+    "message": "使用 Chrome 內建的 on-device Translator API 把英文格言翻譯成你設定的顯示語言。除首次模型下載外，無任何遠端 API 呼叫。"
+  },
+  "options_translation_model_label": {
+    "message": "模型"
+  },
+  "options_translation_status_label": {
+    "message": "狀態"
+  },
+  "options_translation_status_checking": {
+    "message": "檢查中…"
+  },
+  "options_translation_status_available": {
+    "message": "可用"
+  },
+  "options_translation_status_downloadable": {
+    "message": "需要下載"
+  },
+  "options_translation_status_downloading": {
+    "message": "下載中"
+  },
+  "options_translation_status_unavailable": {
+    "message": "此語言對不支援"
+  },
+  "options_translation_status_no_api": {
+    "message": "你的瀏覽器不支援 Translator API（需要 Chrome 138+）"
+  },
+  "options_translation_download_button": {
+    "message": "下載模型"
+  }
 }

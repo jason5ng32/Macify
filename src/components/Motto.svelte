@@ -1,9 +1,11 @@
 <script>
   import { settings } from '../lib/settings.svelte.js';
-  import { t } from '../lib/i18n.svelte.js';
+  import { t, resolveLanguage } from '../lib/i18n.svelte.js';
   import { nextQuote } from '../lib/quotes.js';
+  import { translate, appLangToBcp47 } from '../lib/translate.js';
 
   let quote = $state(null);
+  let displayContent = $state('');
   let visible = $state(true);
 
   async function refresh() {
@@ -17,6 +19,27 @@
     if (settings.showMotto && !quote) {
       quote = nextQuote();
     }
+  });
+
+  // Translate quote content to the user's UI language when the user
+  // has explicitly opted in (translateMotto setting) AND Chrome's
+  // built-in Translator API is available. Author stays original
+  // (proper noun). Falls back silently to the English text.
+  $effect(() => {
+    if (!quote) {
+      displayContent = '';
+      return;
+    }
+    // Show original immediately so we never block on translation.
+    displayContent = quote.content;
+    if (!settings.translateMotto) return;
+    const bcp47 = appLangToBcp47(resolveLanguage(settings.userLanguage));
+    if (bcp47 === 'en') return;
+    const localQuote = quote;
+    translate(quote.content, bcp47).then((translated) => {
+      // Guard against the user clicking refresh mid-flight.
+      if (quote === localQuote) displayContent = translated;
+    });
   });
 </script>
 
@@ -39,7 +62,7 @@
            transition-opacity duration-300 ease-in-out"
     style:opacity={visible ? 1 : 0}
   >
-    <p class="text-lg font-light italic leading-relaxed">{quote.content}</p>
+    <p class="text-lg font-light italic leading-relaxed">{displayContent}</p>
     <p class="mt-2 text-sm font-light opacity-70">— {quote.author}</p>
   </div>
 {/if}

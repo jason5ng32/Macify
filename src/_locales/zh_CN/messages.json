@@ -265,5 +265,41 @@
   },
   "about_github_link": {
     "message": "GitHub 源码"
+  },
+  "options_translate_motto": {
+    "message": "翻译格言"
+  },
+  "options_translation_section": {
+    "message": "翻译"
+  },
+  "options_translation_description": {
+    "message": "使用 Chrome 内建的 on-device Translator API 把英文格言翻译成你设置的显示语言。除首次模型下载外，无任何远程 API 调用。"
+  },
+  "options_translation_model_label": {
+    "message": "模型"
+  },
+  "options_translation_status_label": {
+    "message": "状态"
+  },
+  "options_translation_status_checking": {
+    "message": "检查中…"
+  },
+  "options_translation_status_available": {
+    "message": "可用"
+  },
+  "options_translation_status_downloadable": {
+    "message": "需要下载"
+  },
+  "options_translation_status_downloading": {
+    "message": "下载中"
+  },
+  "options_translation_status_unavailable": {
+    "message": "此语言对不支持"
+  },
+  "options_translation_status_no_api": {
+    "message": "你的浏览器不支持 Translator API（需要 Chrome 138+）"
+  },
+  "options_translation_download_button": {
+    "message": "下载模型"
   }
 }

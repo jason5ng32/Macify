@@ -265,5 +265,41 @@
   },
   "about_github_link": {
     "message": "Source on GitHub"
+  },
+  "options_translate_motto": {
+    "message": "Translate motto"
+  },
+  "options_translation_section": {
+    "message": "Translation"
+  },
+  "options_translation_description": {
+    "message": "Translates English mottos into your display language using Chrome's built-in on-device Translator API. No external API or network calls beyond the one-time model download."
+  },
+  "options_translation_model_label": {
+    "message": "Model"
+  },
+  "options_translation_status_label": {
+    "message": "Status"
+  },
+  "options_translation_status_checking": {
+    "message": "Checking…"
+  },
+  "options_translation_status_available": {
+    "message": "Ready"
+  },
+  "options_translation_status_downloadable": {
+    "message": "Download required"
+  },
+  "options_translation_status_downloading": {
+    "message": "Downloading"
+  },
+  "options_translation_status_unavailable": {
+    "message": "Not supported for this language pair"
+  },
+  "options_translation_status_no_api": {
+    "message": "Your browser doesn't support the Translator API (requires Chrome 138+)"
+  },
+  "options_translation_download_button": {
+    "message": "Download model now"
   }
 }

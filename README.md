@@ -107,22 +107,6 @@ npm run build
 
 The built extension is in `dist/`. Load it via Chrome → `chrome://extensions` → Developer mode → "Load unpacked".
 
-Available scripts:
-
-- `npm run dev` — Vite dev server with HMR.
-- `npm run build` — production build.
-- `npm run zip` — package `dist/` into a Chrome Web Store-ready zip.
-- `npm run build:videos` — regenerate `src/data/videos.json` from the current macOS aerial manifest.
-- `npm run build:quotes` — regenerate `src/data/quotes.json` from the upstream quotes dataset.
-
-The stack is Vite + Svelte 5 + Tailwind 4 + `@crxjs/vite-plugin` for MV3 + `unplugin-icons` + `@iconify/json`. JS only (no TypeScript).
-
-## Translations
-
-Japanese and Spanish translations were AI-assisted as a first pass. Native-speaker review is welcome — open a PR against `src/_locales/<lang>/messages.json`.
-
-To add a new language: create `src/_locales/<langCode>/messages.json` mirroring the keys in `src/_locales/en/messages.json`. The language dropdown in settings auto-populates from the `_locales` directory.
-
 ## Contributing
 
 PRs welcome — bug fixes, translations, new aerial-source adapters, performance improvements, accessibility fixes.

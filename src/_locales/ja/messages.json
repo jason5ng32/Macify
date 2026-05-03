@@ -1,91 +1,305 @@
 {
-  "ext_name": { "message": "Macify" },
-  "ext_description": { "message": "Chromeの新しいタブをmacOSの美しいエアリアル・スクリーンセーバー動画に変えます。" },
-  "options_title": { "message": "Macify 設定" },
-  "options_version_label": { "message": "バージョン" },
-  "options_language_section": { "message": "言語" },
-  "options_language_label": { "message": "表示言語" },
-  "options_language_auto": { "message": "ブラウザに従う" },
-  "options_language_en": { "message": "English" },
-  "options_language_zh_CN": { "message": "简体中文" },
-  "options_language_zh_TW": { "message": "繁體中文" },
-  "options_language_ja": { "message": "日本語" },
-  "options_language_es": { "message": "Español" },
-  "options_time_section": { "message": "時間" },
-  "options_hour_system": { "message": "時刻表示" },
-  "options_hour_12": { "message": "12時間制" },
-  "options_hour_24": { "message": "24時間制" },
-  "options_video_section": { "message": "動画" },
-  "options_video_source": { "message": "ソース" },
-  "options_video_source_apple": { "message": "Apple サーバー" },
-  "options_video_source_local": { "message": "ローカルサーバー" },
-  "options_video_reverse_proxy": { "message": "リバースプロキシを使用" },
-  "options_video_local_url": { "message": "ローカルサーバーのURL" },
-  "refresh_video": { "message": "動画を切り替え" },
-  "error_video_apple": { "message": "Appleのサーバーから動画を読み込めませんでした。設定でリバースプロキシを有効にするか、sylvan.apple.com の証明書を手動で信頼してください。" },
-  "error_video_local": { "message": "ローカル動画サーバーに接続できません。設定でURLを確認してください。" },
-  "error_video_local_empty": { "message": "ローカルサーバーに接続できましたが、.mov / .mp4 ファイルが見つかりません。" },
-  "options_weather_section": { "message": "天気" },
-  "options_weather_city": { "message": "都市" },
-  "options_weather_city_placeholder": { "message": "例: Tokyo, San Francisco, Beijing" },
-  "options_weather_temp_unit": { "message": "温度単位" },
-  "options_weather_celsius": { "message": "摂氏 (°C)" },
-  "options_weather_fahrenheit": { "message": "華氏 (°F)" },
-  "options_weather_city_hint": { "message": "都市名を入力(英語が最も正確)し、Enterキーまたは保存ボタンを押します。天気サービスで検証してから保存します。" },
-  "options_weather_save": { "message": "保存" },
-  "options_weather_save_loading": { "message": "検証中…" },
-  "options_weather_save_success": { "message": "保存しました。" },
-  "options_weather_city_required": { "message": "都市名を入力してください。" },
-  "options_weather_city_invalid": { "message": "その都市が見つかりません。標準的な表記でお試しください。" },
-  "weather_today": { "message": "今日" },
-  "weather_tomorrow": { "message": "明日" },
-  "weather_day_after": { "message": "明後日" },
-  "weather_upcoming": { "message": "今後" },
-  "weather_feels_like": { "message": "体感" },
-  "weather_precip": { "message": "降水" },
-  "weather_wind": { "message": "風" },
-  "weather_uv": { "message": "UV" },
-  "weather_sunrise": { "message": "日の出" },
-  "weather_sunset": { "message": "日の入り" },
-  "weather_uv_low": { "message": "弱" },
-  "weather_uv_moderate": { "message": "中" },
-  "weather_uv_high": { "message": "強" },
-  "weather_uv_very_high": { "message": "非常に強い" },
-  "weather_uv_extreme": { "message": "極端" },
-  "weather_air_quality": { "message": "大気" },
-  "weather_aqi_good": { "message": "良好" },
-  "weather_aqi_moderate": { "message": "普通" },
-  "weather_aqi_unhealthy_sensitive": { "message": "敏感な人に不健康" },
-  "weather_aqi_unhealthy": { "message": "不健康" },
-  "weather_aqi_very_unhealthy": { "message": "非常に不健康" },
-  "weather_aqi_hazardous": { "message": "危険" },
-  "motto_refresh_hint": { "message": "クリックして次へ" },
-  "topsites_label": { "message": "よく見るサイト" },
-  "topsites_empty": { "message": "よく見るサイトはまだありません — まずは何ページか開いてみてください。" },
-  "zen_label": { "message": "禅モード(フルスクリーン + 環境音楽)" },
-  "options_display_section": { "message": "表示" },
-  "options_display_hint": { "message": "新しいタブに表示する要素を選択。" },
-  "options_show_clock_short": { "message": "時計" },
-  "options_show_weather_short": { "message": "天気" },
-  "options_show_motto_short": { "message": "格言" },
-  "options_show_topsites_short": { "message": "よく見るサイト" },
-  "options_show_zen_short": { "message": "禅モードボタン" },
-  "options_show_refresh_short": { "message": "切り替えボタン" },
-  "options_show_video_meta_short": { "message": "動画情報" },
-  "video_apple_help_title": { "message": "Apple のサーバーで追加設定が必要な理由" },
-  "video_apple_help_intro": { "message": "Chrome が Apple の sylvan.apple.com の証明書を信頼しないことがあり、動画の直接読み込みに失敗する可能性があります。2つの解決方法:" },
-  "video_apple_help_option1_title": { "message": "方法 1 — リバースプロキシを使う(簡単)" },
-  "video_apple_help_option1_body": { "message": "上の「リバースプロキシを使用」にチェックを入れます。Macify が Cloudflare Worker 経由でリクエストし、証明書の問題を自動で処理します。ローカル設定は不要です。" },
-  "video_apple_help_option2_title": { "message": "方法 2 — Apple の証明書を手動で信頼する(最もクリーン)" },
-  "video_apple_help_option2_body_pre": { "message": "Chrome で" },
-  "video_apple_help_option2_body_post": { "message": "を一度開きます。セキュリティ警告が表示されたら、「詳細」→「sylvan.apple.com にアクセスする (安全ではありません)」をクリック。Chrome が信頼を記憶し、以降は直接接続が機能します。" },
-  "video_local_help_title": { "message": "ローカル Apache サーバーを設定する(一回だけ)" },
-  "video_local_step1": { "message": "システム設定 → スクリーンセーバー → エアリアルを開き、ダウンロードしたい動画をクリックします。各動画は 500 MB – 1 GB あり、ダウンロードに時間がかかり、再試行が必要な場合もあります。" },
-  "video_local_step2": { "message": "以下を videoserver.conf として保存し、安定した場所に置きます(YOUR_MAC_USER_NAME を実際の macOS ユーザー名に置き換える):" },
-  "video_local_step3": { "message": "Apache の drop-in 設定フォルダにシンボリックリンクを作成します:" },
-  "video_local_step4": { "message": "Apache を再起動:" },
-  "video_local_step5_pre": { "message": "上の既定のURL(" },
-  "video_local_step5_post": { "message": ")でダウンロードした動画が配信されるはずです。" },
-  "about_created_by": { "message": "Created by Jason Ng, Dofy, Setilis" },
-  "about_github_link": { "message": "GitHub のソース" }
+  "ext_name": {
+    "message": "Macify"
+  },
+  "ext_description": {
+    "message": "Chromeの新しいタブをmacOSの美しいエアリアル・スクリーンセーバー動画に変えます。"
+  },
+  "options_title": {
+    "message": "Macify 設定"
+  },
+  "options_version_label": {
+    "message": "バージョン"
+  },
+  "options_language_section": {
+    "message": "言語"
+  },
+  "options_language_label": {
+    "message": "表示言語"
+  },
+  "options_language_auto": {
+    "message": "ブラウザに従う"
+  },
+  "options_language_en": {
+    "message": "English"
+  },
+  "options_language_zh_CN": {
+    "message": "简体中文"
+  },
+  "options_language_zh_TW": {
+    "message": "繁體中文"
+  },
+  "options_language_ja": {
+    "message": "日本語"
+  },
+  "options_language_es": {
+    "message": "Español"
+  },
+  "options_time_section": {
+    "message": "時間"
+  },
+  "options_hour_system": {
+    "message": "時刻表示"
+  },
+  "options_hour_12": {
+    "message": "12時間制"
+  },
+  "options_hour_24": {
+    "message": "24時間制"
+  },
+  "options_video_section": {
+    "message": "動画"
+  },
+  "options_video_source": {
+    "message": "ソース"
+  },
+  "options_video_source_apple": {
+    "message": "Apple サーバー"
+  },
+  "options_video_source_local": {
+    "message": "ローカルサーバー"
+  },
+  "options_video_reverse_proxy": {
+    "message": "リバースプロキシを使用"
+  },
+  "options_video_local_url": {
+    "message": "ローカルサーバーのURL"
+  },
+  "refresh_video": {
+    "message": "動画を切り替え"
+  },
+  "error_video_apple": {
+    "message": "Appleのサーバーから動画を読み込めませんでした。設定でリバースプロキシを有効にするか、sylvan.apple.com の証明書を手動で信頼してください。"
+  },
+  "error_video_local": {
+    "message": "ローカル動画サーバーに接続できません。設定でURLを確認してください。"
+  },
+  "error_video_local_empty": {
+    "message": "ローカルサーバーに接続できましたが、.mov / .mp4 ファイルが見つかりません。"
+  },
+  "options_weather_section": {
+    "message": "天気"
+  },
+  "options_weather_city": {
+    "message": "都市"
+  },
+  "options_weather_city_placeholder": {
+    "message": "例: Tokyo, San Francisco, Beijing"
+  },
+  "options_weather_temp_unit": {
+    "message": "温度単位"
+  },
+  "options_weather_celsius": {
+    "message": "摂氏 (°C)"
+  },
+  "options_weather_fahrenheit": {
+    "message": "華氏 (°F)"
+  },
+  "options_weather_city_hint": {
+    "message": "都市名を入力(英語が最も正確)し、Enterキーまたは保存ボタンを押します。天気サービスで検証してから保存します。"
+  },
+  "options_weather_save": {
+    "message": "保存"
+  },
+  "options_weather_save_loading": {
+    "message": "検証中…"
+  },
+  "options_weather_save_success": {
+    "message": "保存しました。"
+  },
+  "options_weather_city_required": {
+    "message": "都市名を入力してください。"
+  },
+  "options_weather_city_invalid": {
+    "message": "その都市が見つかりません。標準的な表記でお試しください。"
+  },
+  "weather_today": {
+    "message": "今日"
+  },
+  "weather_tomorrow": {
+    "message": "明日"
+  },
+  "weather_day_after": {
+    "message": "明後日"
+  },
+  "weather_upcoming": {
+    "message": "今後"
+  },
+  "weather_feels_like": {
+    "message": "体感"
+  },
+  "weather_precip": {
+    "message": "降水"
+  },
+  "weather_wind": {
+    "message": "風"
+  },
+  "weather_uv": {
+    "message": "UV"
+  },
+  "weather_sunrise": {
+    "message": "日の出"
+  },
+  "weather_sunset": {
+    "message": "日の入り"
+  },
+  "weather_uv_low": {
+    "message": "弱"
+  },
+  "weather_uv_moderate": {
+    "message": "中"
+  },
+  "weather_uv_high": {
+    "message": "強"
+  },
+  "weather_uv_very_high": {
+    "message": "非常に強い"
+  },
+  "weather_uv_extreme": {
+    "message": "極端"
+  },
+  "weather_air_quality": {
+    "message": "大気"
+  },
+  "weather_aqi_good": {
+    "message": "良好"
+  },
+  "weather_aqi_moderate": {
+    "message": "普通"
+  },
+  "weather_aqi_unhealthy_sensitive": {
+    "message": "敏感な人に不健康"
+  },
+  "weather_aqi_unhealthy": {
+    "message": "不健康"
+  },
+  "weather_aqi_very_unhealthy": {
+    "message": "非常に不健康"
+  },
+  "weather_aqi_hazardous": {
+    "message": "危険"
+  },
+  "motto_refresh_hint": {
+    "message": "クリックして次へ"
+  },
+  "topsites_label": {
+    "message": "よく見るサイト"
+  },
+  "topsites_empty": {
+    "message": "よく見るサイトはまだありません — まずは何ページか開いてみてください。"
+  },
+  "zen_label": {
+    "message": "禅モード(フルスクリーン + 環境音楽)"
+  },
+  "options_display_section": {
+    "message": "表示"
+  },
+  "options_display_hint": {
+    "message": "新しいタブに表示する要素を選択。"
+  },
+  "options_show_clock_short": {
+    "message": "時計"
+  },
+  "options_show_weather_short": {
+    "message": "天気"
+  },
+  "options_show_motto_short": {
+    "message": "格言"
+  },
+  "options_show_topsites_short": {
+    "message": "よく見るサイト"
+  },
+  "options_show_zen_short": {
+    "message": "禅モードボタン"
+  },
+  "options_show_refresh_short": {
+    "message": "切り替えボタン"
+  },
+  "options_show_video_meta_short": {
+    "message": "動画情報"
+  },
+  "video_apple_help_title": {
+    "message": "Apple のサーバーで追加設定が必要な理由"
+  },
+  "video_apple_help_intro": {
+    "message": "Chrome が Apple の sylvan.apple.com の証明書を信頼しないことがあり、動画の直接読み込みに失敗する可能性があります。2つの解決方法:"
+  },
+  "video_apple_help_option1_title": {
+    "message": "方法 1 — リバースプロキシを使う(簡単)"
+  },
+  "video_apple_help_option1_body": {
+    "message": "上の「リバースプロキシを使用」にチェックを入れます。Macify が Cloudflare Worker 経由でリクエストし、証明書の問題を自動で処理します。ローカル設定は不要です。"
+  },
+  "video_apple_help_option2_title": {
+    "message": "方法 2 — Apple の証明書を手動で信頼する(最もクリーン)"
+  },
+  "video_apple_help_option2_body_pre": {
+    "message": "Chrome で"
+  },
+  "video_apple_help_option2_body_post": {
+    "message": "を一度開きます。セキュリティ警告が表示されたら、「詳細」→「sylvan.apple.com にアクセスする (安全ではありません)」をクリック。Chrome が信頼を記憶し、以降は直接接続が機能します。"
+  },
+  "video_local_help_title": {
+    "message": "ローカル Apache サーバーを設定する(一回だけ)"
+  },
+  "video_local_step1": {
+    "message": "システム設定 → スクリーンセーバー → エアリアルを開き、ダウンロードしたい動画をクリックします。各動画は 500 MB – 1 GB あり、ダウンロードに時間がかかり、再試行が必要な場合もあります。"
+  },
+  "video_local_step2": {
+    "message": "以下を videoserver.conf として保存し、安定した場所に置きます(YOUR_MAC_USER_NAME を実際の macOS ユーザー名に置き換える):"
+  },
+  "video_local_step3": {
+    "message": "Apache の drop-in 設定フォルダにシンボリックリンクを作成します:"
+  },
+  "video_local_step4": {
+    "message": "Apache を再起動:"
+  },
+  "video_local_step5_pre": {
+    "message": "上の既定のURL("
+  },
+  "video_local_step5_post": {
+    "message": ")でダウンロードした動画が配信されるはずです。"
+  },
+  "about_created_by": {
+    "message": "Created by Jason Ng, Dofy, Setilis"
+  },
+  "about_github_link": {
+    "message": "GitHub のソース"
+  },
+  "options_translate_motto": {
+    "message": "格言を翻訳"
+  },
+  "options_translation_section": {
+    "message": "翻訳"
+  },
+  "options_translation_description": {
+    "message": "Chrome 内蔵の on-device Translator API を使い、英語の格言を表示言語に翻訳します。初回のモデルダウンロード以外、外部 API への通信はありません。"
+  },
+  "options_translation_model_label": {
+    "message": "モデル"
+  },
+  "options_translation_status_label": {
+    "message": "状態"
+  },
+  "options_translation_status_checking": {
+    "message": "確認中…"
+  },
+  "options_translation_status_available": {
+    "message": "利用可能"
+  },
+  "options_translation_status_downloadable": {
+    "message": "ダウンロード必要"
+  },
+  "options_translation_status_downloading": {
+    "message": "ダウンロード中"
+  },
+  "options_translation_status_unavailable": {
+    "message": "この言語ペアは未対応"
+  },
+  "options_translation_status_no_api": {
+    "message": "お使いのブラウザは Translator API 未対応です（Chrome 138+ が必要）"
+  },
+  "options_translation_download_button": {
+    "message": "モデルをダウンロード"
+  }
 }
