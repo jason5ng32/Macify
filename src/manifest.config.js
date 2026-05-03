@@ -5,9 +5,10 @@ const version = pkg.version.replace(/-dev$/, '');
 
 export default defineManifest({
   manifest_version: 3,
-  name: 'Macify',
+  name: '__MSG_ext_name__',
   version,
-  description: "Transform Chrome's new tab into a macOS aerial screensaver.",
+  description: '__MSG_ext_description__',
+  default_locale: 'en',
   icons: {
     128: 'res/icon.png',
   },

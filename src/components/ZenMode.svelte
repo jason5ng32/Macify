@@ -6,7 +6,7 @@
   const MUSIC_BASE = 'https://macifymusic.macify.workers.dev/music/';
   const TRACK_COUNT = 40;
 
-  let audioEl;
+  let audioEl = $state();
 
   function randomTrackUrl() {
     const n = Math.floor(Math.random() * TRACK_COUNT) + 1;
