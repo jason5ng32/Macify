@@ -18,6 +18,14 @@
   function onLanguageChange(event) {
     updateSetting('userLanguage', event.currentTarget.value);
   }
+
+  function onShowTimeChange(event) {
+    updateSetting('showTime', event.currentTarget.checked);
+  }
+
+  function onHourSystemChange(event) {
+    updateSetting('hourSystem', event.currentTarget.value);
+  }
 </script>
 
 <main>
@@ -26,12 +34,31 @@
 
   <section>
     <h2>{t('options_language_section')}</h2>
-    <label>
-      {t('options_language_label')}:
+    <label class="row">
+      <span>{t('options_language_label')}:</span>
       <select value={settings.userLanguage} onchange={onLanguageChange}>
         {#each languageOptions as code}
           <option value={code}>{t(`options_language_${code}`)}</option>
         {/each}
+      </select>
+    </label>
+  </section>
+
+  <section>
+    <h2>{t('options_time_section')}</h2>
+    <label class="row">
+      <input
+        type="checkbox"
+        checked={settings.showTime}
+        onchange={onShowTimeChange}
+      />
+      <span>{t('options_show_time')}</span>
+    </label>
+    <label class="row">
+      <span>{t('options_hour_system')}:</span>
+      <select value={settings.hourSystem} onchange={onHourSystemChange}>
+        <option value="12">{t('options_hour_12')}</option>
+        <option value="24">{t('options_hour_24')}</option>
       </select>
     </label>
   </section>
@@ -81,6 +108,9 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+  }
+  .row + .row {
+    margin-top: 0.6rem;
   }
   select {
     padding: 0.3rem 0.5rem;

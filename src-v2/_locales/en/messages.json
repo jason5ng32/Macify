@@ -12,5 +12,11 @@
   "options_language_en": { "message": "English" },
   "options_language_zh_CN": { "message": "简体中文" },
 
-  "options_placeholder": { "message": "Settings UI will be filled in across the upcoming sections of Phase 02." }
+  "options_placeholder": { "message": "Settings UI will be filled in across the upcoming sections of Phase 02." },
+
+  "options_time_section": { "message": "Time" },
+  "options_show_time": { "message": "Show clock on new tab" },
+  "options_hour_system": { "message": "Hour system" },
+  "options_hour_12": { "message": "12-hour" },
+  "options_hour_24": { "message": "24-hour" }
 }

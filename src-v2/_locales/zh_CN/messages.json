@@ -12,5 +12,11 @@
   "options_language_en": { "message": "English" },
   "options_language_zh_CN": { "message": "简体中文" },
 
-  "options_placeholder": { "message": "设置界面会在 Phase 02 后续 Sections 中陆续完善。" }
+  "options_placeholder": { "message": "设置界面会在 Phase 02 后续 Sections 中陆续完善。" },
+
+  "options_time_section": { "message": "时间" },
+  "options_show_time": { "message": "在新标签页显示时钟" },
+  "options_hour_system": { "message": "时制" },
+  "options_hour_12": { "message": "12 小时制" },
+  "options_hour_24": { "message": "24 小时制" }
 }

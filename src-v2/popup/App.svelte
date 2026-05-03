@@ -1,6 +1,7 @@
 <script>
   import { settings } from '../lib/settings.svelte.js';
   import { t, loadLanguage, resolveLanguage } from '../lib/i18n.svelte.js';
+  import Clock from '../components/Clock.svelte';
 
   $effect(() => {
     loadLanguage(resolveLanguage(settings.userLanguage));
@@ -8,8 +9,10 @@
 </script>
 
 <main>
-  <h1>{t('ext_name')}</h1>
-  <p>{t('newtab_bootstrap_message')}</p>
+  <div class="centered">
+    <Clock />
+    <p class="bootstrap-note">{t('newtab_bootstrap_message')}</p>
+  </div>
 </main>
 
 <style>
@@ -21,15 +24,17 @@
   }
   main {
     min-height: 100vh;
-    display: grid;
-    place-items: center;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
   }
-  h1 {
-    font-size: 2.5rem;
-    margin: 0 0 0.5rem;
-  }
-  p {
-    opacity: 0.6;
+  .bootstrap-note {
+    margin-top: 1rem;
+    opacity: 0.45;
+    font-size: 0.85rem;
   }
 </style>
