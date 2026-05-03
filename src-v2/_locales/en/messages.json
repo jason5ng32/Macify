@@ -73,5 +73,10 @@
   "weather_aqi_very_unhealthy": { "message": "Very Unhealthy" },
   "weather_aqi_hazardous": { "message": "Hazardous" },
 
-  "error_get_weather": { "message": "Couldn't fetch weather. Check the city name in settings." }
+  "error_get_weather": { "message": "Couldn't fetch weather. Check the city name in settings." },
+
+  "options_motto_section": { "message": "Motto" },
+  "options_show_motto": { "message": "Show motto on new tab" },
+  "options_motto_note": { "message": "A short quote shown below the clock. Online quotes from zenquotes.io are cached for 24h; if offline, a small bundled set is used." },
+  "motto_refresh_hint": { "message": "Click for another" }
 }

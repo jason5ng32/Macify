@@ -4,6 +4,7 @@
   import Clock from '../components/Clock.svelte';
   import VideoBackground from '../components/VideoBackground.svelte';
   import Weather from '../components/Weather.svelte';
+  import Motto from '../components/Motto.svelte';
 
   $effect(() => {
     loadLanguage(resolveLanguage(settings.userLanguage));
@@ -16,6 +17,7 @@
 <main>
   <div class="centered">
     <Clock />
+    <Motto />
   </div>
 </main>
 
@@ -32,7 +34,7 @@
   }
   .centered {
     position: absolute;
-    top: 50%;
+    top: 44%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;

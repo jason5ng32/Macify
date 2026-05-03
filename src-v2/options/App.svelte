@@ -92,6 +92,10 @@
     updateSetting('showWeather', event.currentTarget.checked);
   }
 
+  function onShowMottoChange(event) {
+    updateSetting('showMotto', event.currentTarget.checked);
+  }
+
   function onTempUnitChange(event) {
     updateSetting('tempUnit', event.currentTarget.value);
   }
@@ -220,6 +224,19 @@
         <option value="24">{t('options_hour_24')}</option>
       </select>
     </label>
+  </section>
+
+  <section>
+    <h2>{t('options_motto_section')}</h2>
+    <label class="row">
+      <input
+        type="checkbox"
+        checked={settings.showMotto}
+        onchange={onShowMottoChange}
+      />
+      <span>{t('options_show_motto')}</span>
+    </label>
+    <p class="note">{t('options_motto_note')}</p>
   </section>
 
   <section class="placeholder">

@@ -73,5 +73,10 @@
   "weather_aqi_very_unhealthy": { "message": "非常不健康" },
   "weather_aqi_hazardous": { "message": "危险" },
 
-  "error_get_weather": { "message": "获取天气失败，请到设置检查城市名。" }
+  "error_get_weather": { "message": "获取天气失败，请到设置检查城市名。" },
+
+  "options_motto_section": { "message": "格言" },
+  "options_show_motto": { "message": "在新标签页显示格言" },
+  "options_motto_note": { "message": "在时钟下方显示一句短语。zenquotes.io 拉取的格言缓存 24 小时；离线时使用本地打包的精选集。" },
+  "motto_refresh_hint": { "message": "点击换一句" }
 }
