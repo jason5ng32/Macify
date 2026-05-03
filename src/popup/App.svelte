@@ -7,6 +7,7 @@
   import Weather from "../components/Weather.svelte";
   import TopSites from "../components/TopSites.svelte";
   import ZenMode from "../components/ZenMode.svelte";
+  import RefreshButton from "../components/RefreshButton.svelte";
   import Motto from "../components/Motto.svelte";
 
   $effect(() => {
@@ -17,8 +18,22 @@
 <VideoBackground />
 <VideoMetadata />
 <Weather />
-<TopSites />
-<ZenMode />
+
+<!-- Bottom-left button stack. flex-col-reverse anchors the first DOM
+     child at the bottom; subsequent buttons appear above it. -->
+<div
+  class="fixed bottom-6 left-6 z-40 flex flex-col-reverse items-center gap-3"
+>
+  <ZenMode />
+</div>
+
+<!-- Bottom-right button stack. Same convention: first child = bottom. -->
+<div
+  class="fixed bottom-6 right-6 z-40 flex flex-col-reverse items-center gap-3"
+>
+  <RefreshButton />
+  <TopSites />
+</div>
 
 <!-- Clock anchored at fixed viewport position; doesn't shift when motto length changes -->
 <div

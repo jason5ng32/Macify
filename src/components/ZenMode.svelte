@@ -50,7 +50,7 @@
   <button
     type="button"
     onclick={enter}
-    class="cursor-pointer fixed bottom-6 left-6 z-40 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-white/15 text-white shadow-md backdrop-blur-md transition hover:bg-white/25"
+    class="cursor-pointer flex h-9.5 w-9.5 items-center justify-center rounded-full bg-white/15 text-white shadow-md backdrop-blur-md transition hover:bg-white/25"
     title={t('zen_label')}
     aria-label={t('zen_label')}
   >

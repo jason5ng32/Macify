@@ -1,5 +1,4 @@
 <script>
-  import IconRefresh from '~icons/mingcute/refresh-1-line';
   import { settings } from '../lib/settings.svelte.js';
   import { t } from '../lib/i18n.svelte.js';
   import {
@@ -8,7 +7,7 @@
     reportAppleProxyFailure,
     isAppleProxyFailed,
   } from '../lib/video-source.js';
-  import { nowPlaying } from '../lib/now-playing.svelte.js';
+  import { nowPlaying, registerVideoNext } from '../lib/now-playing.svelte.js';
 
   let items = $state([]);
   let currentIndex = $state(-1);
@@ -62,21 +61,17 @@
     nowPlaying.item = current;
   });
 
+  $effect(() => {
+    registerVideoNext(nextVideo);
+    return () => registerVideoNext(null);
+  });
+
   function nextVideo() {
     if (items.length === 0) return;
     opacity = 0;
     setTimeout(() => {
       currentIndex = (currentIndex + 1) % items.length;
     }, 650);
-  }
-
-  // Bumped on every refresh-button click; used as a {#key} so the
-  // icon re-mounts and its CSS animation restarts each press.
-  let refreshSpinTick = $state(0);
-
-  function onRefreshClick() {
-    refreshSpinTick++;
-    nextVideo();
   }
 
   function onCanPlay() {
@@ -129,24 +124,6 @@
       onerror={onError}
     ></video>
   {/key}
-{/if}
-
-{#if settings.refreshButton}
-  <button
-    type="button"
-    class="cursor-pointer fixed bottom-6 right-6 z-40 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-white/15 text-white shadow-md backdrop-blur-md transition hover:bg-white/25"
-    onclick={onRefreshClick}
-    title={t('refresh_video')}
-    aria-label={t('refresh_video')}
-  >
-    {#key refreshSpinTick}
-      <IconRefresh
-        class={refreshSpinTick > 0
-          ? 'h-4.5 w-4.5 animate-[spin_0.5s_ease-in-out]'
-          : 'h-4.5 w-4.5'}
-      />
-    {/key}
-  </button>
 {/if}
 
 <style>
