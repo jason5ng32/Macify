@@ -60,297 +60,295 @@
 
   const languageOptions = ['auto', ...SUPPORTED_LANGUAGES];
 
-  function onLanguageChange(event) {
-    updateSetting('userLanguage', event.currentTarget.value);
-  }
-
-  function onShowTimeChange(event) {
-    updateSetting('showTime', event.currentTarget.checked);
-  }
-
-  function onHourSystemChange(event) {
-    updateSetting('hourSystem', event.currentTarget.value);
-  }
-
-  function onVideoSrcChange(event) {
-    updateSetting('videoSrc', event.currentTarget.value);
-  }
-
-  function onReverseProxyChange(event) {
-    updateSetting('reverseProxy', event.currentTarget.checked);
-  }
-
-  function onVideoSourceUrlChange(event) {
-    updateSetting('videoSourceUrl', event.currentTarget.value);
-  }
-
-  function onRefreshButtonChange(event) {
-    updateSetting('refreshButton', event.currentTarget.checked);
-  }
-
-  function onShowWeatherChange(event) {
-    updateSetting('showWeather', event.currentTarget.checked);
-  }
-
-  function onShowMottoChange(event) {
-    updateSetting('showMotto', event.currentTarget.checked);
-  }
-
-  function onTempUnitChange(event) {
-    updateSetting('tempUnit', event.currentTarget.value);
+  function set(key) {
+    return (event) => {
+      const target = event.currentTarget;
+      const value = target.type === 'checkbox' ? target.checked : target.value;
+      updateSetting(key, value);
+    };
   }
 </script>
 
-<main>
-  <h1>{t('options_title')}</h1>
-  <p class="version">{t('options_version_label')} {version}</p>
-
-  <section>
-    <h2>{t('options_language_section')}</h2>
-    <label class="row">
-      <span>{t('options_language_label')}:</span>
-      <select value={settings.userLanguage} onchange={onLanguageChange}>
-        {#each languageOptions as code}
-          <option value={code}>{t(`options_language_${code}`)}</option>
-        {/each}
-      </select>
-    </label>
-  </section>
-
-  <section>
-    <h2>{t('options_video_section')}</h2>
-    <label class="row">
-      <span>{t('options_video_source')}:</span>
-      <select value={settings.videoSrc} onchange={onVideoSrcChange}>
-        <option value="apple">{t('options_video_source_apple')}</option>
-        <option value="local">{t('options_video_source_local')}</option>
-      </select>
-    </label>
-
-    {#if settings.videoSrc === 'apple'}
-      <label class="row">
-        <input
-          type="checkbox"
-          checked={settings.reverseProxy}
-          onchange={onReverseProxyChange}
-        />
-        <span>{t('options_video_reverse_proxy')}</span>
-      </label>
-      <p class="note">{t('options_video_reverse_proxy_note')}</p>
-    {:else}
-      <label class="row">
-        <span>{t('options_video_local_url')}:</span>
-        <input
-          type="text"
-          class="text-input"
-          value={settings.videoSourceUrl}
-          onchange={onVideoSourceUrlChange}
-        />
-      </label>
-      <p class="note">{t('options_video_local_note')}</p>
-    {/if}
-
-    <label class="row">
-      <input
-        type="checkbox"
-        checked={settings.refreshButton}
-        onchange={onRefreshButtonChange}
+<main class="min-h-screen bg-slate-50 text-slate-800 antialiased">
+  <div class="mx-auto max-w-2xl px-6 py-10">
+    <header class="mb-8 flex items-center gap-4">
+      <img
+        src="../res/icon.png"
+        alt=""
+        class="h-12 w-12 rounded-xl shadow-sm ring-1 ring-slate-200"
       />
-      <span>{t('options_video_show_refresh')}</span>
-    </label>
-  </section>
+      <div>
+        <h1 class="text-2xl font-semibold text-slate-900">
+          {t('options_title')}
+        </h1>
+        <p class="text-xs text-slate-500">
+          {t('options_version_label')} {version}
+        </p>
+      </div>
+    </header>
 
-  <section>
-    <h2>{t('options_weather_section')}</h2>
-    <label class="row">
-      <input
-        type="checkbox"
-        checked={settings.showWeather}
-        onchange={onShowWeatherChange}
-      />
-      <span>{t('options_show_weather')}</span>
-    </label>
-    <label class="row">
-      <span>{t('options_weather_city')}:</span>
-      <input
-        type="text"
-        class="text-input"
-        value={cityDraft}
-        oninput={(e) => (cityDraft = e.currentTarget.value)}
-        onkeydown={onCityKeydown}
-        placeholder={t('options_weather_city_placeholder')}
-      />
-      <button
-        type="button"
-        onclick={onValidateCity}
-        disabled={validatingCity}
-        class="aux-button primary"
+    <!-- Video -->
+    <section
+      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+    >
+      <h2
+        class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
       >
-        {validatingCity
-          ? t('options_weather_save_loading')
-          : t('options_weather_save')}
-      </button>
-    </label>
-    {#if cityError}
-      <p class="error-note">{cityError}</p>
-    {:else if citySaved}
-      <p class="success-note">{t('options_weather_save_success')}</p>
-    {/if}
-    <p class="note">{t('options_weather_city_hint')}</p>
-    <label class="row">
-      <span>{t('options_weather_temp_unit')}:</span>
-      <select value={settings.tempUnit} onchange={onTempUnitChange}>
-        <option value="celsius">{t('options_weather_celsius')}</option>
-        <option value="fahrenheit">{t('options_weather_fahrenheit')}</option>
-      </select>
-    </label>
-    <p class="note">{t('options_weather_note')}</p>
-  </section>
+        <span aria-hidden="true">📺</span>
+        {t('options_video_section')}
+      </h2>
 
-  <section>
-    <h2>{t('options_time_section')}</h2>
-    <label class="row">
-      <input
-        type="checkbox"
-        checked={settings.showTime}
-        onchange={onShowTimeChange}
-      />
-      <span>{t('options_show_time')}</span>
-    </label>
-    <label class="row">
-      <span>{t('options_hour_system')}:</span>
-      <select value={settings.hourSystem} onchange={onHourSystemChange}>
-        <option value="12">{t('options_hour_12')}</option>
-        <option value="24">{t('options_hour_24')}</option>
-      </select>
-    </label>
-  </section>
+      <div class="space-y-3">
+        <label class="flex items-center justify-between gap-4">
+          <span class="text-sm text-slate-700">
+            {t('options_video_source')}
+          </span>
+          <select
+            class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+            value={settings.videoSrc}
+            onchange={set('videoSrc')}
+          >
+            <option value="apple">{t('options_video_source_apple')}</option>
+            <option value="local">{t('options_video_source_local')}</option>
+          </select>
+        </label>
 
-  <section>
-    <h2>{t('options_motto_section')}</h2>
-    <label class="row">
-      <input
-        type="checkbox"
-        checked={settings.showMotto}
-        onchange={onShowMottoChange}
-      />
-      <span>{t('options_show_motto')}</span>
-    </label>
-    <p class="note">{t('options_motto_note')}</p>
-  </section>
+        {#if settings.videoSrc === 'apple'}
+          <label class="flex items-center justify-between gap-4">
+            <span class="text-sm text-slate-700">
+              {t('options_video_reverse_proxy')}
+            </span>
+            <input
+              type="checkbox"
+              class="h-4 w-4 cursor-pointer accent-blue-600"
+              checked={settings.reverseProxy}
+              onchange={set('reverseProxy')}
+            />
+          </label>
+          <p class="text-xs leading-relaxed text-slate-500">
+            {t('options_video_reverse_proxy_note')}
+          </p>
+        {:else}
+          <label class="flex items-center gap-3">
+            <span class="whitespace-nowrap text-sm text-slate-700">
+              {t('options_video_local_url')}
+            </span>
+            <input
+              type="text"
+              class="flex-1 rounded-md border border-slate-300 bg-white px-3 py-1.5 font-mono text-sm shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+              value={settings.videoSourceUrl}
+              onchange={set('videoSourceUrl')}
+            />
+          </label>
+          <p class="text-xs leading-relaxed text-slate-500">
+            {t('options_video_local_note')}
+          </p>
+        {/if}
 
-  <section class="placeholder">
-    <p>{t('options_placeholder')}</p>
-  </section>
+        <label class="flex items-center justify-between gap-4">
+          <span class="text-sm text-slate-700">
+            {t('options_video_show_refresh')}
+          </span>
+          <input
+            type="checkbox"
+            class="h-4 w-4 cursor-pointer accent-blue-600"
+            checked={settings.refreshButton}
+            onchange={set('refreshButton')}
+          />
+        </label>
+      </div>
+    </section>
 
-  <details class="debug">
-    <summary>Current settings (debug)</summary>
-    <pre>{JSON.stringify(settings, null, 2)}</pre>
-  </details>
+    <!-- Time -->
+    <section
+      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+    >
+      <h2
+        class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
+      >
+        <span aria-hidden="true">🕒</span>
+        {t('options_time_section')}
+      </h2>
+
+      <div class="space-y-3">
+        <label class="flex items-center justify-between gap-4">
+          <span class="text-sm text-slate-700">
+            {t('options_show_time')}
+          </span>
+          <input
+            type="checkbox"
+            class="h-4 w-4 cursor-pointer accent-blue-600"
+            checked={settings.showTime}
+            onchange={set('showTime')}
+          />
+        </label>
+
+        <label class="flex items-center justify-between gap-4">
+          <span class="text-sm text-slate-700">
+            {t('options_hour_system')}
+          </span>
+          <select
+            class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+            value={settings.hourSystem}
+            onchange={set('hourSystem')}
+          >
+            <option value="12">{t('options_hour_12')}</option>
+            <option value="24">{t('options_hour_24')}</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <!-- Weather -->
+    <section
+      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+    >
+      <h2
+        class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
+      >
+        <span aria-hidden="true">🌤️</span>
+        {t('options_weather_section')}
+      </h2>
+
+      <div class="space-y-3">
+        <label class="flex items-center justify-between gap-4">
+          <span class="text-sm text-slate-700">
+            {t('options_show_weather')}
+          </span>
+          <input
+            type="checkbox"
+            class="h-4 w-4 cursor-pointer accent-blue-600"
+            checked={settings.showWeather}
+            onchange={set('showWeather')}
+          />
+        </label>
+
+        <div class="space-y-1.5">
+          <label class="flex items-center gap-3">
+            <span class="whitespace-nowrap text-sm text-slate-700">
+              {t('options_weather_city')}
+            </span>
+            <input
+              type="text"
+              class="flex-1 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+              value={cityDraft}
+              oninput={(e) => (cityDraft = e.currentTarget.value)}
+              onkeydown={onCityKeydown}
+              placeholder={t('options_weather_city_placeholder')}
+            />
+            <button
+              type="button"
+              onclick={onValidateCity}
+              disabled={validatingCity}
+              class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus:ring-2 focus:ring-blue-500/40 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {validatingCity
+                ? t('options_weather_save_loading')
+                : t('options_weather_save')}
+            </button>
+          </label>
+          {#if cityError}
+            <p class="text-xs text-red-600">{cityError}</p>
+          {:else if citySaved}
+            <p class="text-xs text-emerald-600">
+              {t('options_weather_save_success')}
+            </p>
+          {:else}
+            <p class="text-xs leading-relaxed text-slate-500">
+              {t('options_weather_city_hint')}
+            </p>
+          {/if}
+        </div>
+
+        <label class="flex items-center justify-between gap-4">
+          <span class="text-sm text-slate-700">
+            {t('options_weather_temp_unit')}
+          </span>
+          <select
+            class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+            value={settings.tempUnit}
+            onchange={set('tempUnit')}
+          >
+            <option value="celsius">{t('options_weather_celsius')}</option>
+            <option value="fahrenheit">{t('options_weather_fahrenheit')}</option
+            >
+          </select>
+        </label>
+
+        <p class="text-xs leading-relaxed text-slate-500">
+          {t('options_weather_note')}
+        </p>
+      </div>
+    </section>
+
+    <!-- Motto -->
+    <section
+      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+    >
+      <h2
+        class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
+      >
+        <span aria-hidden="true">💬</span>
+        {t('options_motto_section')}
+      </h2>
+
+      <div class="space-y-3">
+        <label class="flex items-center justify-between gap-4">
+          <span class="text-sm text-slate-700">
+            {t('options_show_motto')}
+          </span>
+          <input
+            type="checkbox"
+            class="h-4 w-4 cursor-pointer accent-blue-600"
+            checked={settings.showMotto}
+            onchange={set('showMotto')}
+          />
+        </label>
+        <p class="text-xs leading-relaxed text-slate-500">
+          {t('options_motto_note')}
+        </p>
+      </div>
+    </section>
+
+    <!-- Language -->
+    <section
+      class="mb-5 rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+    >
+      <h2
+        class="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900"
+      >
+        <span aria-hidden="true">🔤</span>
+        {t('options_language_section')}
+      </h2>
+
+      <label class="flex items-center justify-between gap-4">
+        <span class="text-sm text-slate-700">
+          {t('options_language_label')}
+        </span>
+        <select
+          class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+          value={settings.userLanguage}
+          onchange={set('userLanguage')}
+        >
+          {#each languageOptions as code}
+            <option value={code}>{t(`options_language_${code}`)}</option>
+          {/each}
+        </select>
+      </label>
+    </section>
+
+    <details class="mt-8 rounded-xl bg-slate-900 p-5 text-slate-200">
+      <summary
+        class="cursor-pointer text-xs font-medium tracking-wide text-slate-400 uppercase select-none"
+      >
+        Current settings (debug)
+      </summary>
+      <pre
+        class="mt-3 font-mono text-xs leading-relaxed whitespace-pre-wrap text-slate-200">{JSON.stringify(
+          settings,
+          null,
+          2
+        )}</pre>
+    </details>
+  </div>
 </main>
-
-<style>
-  :global(body) {
-    margin: 0;
-    background: #f8f8f8;
-    color: #222;
-    font-family: system-ui, sans-serif;
-  }
-  main {
-    max-width: 720px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-  }
-  h1 {
-    margin-top: 0;
-  }
-  .version {
-    opacity: 0.5;
-    font-size: 0.9rem;
-    margin-top: -0.5rem;
-  }
-  section {
-    margin: 2rem 0;
-    padding: 1rem 1.25rem;
-    background: #fff;
-    border: 1px solid #e3e3e3;
-    border-radius: 6px;
-  }
-  section h2 {
-    margin-top: 0;
-    font-size: 1.1rem;
-  }
-  label {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .row + .row {
-    margin-top: 0.6rem;
-  }
-  select {
-    padding: 0.3rem 0.5rem;
-  }
-  .text-input {
-    flex: 1;
-    padding: 0.3rem 0.5rem;
-    font-family: ui-monospace, Menlo, monospace;
-    font-size: 0.85rem;
-  }
-  .note {
-    margin: 0.6rem 0 0;
-    color: #777;
-    font-size: 0.8rem;
-    line-height: 1.4;
-  }
-  .aux-button {
-    padding: 0.3rem 0.7rem;
-    font-size: 0.85rem;
-    cursor: pointer;
-    background: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .aux-button:hover:not(:disabled) {
-    background: #e6e6e6;
-  }
-  .aux-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  .error-note {
-    margin: 0.4rem 0 0;
-    color: #b00;
-    font-size: 0.8rem;
-  }
-  .success-note {
-    margin: 0.4rem 0 0;
-    color: #0a7d2c;
-    font-size: 0.8rem;
-  }
-  .aux-button.primary {
-    background: #2563eb;
-    color: #fff;
-    border-color: #1e40af;
-  }
-  .aux-button.primary:hover:not(:disabled) {
-    background: #1d4ed8;
-  }
-  .placeholder {
-    border-style: dashed;
-    color: #777;
-  }
-  .debug {
-    margin-top: 3rem;
-    padding: 1rem 1.25rem;
-    background: #1a1a1a;
-    color: #eee;
-    border-radius: 6px;
-    font-family: ui-monospace, Menlo, monospace;
-    font-size: 0.85rem;
-  }
-  .debug pre {
-    margin: 0.75rem 0 0;
-    white-space: pre-wrap;
-  }
-</style>
