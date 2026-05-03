@@ -1,3 +1,4 @@
+import '../styles/tailwind.css';
 import { mount } from 'svelte';
 import App from './App.svelte';
 import { initSettings, settings } from '../lib/settings.svelte.js';
