@@ -1,0 +1,16 @@
+{
+  "ext_name": { "message": "Macify" },
+  "ext_description": { "message": "把 Chrome 新标签页变成 macOS 航拍屏保。" },
+
+  "newtab_bootstrap_message": { "message": "Phase 02 · Section A · 存储与 i18n 基础" },
+
+  "options_title": { "message": "Macify 设置" },
+  "options_version_label": { "message": "版本" },
+  "options_language_section": { "message": "语言" },
+  "options_language_label": { "message": "显示语言" },
+  "options_language_auto": { "message": "跟随浏览器" },
+  "options_language_en": { "message": "English" },
+  "options_language_zh_CN": { "message": "简体中文" },
+
+  "options_placeholder": { "message": "设置界面会在 Phase 02 后续 Sections 中陆续完善。" }
+}

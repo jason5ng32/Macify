@@ -1,10 +1,15 @@
 <script>
-  const buildTime = new Date().toLocaleString();
+  import { settings } from '../lib/settings.svelte.js';
+  import { t, loadLanguage, resolveLanguage } from '../lib/i18n.svelte.js';
+
+  $effect(() => {
+    loadLanguage(resolveLanguage(settings.userLanguage));
+  });
 </script>
 
 <main>
-  <h1>Hello Macify v2</h1>
-  <p>New tab page bootstrap. Built at {buildTime}.</p>
+  <h1>{t('ext_name')}</h1>
+  <p>{t('newtab_bootstrap_message')}</p>
 </main>
 
 <style>
