@@ -1,113 +1,260 @@
 {
-  "ext_name": { "message": "Macify" },
-  "ext_description": { "message": "Transform Chrome's new tab into macOS's gorgeous aerial screensaver videos." },
-  "options_title": { "message": "Macify Settings" },
-  "options_version_label": { "message": "Version" },
-  "options_language_section": { "message": "Language" },
-  "options_language_label": { "message": "Display language" },
-  "options_language_auto": { "message": "Follow browser" },
-  "options_language_en": { "message": "English" },
-  "options_language_zh_CN": { "message": "简体中文" },
-  "options_time_section": { "message": "Time" },
-  "options_show_time": { "message": "Show clock on new tab" },
-  "options_hour_system": { "message": "Hour system" },
-  "options_hour_12": { "message": "12-hour" },
-  "options_hour_24": { "message": "24-hour" },
-
-  "options_video_section": { "message": "Video" },
-  "options_video_source": { "message": "Source" },
-  "options_video_source_apple": { "message": "Apple server" },
-  "options_video_source_local": { "message": "Local server" },
-  "options_video_reverse_proxy": { "message": "Use reverse proxy" },
-  "options_video_reverse_proxy_note": { "message": "If sylvan.apple.com isn't trusted by your system, the reverse proxy fetches videos for you." },
-  "options_video_local_url": { "message": "Local server URL" },
-  "options_video_local_note": { "message": "Run an Apache server on localhost serving Apple aerial .mov / .mp4 files. See the README for setup." },
-  "options_video_show_refresh": { "message": "Show refresh button on new tab" },
-
-  "refresh_video": { "message": "Switch video" },
-  "error_video_apple": { "message": "Couldn't load videos from Apple's server. Try enabling the reverse proxy in settings, or trust sylvan.apple.com's certificate manually." },
-  "error_video_local": { "message": "Couldn't reach the local video server. Check the URL in settings." },
-  "error_video_local_empty": { "message": "Local server reachable but no .mov / .mp4 files found." },
-
-  "options_weather_section": { "message": "Weather" },
-  "options_show_weather": { "message": "Show weather on new tab" },
-  "options_weather_city": { "message": "City" },
-  "options_weather_city_placeholder": { "message": "e.g. Beijing, Tokyo, San Francisco" },
-  "options_weather_temp_unit": { "message": "Temperature unit" },
-  "options_weather_celsius": { "message": "Celsius (°C)" },
-  "options_weather_fahrenheit": { "message": "Fahrenheit (°F)" },
-  "options_weather_note": { "message": "Weather information from Open-Meteo." },
-  "options_weather_city_hint": { "message": "Type a city name (English works best) and press Enter or click Save. We verify against the weather service before saving." },
-  "options_weather_save": { "message": "Save" },
-  "options_weather_save_loading": { "message": "Verifying…" },
-  "options_weather_save_success": { "message": "Saved." },
-  "options_weather_city_required": { "message": "City name is required." },
-  "options_weather_city_invalid": { "message": "Couldn't find that city. Try a more standard name." },
-
-  "weather_today": { "message": "Today" },
-  "weather_tomorrow": { "message": "Tomorrow" },
-  "weather_day_after": { "message": "Day after" },
-  "weather_upcoming": { "message": "Upcoming" },
-  "weather_feels_like": { "message": "Feels like" },
-  "weather_precip": { "message": "Rain" },
-  "weather_wind": { "message": "Wind" },
-  "weather_uv": { "message": "UV" },
-  "weather_sunrise": { "message": "Sunrise" },
-  "weather_sunset": { "message": "Sunset" },
-  "weather_uv_low": { "message": "Low" },
-  "weather_uv_moderate": { "message": "Moderate" },
-  "weather_uv_high": { "message": "High" },
-  "weather_uv_very_high": { "message": "Very High" },
-  "weather_uv_extreme": { "message": "Extreme" },
-  "weather_air_quality": { "message": "Air" },
-  "weather_aqi_good": { "message": "Good" },
-  "weather_aqi_moderate": { "message": "Moderate" },
-  "weather_aqi_unhealthy_sensitive": { "message": "Unhealthy for sensitive groups" },
-  "weather_aqi_unhealthy": { "message": "Unhealthy" },
-  "weather_aqi_very_unhealthy": { "message": "Very Unhealthy" },
-  "weather_aqi_hazardous": { "message": "Hazardous" },
-
-  "error_get_weather": { "message": "Couldn't fetch weather. Check the city name in settings." },
-
-  "options_motto_section": { "message": "Motto" },
-  "options_show_motto": { "message": "Show motto on new tab" },
-  "motto_refresh_hint": { "message": "Click for another" },
-
-  "options_topsites_section": { "message": "Top Sites" },
-  "options_show_topsites": { "message": "Show top sites on new tab" },
-  "topsites_label": { "message": "Top Sites" },
-  "topsites_empty": { "message": "No top sites yet — visit some pages first." },
-
-  "options_zen_section": { "message": "Zen Mode" },
-  "options_show_zen": { "message": "Show Zen mode button on new tab" },
-  "zen_label": { "message": "Zen Mode (fullscreen + ambient music)" },
-
-  "options_display_section": { "message": "Display" },
-  "options_display_hint": { "message": "Choose what appears on the new tab page." },
-  "options_show_clock_short": { "message": "Clock" },
-  "options_show_weather_short": { "message": "Weather" },
-  "options_show_motto_short": { "message": "Motto" },
-  "options_show_topsites_short": { "message": "Top Sites" },
-  "options_show_zen_short": { "message": "Zen Mode button" },
-  "options_show_refresh_short": { "message": "Refresh button" },
-  "options_show_video_meta_short": { "message": "Video info" },
-
-  "video_apple_help_title": { "message": "Why might Apple's server need extra setup?" },
-  "video_apple_help_intro": { "message": "Chrome doesn't always trust Apple's sylvan.apple.com certificate, so direct video loading may fail. Two ways to make it work:" },
-  "video_apple_help_option1_title": { "message": "Option 1 — Use the reverse proxy (easy)" },
-  "video_apple_help_option1_body": { "message": "Tick the \"Use reverse proxy\" checkbox above. Macify will route requests through a Cloudflare Worker that handles the certificate dance for you. Zero local setup." },
-  "video_apple_help_option2_title": { "message": "Option 2 — Trust Apple's certificate manually (cleanest)" },
-  "video_apple_help_option2_body_pre": { "message": "Open" },
-  "video_apple_help_option2_body_post": { "message": "in Chrome once. You'll see a security warning — click Advanced, then \"Proceed to sylvan.apple.com (unsafe)\". Chrome remembers your trust and direct connection works from then on." },
-
-  "video_local_help_title": { "message": "Set up a local Apache server (one-time)" },
-  "video_local_step1": { "message": "Open System Settings → Screen Saver → Aerial. Click each video you want to download. Each is 500 MB – 1 GB; downloads can take a while and may need retries." },
-  "video_local_step2": { "message": "Save the following as videoserver.conf somewhere stable (replace YOUR_MAC_USER_NAME with your actual macOS username):" },
-  "video_local_step3": { "message": "Symlink the config into Apache's drop-in folder:" },
-  "video_local_step4": { "message": "Restart Apache:" },
-  "video_local_step5_pre": { "message": "The default URL above (" },
-  "video_local_step5_post": { "message": ") should now serve your downloaded videos." },
-
-  "about_created_by": { "message": "Created by Jason Ng, Dofy, Setilis" },
-  "about_github_link": { "message": "Source on GitHub" }
+  "ext_name": {
+    "message": "Macify"
+  },
+  "ext_description": {
+    "message": "Transform Chrome's new tab into macOS's gorgeous aerial screensaver videos."
+  },
+  "options_title": {
+    "message": "Macify Settings"
+  },
+  "options_version_label": {
+    "message": "Version"
+  },
+  "options_language_section": {
+    "message": "Language"
+  },
+  "options_language_label": {
+    "message": "Display language"
+  },
+  "options_language_auto": {
+    "message": "Follow browser"
+  },
+  "options_language_en": {
+    "message": "English"
+  },
+  "options_language_zh_CN": {
+    "message": "简体中文"
+  },
+  "options_time_section": {
+    "message": "Time"
+  },
+  "options_hour_system": {
+    "message": "Hour system"
+  },
+  "options_hour_12": {
+    "message": "12-hour"
+  },
+  "options_hour_24": {
+    "message": "24-hour"
+  },
+  "options_video_section": {
+    "message": "Video"
+  },
+  "options_video_source": {
+    "message": "Source"
+  },
+  "options_video_source_apple": {
+    "message": "Apple server"
+  },
+  "options_video_source_local": {
+    "message": "Local server"
+  },
+  "options_video_reverse_proxy": {
+    "message": "Use reverse proxy"
+  },
+  "options_video_local_url": {
+    "message": "Local server URL"
+  },
+  "refresh_video": {
+    "message": "Switch video"
+  },
+  "error_video_apple": {
+    "message": "Couldn't load videos from Apple's server. Try enabling the reverse proxy in settings, or trust sylvan.apple.com's certificate manually."
+  },
+  "error_video_local": {
+    "message": "Couldn't reach the local video server. Check the URL in settings."
+  },
+  "error_video_local_empty": {
+    "message": "Local server reachable but no .mov / .mp4 files found."
+  },
+  "options_weather_section": {
+    "message": "Weather"
+  },
+  "options_weather_city": {
+    "message": "City"
+  },
+  "options_weather_city_placeholder": {
+    "message": "e.g. Beijing, Tokyo, San Francisco"
+  },
+  "options_weather_temp_unit": {
+    "message": "Temperature unit"
+  },
+  "options_weather_celsius": {
+    "message": "Celsius (°C)"
+  },
+  "options_weather_fahrenheit": {
+    "message": "Fahrenheit (°F)"
+  },
+  "options_weather_city_hint": {
+    "message": "Type a city name (English works best) and press Enter or click Save. We verify against the weather service before saving."
+  },
+  "options_weather_save": {
+    "message": "Save"
+  },
+  "options_weather_save_loading": {
+    "message": "Verifying…"
+  },
+  "options_weather_save_success": {
+    "message": "Saved."
+  },
+  "options_weather_city_required": {
+    "message": "City name is required."
+  },
+  "options_weather_city_invalid": {
+    "message": "Couldn't find that city. Try a more standard name."
+  },
+  "weather_today": {
+    "message": "Today"
+  },
+  "weather_tomorrow": {
+    "message": "Tomorrow"
+  },
+  "weather_day_after": {
+    "message": "Day after"
+  },
+  "weather_upcoming": {
+    "message": "Upcoming"
+  },
+  "weather_feels_like": {
+    "message": "Feels like"
+  },
+  "weather_precip": {
+    "message": "Rain"
+  },
+  "weather_wind": {
+    "message": "Wind"
+  },
+  "weather_uv": {
+    "message": "UV"
+  },
+  "weather_sunrise": {
+    "message": "Sunrise"
+  },
+  "weather_sunset": {
+    "message": "Sunset"
+  },
+  "weather_uv_low": {
+    "message": "Low"
+  },
+  "weather_uv_moderate": {
+    "message": "Moderate"
+  },
+  "weather_uv_high": {
+    "message": "High"
+  },
+  "weather_uv_very_high": {
+    "message": "Very High"
+  },
+  "weather_uv_extreme": {
+    "message": "Extreme"
+  },
+  "weather_air_quality": {
+    "message": "Air"
+  },
+  "weather_aqi_good": {
+    "message": "Good"
+  },
+  "weather_aqi_moderate": {
+    "message": "Moderate"
+  },
+  "weather_aqi_unhealthy_sensitive": {
+    "message": "Unhealthy for sensitive groups"
+  },
+  "weather_aqi_unhealthy": {
+    "message": "Unhealthy"
+  },
+  "weather_aqi_very_unhealthy": {
+    "message": "Very Unhealthy"
+  },
+  "weather_aqi_hazardous": {
+    "message": "Hazardous"
+  },
+  "motto_refresh_hint": {
+    "message": "Click for another"
+  },
+  "topsites_label": {
+    "message": "Top Sites"
+  },
+  "topsites_empty": {
+    "message": "No top sites yet — visit some pages first."
+  },
+  "zen_label": {
+    "message": "Zen Mode (fullscreen + ambient music)"
+  },
+  "options_display_section": {
+    "message": "Display"
+  },
+  "options_display_hint": {
+    "message": "Choose what appears on the new tab page."
+  },
+  "options_show_clock_short": {
+    "message": "Clock"
+  },
+  "options_show_weather_short": {
+    "message": "Weather"
+  },
+  "options_show_motto_short": {
+    "message": "Motto"
+  },
+  "options_show_topsites_short": {
+    "message": "Top Sites"
+  },
+  "options_show_zen_short": {
+    "message": "Zen Mode button"
+  },
+  "options_show_refresh_short": {
+    "message": "Refresh button"
+  },
+  "options_show_video_meta_short": {
+    "message": "Video info"
+  },
+  "video_apple_help_title": {
+    "message": "Why might Apple's server need extra setup?"
+  },
+  "video_apple_help_intro": {
+    "message": "Chrome doesn't always trust Apple's sylvan.apple.com certificate, so direct video loading may fail. Two ways to make it work:"
+  },
+  "video_apple_help_option1_title": {
+    "message": "Option 1 — Use the reverse proxy (easy)"
+  },
+  "video_apple_help_option1_body": {
+    "message": "Tick the \"Use reverse proxy\" checkbox above. Macify will route requests through a Cloudflare Worker that handles the certificate dance for you. Zero local setup."
+  },
+  "video_apple_help_option2_title": {
+    "message": "Option 2 — Trust Apple's certificate manually (cleanest)"
+  },
+  "video_apple_help_option2_body_pre": {
+    "message": "Open"
+  },
+  "video_apple_help_option2_body_post": {
+    "message": "in Chrome once. You'll see a security warning — click Advanced, then \"Proceed to sylvan.apple.com (unsafe)\". Chrome remembers your trust and direct connection works from then on."
+  },
+  "video_local_help_title": {
+    "message": "Set up a local Apache server (one-time)"
+  },
+  "video_local_step1": {
+    "message": "Open System Settings → Screen Saver → Aerial. Click each video you want to download. Each is 500 MB – 1 GB; downloads can take a while and may need retries."
+  },
+  "video_local_step2": {
+    "message": "Save the following as videoserver.conf somewhere stable (replace YOUR_MAC_USER_NAME with your actual macOS username):"
+  },
+  "video_local_step3": {
+    "message": "Symlink the config into Apache's drop-in folder:"
+  },
+  "video_local_step4": {
+    "message": "Restart Apache:"
+  },
+  "video_local_step5_pre": {
+    "message": "The default URL above ("
+  },
+  "video_local_step5_post": {
+    "message": ") should now serve your downloaded videos."
+  },
+  "about_created_by": {
+    "message": "Created by Jason Ng, Dofy, Setilis"
+  },
+  "about_github_link": {
+    "message": "Source on GitHub"
+  }
 }

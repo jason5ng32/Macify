@@ -1,113 +1,260 @@
 {
-  "ext_name": { "message": "Macify" },
-  "ext_description": { "message": "将 Chrome 的新标签页变成 macOS 的华丽航拍屏保视频。" },
-  "options_title": { "message": "Macify 设置" },
-  "options_version_label": { "message": "版本" },
-  "options_language_section": { "message": "语言" },
-  "options_language_label": { "message": "显示语言" },
-  "options_language_auto": { "message": "跟随浏览器" },
-  "options_language_en": { "message": "English" },
-  "options_language_zh_CN": { "message": "简体中文" },
-  "options_time_section": { "message": "时间" },
-  "options_show_time": { "message": "在新标签页显示时钟" },
-  "options_hour_system": { "message": "时制" },
-  "options_hour_12": { "message": "12 小时制" },
-  "options_hour_24": { "message": "24 小时制" },
-
-  "options_video_section": { "message": "视频" },
-  "options_video_source": { "message": "视频源" },
-  "options_video_source_apple": { "message": "苹果服务器" },
-  "options_video_source_local": { "message": "本地服务器" },
-  "options_video_reverse_proxy": { "message": "使用反向代理" },
-  "options_video_reverse_proxy_note": { "message": "如果系统不信任 sylvan.apple.com 的证书，反向代理会替你拉取视频。" },
-  "options_video_local_url": { "message": "本地服务器地址" },
-  "options_video_local_note": { "message": "在本机跑一个 Apache 服务器，托管苹果航拍屏保的 .mov / .mp4 文件。配置参考 README。" },
-  "options_video_show_refresh": { "message": "在新标签页显示切换按钮" },
-
-  "refresh_video": { "message": "切换视频" },
-  "error_video_apple": { "message": "无法从苹果服务器加载视频。可在设置里打开反向代理，或手动信任 sylvan.apple.com 的证书。" },
-  "error_video_local": { "message": "无法连接本地视频服务器，请在设置中检查地址。" },
-  "error_video_local_empty": { "message": "本地服务器可达，但没找到 .mov / .mp4 文件。" },
-
-  "options_weather_section": { "message": "天气" },
-  "options_show_weather": { "message": "在新标签页显示天气" },
-  "options_weather_city": { "message": "城市" },
-  "options_weather_city_placeholder": { "message": "如 Beijing、Tokyo、San Francisco" },
-  "options_weather_temp_unit": { "message": "温度单位" },
-  "options_weather_celsius": { "message": "摄氏度 (°C)" },
-  "options_weather_fahrenheit": { "message": "华氏度 (°F)" },
-  "options_weather_note": { "message": "天气信息来源于 Open-Meteo。" },
-  "options_weather_city_hint": { "message": "输入城市名（英文匹配最准），按 Enter 或点保存。会先去天气服务校验后再保存。" },
-  "options_weather_save": { "message": "保存" },
-  "options_weather_save_loading": { "message": "校验中…" },
-  "options_weather_save_success": { "message": "已保存。" },
-  "options_weather_city_required": { "message": "请输入城市名。" },
-  "options_weather_city_invalid": { "message": "找不到这个城市，请换一个更标准的写法重试。" },
-
-  "weather_today": { "message": "今日" },
-  "weather_tomorrow": { "message": "明日" },
-  "weather_day_after": { "message": "后日" },
-  "weather_upcoming": { "message": "未来" },
-  "weather_feels_like": { "message": "体感" },
-  "weather_precip": { "message": "降水" },
-  "weather_wind": { "message": "风" },
-  "weather_uv": { "message": "紫外线" },
-  "weather_sunrise": { "message": "日出" },
-  "weather_sunset": { "message": "日落" },
-  "weather_uv_low": { "message": "弱" },
-  "weather_uv_moderate": { "message": "中等" },
-  "weather_uv_high": { "message": "强" },
-  "weather_uv_very_high": { "message": "很强" },
-  "weather_uv_extreme": { "message": "极强" },
-  "weather_air_quality": { "message": "空气" },
-  "weather_aqi_good": { "message": "优" },
-  "weather_aqi_moderate": { "message": "良" },
-  "weather_aqi_unhealthy_sensitive": { "message": "敏感人群不宜" },
-  "weather_aqi_unhealthy": { "message": "不健康" },
-  "weather_aqi_very_unhealthy": { "message": "非常不健康" },
-  "weather_aqi_hazardous": { "message": "危险" },
-
-  "error_get_weather": { "message": "获取天气失败，请到设置检查城市名。" },
-
-  "options_motto_section": { "message": "格言" },
-  "options_show_motto": { "message": "在新标签页显示格言" },
-  "motto_refresh_hint": { "message": "点击换一句" },
-
-  "options_topsites_section": { "message": "常用站点" },
-  "options_show_topsites": { "message": "在新标签页显示常用站点" },
-  "topsites_label": { "message": "常用站点" },
-  "topsites_empty": { "message": "暂无常用站点 —— 先去访问一些网页吧。" },
-
-  "options_zen_section": { "message": "禅意模式" },
-  "options_show_zen": { "message": "在新标签页显示禅意模式按钮" },
-  "zen_label": { "message": "禅意模式（全屏 + 背景音乐）" },
-
-  "options_display_section": { "message": "显示" },
-  "options_display_hint": { "message": "选择新标签页显示哪些元素。" },
-  "options_show_clock_short": { "message": "时钟" },
-  "options_show_weather_short": { "message": "天气" },
-  "options_show_motto_short": { "message": "格言" },
-  "options_show_topsites_short": { "message": "常用站点" },
-  "options_show_zen_short": { "message": "禅意模式按钮" },
-  "options_show_refresh_short": { "message": "切换视频按钮" },
-  "options_show_video_meta_short": { "message": "视频信息" },
-
-  "video_apple_help_title": { "message": "为什么苹果服务器可能需要额外配置？" },
-  "video_apple_help_intro": { "message": "Chrome 不一定信任苹果 sylvan.apple.com 的证书，直连视频可能失败。两种解决方案：" },
-  "video_apple_help_option1_title": { "message": "方案 1 — 启用反向代理（简单）" },
-  "video_apple_help_option1_body": { "message": "勾选上方「使用反向代理」，Macify 会通过 Cloudflare Worker 代为请求并处理证书问题。无需任何本地配置。" },
-  "video_apple_help_option2_title": { "message": "方案 2 — 手动信任苹果证书（最干净）" },
-  "video_apple_help_option2_body_pre": { "message": "在 Chrome 里打开" },
-  "video_apple_help_option2_body_post": { "message": "一次。会出现安全警告——点「高级」，然后点「继续访问 sylvan.apple.com（不安全）」。Chrome 会记住你的信任，之后直连就没问题了。" },
-
-  "video_local_help_title": { "message": "搭建本地 Apache 服务器（一次性配置）" },
-  "video_local_step1": { "message": "打开系统设置 → 屏幕保护程序 → 航拍，点击你想下载的视频。每个 500 MB – 1 GB，下载较慢且可能需要重试。" },
-  "video_local_step2": { "message": "将以下内容保存为 videoserver.conf，放到一个稳定的目录（替换 YOUR_MAC_USER_NAME 为你的 macOS 用户名）：" },
-  "video_local_step3": { "message": "把配置文件软链到 Apache 的 drop-in 配置目录：" },
-  "video_local_step4": { "message": "重启 Apache：" },
-  "video_local_step5_pre": { "message": "上方默认地址（" },
-  "video_local_step5_post": { "message": "）现在应该能列出你下载的视频了。" },
-
-  "about_created_by": { "message": "Created by Jason Ng, Dofy, Setilis" },
-  "about_github_link": { "message": "GitHub 源码" }
+  "ext_name": {
+    "message": "Macify"
+  },
+  "ext_description": {
+    "message": "将 Chrome 的新标签页变成 macOS 的华丽航拍屏保视频。"
+  },
+  "options_title": {
+    "message": "Macify 设置"
+  },
+  "options_version_label": {
+    "message": "版本"
+  },
+  "options_language_section": {
+    "message": "语言"
+  },
+  "options_language_label": {
+    "message": "显示语言"
+  },
+  "options_language_auto": {
+    "message": "跟随浏览器"
+  },
+  "options_language_en": {
+    "message": "English"
+  },
+  "options_language_zh_CN": {
+    "message": "简体中文"
+  },
+  "options_time_section": {
+    "message": "时间"
+  },
+  "options_hour_system": {
+    "message": "时制"
+  },
+  "options_hour_12": {
+    "message": "12 小时制"
+  },
+  "options_hour_24": {
+    "message": "24 小时制"
+  },
+  "options_video_section": {
+    "message": "视频"
+  },
+  "options_video_source": {
+    "message": "视频源"
+  },
+  "options_video_source_apple": {
+    "message": "苹果服务器"
+  },
+  "options_video_source_local": {
+    "message": "本地服务器"
+  },
+  "options_video_reverse_proxy": {
+    "message": "使用反向代理"
+  },
+  "options_video_local_url": {
+    "message": "本地服务器地址"
+  },
+  "refresh_video": {
+    "message": "切换视频"
+  },
+  "error_video_apple": {
+    "message": "无法从苹果服务器加载视频。可在设置里打开反向代理，或手动信任 sylvan.apple.com 的证书。"
+  },
+  "error_video_local": {
+    "message": "无法连接本地视频服务器，请在设置中检查地址。"
+  },
+  "error_video_local_empty": {
+    "message": "本地服务器可达，但没找到 .mov / .mp4 文件。"
+  },
+  "options_weather_section": {
+    "message": "天气"
+  },
+  "options_weather_city": {
+    "message": "城市"
+  },
+  "options_weather_city_placeholder": {
+    "message": "如 Beijing、Tokyo、San Francisco"
+  },
+  "options_weather_temp_unit": {
+    "message": "温度单位"
+  },
+  "options_weather_celsius": {
+    "message": "摄氏度 (°C)"
+  },
+  "options_weather_fahrenheit": {
+    "message": "华氏度 (°F)"
+  },
+  "options_weather_city_hint": {
+    "message": "输入城市名（英文匹配最准），按 Enter 或点保存。会先去天气服务校验后再保存。"
+  },
+  "options_weather_save": {
+    "message": "保存"
+  },
+  "options_weather_save_loading": {
+    "message": "校验中…"
+  },
+  "options_weather_save_success": {
+    "message": "已保存。"
+  },
+  "options_weather_city_required": {
+    "message": "请输入城市名。"
+  },
+  "options_weather_city_invalid": {
+    "message": "找不到这个城市，请换一个更标准的写法重试。"
+  },
+  "weather_today": {
+    "message": "今日"
+  },
+  "weather_tomorrow": {
+    "message": "明日"
+  },
+  "weather_day_after": {
+    "message": "后日"
+  },
+  "weather_upcoming": {
+    "message": "未来"
+  },
+  "weather_feels_like": {
+    "message": "体感"
+  },
+  "weather_precip": {
+    "message": "降水"
+  },
+  "weather_wind": {
+    "message": "风"
+  },
+  "weather_uv": {
+    "message": "紫外线"
+  },
+  "weather_sunrise": {
+    "message": "日出"
+  },
+  "weather_sunset": {
+    "message": "日落"
+  },
+  "weather_uv_low": {
+    "message": "弱"
+  },
+  "weather_uv_moderate": {
+    "message": "中等"
+  },
+  "weather_uv_high": {
+    "message": "强"
+  },
+  "weather_uv_very_high": {
+    "message": "很强"
+  },
+  "weather_uv_extreme": {
+    "message": "极强"
+  },
+  "weather_air_quality": {
+    "message": "空气"
+  },
+  "weather_aqi_good": {
+    "message": "优"
+  },
+  "weather_aqi_moderate": {
+    "message": "良"
+  },
+  "weather_aqi_unhealthy_sensitive": {
+    "message": "敏感人群不宜"
+  },
+  "weather_aqi_unhealthy": {
+    "message": "不健康"
+  },
+  "weather_aqi_very_unhealthy": {
+    "message": "非常不健康"
+  },
+  "weather_aqi_hazardous": {
+    "message": "危险"
+  },
+  "motto_refresh_hint": {
+    "message": "点击换一句"
+  },
+  "topsites_label": {
+    "message": "常用站点"
+  },
+  "topsites_empty": {
+    "message": "暂无常用站点 —— 先去访问一些网页吧。"
+  },
+  "zen_label": {
+    "message": "禅意模式（全屏 + 背景音乐）"
+  },
+  "options_display_section": {
+    "message": "显示"
+  },
+  "options_display_hint": {
+    "message": "选择新标签页显示哪些元素。"
+  },
+  "options_show_clock_short": {
+    "message": "时钟"
+  },
+  "options_show_weather_short": {
+    "message": "天气"
+  },
+  "options_show_motto_short": {
+    "message": "格言"
+  },
+  "options_show_topsites_short": {
+    "message": "常用站点"
+  },
+  "options_show_zen_short": {
+    "message": "禅意模式按钮"
+  },
+  "options_show_refresh_short": {
+    "message": "切换视频按钮"
+  },
+  "options_show_video_meta_short": {
+    "message": "视频信息"
+  },
+  "video_apple_help_title": {
+    "message": "为什么苹果服务器可能需要额外配置？"
+  },
+  "video_apple_help_intro": {
+    "message": "Chrome 不一定信任苹果 sylvan.apple.com 的证书，直连视频可能失败。两种解决方案："
+  },
+  "video_apple_help_option1_title": {
+    "message": "方案 1 — 启用反向代理（简单）"
+  },
+  "video_apple_help_option1_body": {
+    "message": "勾选上方「使用反向代理」，Macify 会通过 Cloudflare Worker 代为请求并处理证书问题。无需任何本地配置。"
+  },
+  "video_apple_help_option2_title": {
+    "message": "方案 2 — 手动信任苹果证书（最干净）"
+  },
+  "video_apple_help_option2_body_pre": {
+    "message": "在 Chrome 里打开"
+  },
+  "video_apple_help_option2_body_post": {
+    "message": "一次。会出现安全警告——点「高级」，然后点「继续访问 sylvan.apple.com（不安全）」。Chrome 会记住你的信任，之后直连就没问题了。"
+  },
+  "video_local_help_title": {
+    "message": "搭建本地 Apache 服务器（一次性配置）"
+  },
+  "video_local_step1": {
+    "message": "打开系统设置 → 屏幕保护程序 → 航拍，点击你想下载的视频。每个 500 MB – 1 GB，下载较慢且可能需要重试。"
+  },
+  "video_local_step2": {
+    "message": "将以下内容保存为 videoserver.conf，放到一个稳定的目录（替换 YOUR_MAC_USER_NAME 为你的 macOS 用户名）："
+  },
+  "video_local_step3": {
+    "message": "把配置文件软链到 Apache 的 drop-in 配置目录："
+  },
+  "video_local_step4": {
+    "message": "重启 Apache："
+  },
+  "video_local_step5_pre": {
+    "message": "上方默认地址（"
+  },
+  "video_local_step5_post": {
+    "message": "）现在应该能列出你下载的视频了。"
+  },
+  "about_created_by": {
+    "message": "Created by Jason Ng, Dofy, Setilis"
+  },
+  "about_github_link": {
+    "message": "GitHub 源码"
+  }
 }

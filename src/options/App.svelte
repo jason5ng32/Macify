@@ -321,18 +321,5 @@
       </a>
     </footer>
 
-    <details class="mt-8 rounded-xl bg-slate-900 p-5 text-slate-200">
-      <summary
-        class="cursor-pointer text-xs font-medium tracking-wide text-slate-400 uppercase select-none"
-      >
-        Current settings (debug)
-      </summary>
-      <pre
-        class="mt-3 font-mono text-xs leading-relaxed whitespace-pre-wrap text-slate-200">{JSON.stringify(
-          settings,
-          null,
-          2
-        )}</pre>
-    </details>
   </div>
 </main>
