@@ -594,7 +594,7 @@
     <!-- Donate: permanent, always visible, intentionally a touch fancier
          than the regular cards. -->
     <section
-      class="mb-5 overflow-hidden rounded-xl bg-gradient-to-br from-pink-50 via-rose-50 to-amber-50 p-7 shadow-sm ring-1 ring-rose-100"
+      class="mb-5 overflow-hidden rounded-xl bg-linear-to-br from-pink-50 via-rose-50 to-amber-50 p-7 shadow-sm ring-1 ring-rose-100"
     >
       <div class="flex flex-col items-center text-center">
         <div
