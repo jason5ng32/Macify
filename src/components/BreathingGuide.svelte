@@ -1,25 +1,27 @@
 <script>
-  import { fade } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
+  import { cubicIn, cubicOut } from 'svelte/easing';
   import { settings } from '../lib/settings.svelte.js';
   import { t } from '../lib/i18n.svelte.js';
 
-  // Three breathing patterns. Scale envelope reaches 1.0 at peak so the
-  // flower's natural max diameter matches the stage; 0.45 at trough so
-  // the petals collapse toward the center but still leave a soft glow.
+  // Three breathing patterns. Scale envelope reaches 1.2 at peak so
+  // the flower expands ~120% past the stage box for a more generous
+  // bloom; 0.45 at trough collapses petals toward the center while
+  // leaving a soft residual glow.
   const PATTERNS = {
     coherent: [
-      { phase: 'inhale', durationMs: 5000, scale: 1.0 },
+      { phase: 'inhale', durationMs: 5000, scale: 1.2 },
       { phase: 'exhale', durationMs: 5000, scale: 0.45 },
     ],
     box: [
-      { phase: 'inhale', durationMs: 4000, scale: 1.0 },
-      { phase: 'hold', durationMs: 4000, scale: 1.0 },
+      { phase: 'inhale', durationMs: 4000, scale: 1.2 },
+      { phase: 'hold', durationMs: 4000, scale: 1.2 },
       { phase: 'exhale', durationMs: 4000, scale: 0.45 },
       { phase: 'hold', durationMs: 4000, scale: 0.45 },
     ],
     '478': [
-      { phase: 'inhale', durationMs: 4000, scale: 1.0 },
-      { phase: 'hold', durationMs: 7000, scale: 1.0 },
+      { phase: 'inhale', durationMs: 4000, scale: 1.2 },
+      { phase: 'hold', durationMs: 7000, scale: 1.2 },
       { phase: 'exhale', durationMs: 8000, scale: 0.45 },
     ],
   };
@@ -90,7 +92,20 @@
       </div>
     </div>
   </div>
-  <span class="label">{phaseLabel}</span>
+  <!-- Label slot has a fixed height so old/new labels can crossfade in
+       the same physical row without layout reflow. {#key} re-mounts on
+       text change, triggering the fly in/out transitions. -->
+  <div class="label-slot">
+    {#key phaseLabel}
+      <span
+        class="label"
+        in:fly={{ y: 10, duration: 700, easing: cubicOut, delay: 80 }}
+        out:fly={{ y: -10, duration: 360, easing: cubicIn }}
+      >
+        {phaseLabel}
+      </span>
+    {/key}
+  </div>
 </div>
 
 <style>
@@ -144,13 +159,24 @@
     filter: blur(0.5px);
     will-change: transform;
   }
+  .label-slot {
+    position: relative;
+    width: 100%;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .label {
-    color: rgba(255, 255, 255, 0.78);
-    font-size: 0.95rem;
-    letter-spacing: 0.2em;
+    position: absolute;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
     user-select: none;
+    will-change: transform, opacity;
   }
   @keyframes spin {
     from {
