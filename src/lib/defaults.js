@@ -1,11 +1,11 @@
 export const DEFAULTS = Object.freeze({
   userLanguage: 'auto',
-  city: 'Beijing',
+  city: 'San Francisco',
   showTime: true,
-  hourSystem: '12',
-  showWeather: false,
+  hourSystem: '24',
+  showWeather: true,
   showMotto: true,
-  showTopSites: false,
+  showTopSites: true,
   showZenMode: true,
   videoSourceUrl: 'http://localhost:18000/videos/',
   refreshButton: true,
@@ -16,7 +16,7 @@ export const DEFAULTS = Object.freeze({
   showVideoMetadata: true,
   translateMotto: false,
   zenMusic: true,
-  zenBreathingPattern: 'off', // 'off' | 'coherent' | 'box' | '478'
+  zenBreathingPattern: 'coherent', // 'off' | 'coherent' | 'box' | '478'
   zenReminderEnabled: false,
   zenReminderMinutes: 60,
   zenAutoExitEnabled: false,
