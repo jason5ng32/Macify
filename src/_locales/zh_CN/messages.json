@@ -248,6 +248,9 @@
   "video_local_help_title": {
     "message": "搭建本地 Apache 服务器（一次性配置）"
   },
+  "video_local_macos_only": {
+    "message": "提示：以下步骤基于 macOS 自带的 Apache。其他系统可以用任何支持目录列表和 CORS 的 HTTP 服务器替代，自行调整命令即可。"
+  },
   "video_local_step1": {
     "message": "打开系统设置 → 屏幕保护程序 → 航拍，点击你想下载的视频。每个 500 MB – 1 GB，下载较慢且可能需要重试。"
   },

@@ -248,6 +248,9 @@
   "video_local_help_title": {
     "message": "Set up a local Apache server (one-time)"
   },
+  "video_local_macos_only": {
+    "message": "Note: the steps below use macOS's built-in Apache. On other platforms, any HTTP server with directory listing and CORS enabled will work — adapt accordingly."
+  },
   "video_local_step1": {
     "message": "Open System Settings → Screen Saver → Aerial. Click each video you want to download. Each is 500 MB – 1 GB; downloads can take a while and may need retries."
   },

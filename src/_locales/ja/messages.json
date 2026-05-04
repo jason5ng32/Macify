@@ -248,6 +248,9 @@
   "video_local_help_title": {
     "message": "ローカル Apache サーバーを設定する(一回だけ)"
   },
+  "video_local_macos_only": {
+    "message": "メモ：以下の手順は macOS 内蔵の Apache を前提としています。他の OS では、ディレクトリリスティングと CORS をサポートする HTTP サーバーであれば代用可能です。"
+  },
   "video_local_step1": {
     "message": "システム設定 → スクリーンセーバー → エアリアルを開き、ダウンロードしたい動画をクリックします。各動画は 500 MB – 1 GB あり、ダウンロードに時間がかかり、再試行が必要な場合もあります。"
   },

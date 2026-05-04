@@ -248,6 +248,9 @@
   "video_local_help_title": {
     "message": "架設本地 Apache 伺服器(一次性設定)"
   },
+  "video_local_macos_only": {
+    "message": "提示：以下步驟基於 macOS 內建的 Apache。其他系統可以用任何支援目錄列表和 CORS 的 HTTP 伺服器替代，自行調整指令即可。"
+  },
   "video_local_step1": {
     "message": "開啟系統設定 → 螢幕保護程式 → 空拍,點擊你想下載的影片。每個 500 MB – 1 GB,下載較慢且可能需要重試。"
   },
