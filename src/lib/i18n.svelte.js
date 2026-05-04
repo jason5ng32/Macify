@@ -23,7 +23,6 @@ function detectBrowserLanguage() {
   )
     return 'zh_TW';
   if (ui.startsWith('ja')) return 'ja';
-  if (ui.startsWith('es')) return 'es';
   return 'en';
 }
 

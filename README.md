@@ -16,7 +16,7 @@ Replace Chrome's new tab page with macOS's aerial screensaver videos and a small
 - 📌 **Top sites** widget pulled from Chrome's built-in list (no history permission needed).
 - 💬 **Random quotes** from a curated 500-entry public-domain set.
 - 🧘 **Zen mode** — fullscreen the video with optional ambient music.
-- 🔤 **5 languages** — English, 简体中文, 繁體中文, 日本語, Español.
+- 🔤 **4 languages** — English, 简体中文, 繁體中文, 日本語.
 
 ## Install
 
