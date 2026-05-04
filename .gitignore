@@ -13,6 +13,8 @@ releases/
 
 # Private AI context (per-machine, not for the public repo)
 local-context.md
+CLAUDE.md
+AGENTS.md
 
 # Local env overrides (Vite); .env.example is committed.
 .env
