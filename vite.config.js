@@ -7,6 +7,11 @@ import manifest from './src/manifest.config.js';
 
 export default defineConfig({
   root: 'src',
+  // .env files live at the project root (next to package.json), not under
+  // src/. Without this, Vite would silently look in src/.env and ignore
+  // the actual file — vars come back undefined and import.meta.env reads
+  // fall to their fallbacks.
+  envDir: '..',
   publicDir: false,
   build: {
     outDir: '../dist',

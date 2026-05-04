@@ -3,14 +3,19 @@
   import { settings } from '../lib/settings.svelte.js';
   import { t } from '../lib/i18n.svelte.js';
 
-  const MUSIC_BASE = 'https://macifymusic.macify.workers.dev/music/';
+  // Music base URL is provided at build time via VITE_ZENMODE_MUSIC_URL
+  // (see .env.example). Intentionally not committed: each maintainer
+  // hosts their own bucket. If unset, zen mode silently degrades to
+  // "fullscreen without music" — no broken request, no console error.
+  const MUSIC_BASE = import.meta.env.VITE_ZENMODE_MUSIC_URL ?? '';
   const TRACK_COUNT = 40;
 
   let audioEl = $state();
 
   function randomTrackUrl() {
+    if (!MUSIC_BASE) return null;
     const n = Math.floor(Math.random() * TRACK_COUNT) + 1;
-    return MUSIC_BASE + `music${String(n).padStart(5, '0')}`;
+    return MUSIC_BASE + `music${String(n).padStart(5, '0')}.mp3`;
   }
 
   async function enter() {
@@ -22,12 +27,13 @@
       console.warn('Fullscreen request failed:', e);
       return;
     }
-    if (audioEl) {
+    const url = randomTrackUrl();
+    if (audioEl && url) {
       try {
-        audioEl.src = randomTrackUrl();
+        audioEl.src = url;
         await audioEl.play();
       } catch (e) {
-        // Music worker unreachable / autoplay blocked — silent degrade
+        // Music host unreachable / autoplay blocked — silent degrade
         // to "fullscreen without music".
         console.warn('Zen music playback failed:', e);
       }

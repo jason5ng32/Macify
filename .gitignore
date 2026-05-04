@@ -18,3 +18,6 @@ local-context.md
 .env
 .env.local
 .env.*.local
+
+macify-music
+cloudflare-worker
