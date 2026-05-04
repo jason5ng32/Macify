@@ -20,4 +20,3 @@ local-context.md
 .env.*.local
 
 macify-music
-cloudflare-worker

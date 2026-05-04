@@ -2,10 +2,17 @@ import videos from '../data/videos.json';
 import { cache } from './storage.js';
 
 // Apple's modern aerial CDN. Reverse proxy mode swaps the host;
-// the path stays the same (Worker must accept /itunes-assets/* and
-// the legacy /Videos/* — see scripts/build-videos.mjs header).
+// the path stays the same (Worker must accept /itunes-assets/*).
+//
+// VITE_MACIFY_BASE is required at build time (vite.config.js enforces).
+// VITE_APPLE_PROXY_KEY is optional — when set, it's appended as ?k=<token>
+// to every video request so a Cloudflare firewall rule in front of the
+// worker can drop callers that don't know it. Token is build-time inlined
+// and therefore visible in the published bundle — its only job is to
+// filter casual abuse, not to defend against motivated attackers.
 const APPLE_HOST = 'https://sylvan.apple.com';
-const APPLE_PROXY_HOST = 'https://applescreensaver.macify.workers.dev';
+const APPLE_PROXY_HOST = import.meta.env.VITE_MACIFY_BASE;
+const APPLE_PROXY_KEY = import.meta.env.VITE_APPLE_PROXY_KEY ?? '';
 
 const LOCAL_CACHE_KEY = 'localVideoList';
 const LOCAL_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
@@ -27,7 +34,8 @@ export function isAppleProxyFailed() {
 
 function applyProxy(url, useProxy) {
   if (!useProxy) return url;
-  return url.replace(APPLE_HOST, APPLE_PROXY_HOST);
+  const proxied = url.replace(APPLE_HOST, APPLE_PROXY_HOST);
+  return APPLE_PROXY_KEY ? `${proxied}?k=${APPLE_PROXY_KEY}` : proxied;
 }
 
 function metaFromVideo(v) {
