@@ -12,12 +12,18 @@ import { settings } from './settings.svelte.js';
 const MUSIC_BASE = `${import.meta.env.VITE_MACIFY_BASE}/music/`;
 const TRACK_COUNT = 40;
 
+// Final 5 seconds of an auto-exit session: ramp music volume to 0 so
+// the end of the session feels like a fade rather than a cut.
+const FADE_OUT_MS = 5000;
+
 /** Reactive state observable from any component. */
 export const zen = $state({ active: false });
 
 /** Set by ZenMode.svelte once its <audio> element mounts. */
 let audioEl = null;
 let autoExitTimer = null;
+let fadeStartTimer = null;
+let fadeRaf = null;
 let fullscreenListener = null;
 
 export function bindAudioElement(el) {
@@ -27,6 +33,43 @@ export function bindAudioElement(el) {
 function randomTrackUrl() {
   const n = Math.floor(Math.random() * TRACK_COUNT) + 1;
   return MUSIC_BASE + `music${String(n).padStart(5, '0')}.mp3`;
+}
+
+function cancelFade() {
+  if (fadeStartTimer) {
+    clearTimeout(fadeStartTimer);
+    fadeStartTimer = null;
+  }
+  if (fadeRaf) {
+    cancelAnimationFrame(fadeRaf);
+    fadeRaf = null;
+  }
+}
+
+/**
+ * Linearly ramp the audio element's volume from its current value down
+ * to 0 over `durationMs`. Driven by rAF rather than a CSS transition
+ * because we're animating a JS property on a media element.
+ */
+function fadeAudioOut(durationMs) {
+  if (!audioEl) return;
+  const startVol = audioEl.volume;
+  const startTime = performance.now();
+  function step() {
+    if (!audioEl) {
+      fadeRaf = null;
+      return;
+    }
+    const elapsed = performance.now() - startTime;
+    const t = Math.min(1, elapsed / durationMs);
+    audioEl.volume = startVol * (1 - t);
+    if (t < 1) {
+      fadeRaf = requestAnimationFrame(step);
+    } else {
+      fadeRaf = null;
+    }
+  }
+  fadeRaf = requestAnimationFrame(step);
 }
 
 /**
@@ -63,6 +106,8 @@ export async function enterZen() {
   // Music — opt-out via settings.
   if (settings.zenMusic && audioEl) {
     try {
+      // Reset to full volume in case a previous session faded it down.
+      audioEl.volume = 1;
       audioEl.src = randomTrackUrl();
       await audioEl.play();
     } catch (e) {
@@ -70,12 +115,20 @@ export async function enterZen() {
     }
   }
 
-  // Auto-exit timer.
+  // Auto-exit timer + matching fade-out scheduled FADE_OUT_MS earlier.
+  // For sessions shorter than the fade window the fade simply runs from
+  // session start; teardown() always cancels both timers cleanly.
   const minutes = Number(settings.zenAutoExitMinutes) || 0;
   if (settings.zenAutoExitEnabled && minutes > 0) {
+    const totalMs = minutes * 60_000;
+    const fadeStartAt = Math.max(0, totalMs - FADE_OUT_MS);
+    fadeStartTimer = setTimeout(() => {
+      fadeStartTimer = null;
+      fadeAudioOut(Math.min(FADE_OUT_MS, totalMs));
+    }, fadeStartAt);
     autoExitTimer = setTimeout(() => {
       exitZen();
-    }, minutes * 60_000);
+    }, totalMs);
   }
 
   // Listen once for the user (or auto-exit) leaving fullscreen, so we
@@ -104,9 +157,12 @@ export function exitZen() {
 
 function teardown() {
   zen.active = false;
+  cancelFade();
   if (audioEl) {
     audioEl.pause();
     audioEl.currentTime = 0;
+    // Restore for the next session — fade may have left it at 0.
+    audioEl.volume = 1;
   }
   if (autoExitTimer) {
     clearTimeout(autoExitTimer);

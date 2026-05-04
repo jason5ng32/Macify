@@ -417,6 +417,9 @@
             </option>
             <option value="box">{t("options_zen_breathing_box")}</option>
             <option value="478">{t("options_zen_breathing_478")}</option>
+            <option value="extended">
+              {t("options_zen_breathing_extended")}
+            </option>
           </select>
         </label>
 

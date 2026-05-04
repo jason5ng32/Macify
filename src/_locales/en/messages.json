@@ -350,6 +350,9 @@
   "options_zen_breathing_478": {
     "message": "Relaxing (4–7–8)"
   },
+  "options_zen_breathing_extended": {
+    "message": "Extended exhale (4–7)"
+  },
   "options_zen_reminder": {
     "message": "Break reminder"
   },

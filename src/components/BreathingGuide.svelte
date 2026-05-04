@@ -24,6 +24,13 @@
       { phase: 'hold', durationMs: 7000, scale: 1.2 },
       { phase: 'exhale', durationMs: 8000, scale: 0.45 },
     ],
+    extended: [
+      // Extended-exhale (4-7): inhale 4s, exhale 7s, no hold. The
+      // longer exhale activates the parasympathetic nervous system
+      // (the most evidence-backed calming protocol).
+      { phase: 'inhale', durationMs: 4000, scale: 1.2 },
+      { phase: 'exhale', durationMs: 7000, scale: 0.45 },
+    ],
   };
 
   // 6 petals in a hex ring — the same arrangement as Apple's Breathe app

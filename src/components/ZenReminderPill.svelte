@@ -5,7 +5,7 @@
   import IconClose from '~icons/mingcute/close-line';
   import { settings } from '../lib/settings.svelte.js';
   import { t } from '../lib/i18n.svelte.js';
-  import { enterZen } from '../lib/zen.svelte.js';
+  import { enterZen, zen } from '../lib/zen.svelte.js';
 
   // Reminder fires only on new-tab open (this component mount), never via
   // setInterval — explicit decision to avoid interrupting deep work in
@@ -73,6 +73,14 @@
   function onDismiss() {
     visible = false;
   }
+
+  // If the user enters Zen via any other entry point (the bottom-left
+  // launcher button on this same tab), the pill is now contextually
+  // moot — they already started a session. Hide it so it doesn't keep
+  // floating on top of the fullscreen video.
+  $effect(() => {
+    if (zen.active) visible = false;
+  });
 </script>
 
 {#if visible}
