@@ -81,7 +81,7 @@
       <div
         class="breath"
         style:transform={`scale(${scale})`}
-        style:transition={`transform ${durationMs}ms cubic-bezier(0.4, 0, 0.2, 1)`}
+        style:transition={`transform ${durationMs}ms cubic-bezier(0.45, 0, 0.55, 1)`}
       >
         {#each petalAngles as angle (angle)}
           <div
@@ -99,7 +99,7 @@
     {#key phaseLabel}
       <span
         class="label"
-        in:fly={{ y: 10, duration: 700, easing: cubicOut, delay: 80 }}
+        in:fly={{ y: 10, duration: 600, easing: cubicOut }}
         out:fly={{ y: -10, duration: 360, easing: cubicIn }}
       >
         {phaseLabel}
