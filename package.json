@@ -1,0 +1,26 @@
+{
+  "name": "macify",
+  "version": "2.0.0-dev",
+  "private": true,
+  "description": "Transform Chrome's new tab into a macOS aerial screensaver.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "zip": "node scripts/zip.js",
+    "build:quotes": "node scripts/build-quotes.mjs",
+    "build:videos": "node scripts/build-videos.mjs"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.4.0",
+    "@iconify/json": "^2.2.469",
+    "@sveltejs/vite-plugin-svelte": "^7.0.0",
+    "@tailwindcss/vite": "^4.2.4",
+    "svelte": "^5.55.5",
+    "tailwindcss": "^4.2.4",
+    "unplugin-icons": "^23.0.1",
+    "vite": "^8.0.10"
+  }
+}

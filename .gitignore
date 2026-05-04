@@ -1,5 +1,25 @@
 
+.claude
 .DS_Store
 Screenshots/
+.plan/
 
 localvideoserver.conf
+
+node_modules/
+dist/
+releases/
+*.zip
+
+# Private AI context (per-machine, not for the public repo)
+local-context.md
+CLAUDE.md
+AGENTS.md
+
+# Local env overrides (Vite); .env.example is committed.
+.env
+.env.local
+.env.*.local
+
+macify-music
+sketch
