@@ -98,14 +98,53 @@ No `history` permission. No host permissions for arbitrary sites.
 
 Requirements: Node.js 20+ and npm.
 
+The build is **not zero-config** — Macify needs a CDN you control for the Apple aerial reverse proxy and the zen-mode music. The published Chrome Store build uses my own infrastructure; if you fork, you bring your own. The build refuses to run without these set.
+
+### 1. Stand up your CDN host
+
+Pick a single hostname you control, sitting behind Cloudflare. The same hostname serves two paths:
+
+| Path | Backed by |
+|---|---|
+| `<host>/itunes-assets/*` | A Cloudflare Worker (see [`cloudflare-worker/worker.js`](cloudflare-worker/worker.js)) reverse-proxying `sylvan.apple.com` |
+| `<host>/music/musicNNNNN.mp3` | An R2 bucket containing 40 zen-mode music files (`music00001.mp3` … `music00040.mp3`) bound to the same hostname |
+
+#### Worker setup
+
+1. Cloudflare dashboard → Workers & Pages → Create Worker → paste [`cloudflare-worker/worker.js`](cloudflare-worker/worker.js) → Deploy.
+2. Settings → Triggers → Add Custom Domain or Route → `<host>/itunes-assets/*`.
+
+**Optional anti-abuse layer.** If you want to keep random callers off your worker, add a Cloudflare WAF rule:
+
+- Security → WAF → Custom Rules → Create rule:
+  - Match: `URI Path starts with "/itunes-assets/"` AND `URI Query String does not contain "k=<your-token>"`
+  - Action: Block
+- Generate the token with `openssl rand -hex 16` and set it as `VITE_APPLE_PROXY_KEY` (next section). The build appends `?k=<token>` to every video request.
+
+Skip this if you don't care — the worker still works.
+
+#### Music R2 bucket
+
+1. Create an R2 bucket and bind it to your `<host>` as a custom domain.
+2. Upload your 40 audio files as `music/music00001.mp3` … `music/music00040.mp3`. Macify itself doesn't ship music — pick anything calm and ambient (royalty-free or your own).
+
+### 2. Set the build env
+
 ```bash
 git clone https://github.com/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab.git
 cd macOS-Screen-Saver-as-Chrome-New-Tab
+cp .env.example .env
+# edit .env — fill in VITE_MACIFY_BASE (required)
+# and VITE_APPLE_PROXY_KEY (only if you set up the WAF rule above)
 npm install
 npm run build
 ```
 
-The built extension is in `dist/`. Load it via Chrome → `chrome://extensions` → Developer mode → "Load unpacked".
+If `.env` is missing or incomplete the build aborts with a list of what's missing. See [`.env.example`](.env.example) for the full reference.
+
+### 3. Load the extension
+
+The built extension is in `dist/`. Chrome → `chrome://extensions` → Developer mode → "Load unpacked" → select `dist/`.
 
 ## Contributing
 

@@ -3,17 +3,15 @@
   import { settings } from '../lib/settings.svelte.js';
   import { t } from '../lib/i18n.svelte.js';
 
-  // Music base URL is provided at build time via VITE_ZENMODE_MUSIC_URL
-  // (see .env.example). Intentionally not committed: each maintainer
-  // hosts their own bucket. If unset, zen mode silently degrades to
-  // "fullscreen without music" — no broken request, no console error.
-  const MUSIC_BASE = import.meta.env.VITE_ZENMODE_MUSIC_URL ?? '';
+  // Music lives under <BASE>/music/musicNNNNN.mp3. VITE_MACIFY_BASE is
+  // required at build time (vite.config.js enforces it) so we don't need
+  // a fallback path here.
+  const MUSIC_BASE = `${import.meta.env.VITE_MACIFY_BASE}/music/`;
   const TRACK_COUNT = 40;
 
   let audioEl = $state();
 
   function randomTrackUrl() {
-    if (!MUSIC_BASE) return null;
     const n = Math.floor(Math.random() * TRACK_COUNT) + 1;
     return MUSIC_BASE + `music${String(n).padStart(5, '0')}.mp3`;
   }
@@ -27,10 +25,9 @@
       console.warn('Fullscreen request failed:', e);
       return;
     }
-    const url = randomTrackUrl();
-    if (audioEl && url) {
+    if (audioEl) {
       try {
-        audioEl.src = url;
+        audioEl.src = randomTrackUrl();
         await audioEl.play();
       } catch (e) {
         // Music host unreachable / autoplay blocked — silent degrade
