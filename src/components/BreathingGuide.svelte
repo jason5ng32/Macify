@@ -147,7 +147,7 @@
     border-radius: 50%;
     background: radial-gradient(
       circle at 35% 35%,
-      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.2) 0%,
       rgba(220, 240, 255, 0.45) 45%,
       rgba(180, 220, 255, 0.18) 80%,
       rgba(180, 220, 255, 0) 100%
