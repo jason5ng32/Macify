@@ -11,7 +11,12 @@
   // setInterval — explicit decision to avoid interrupting deep work in
   // an already-open tab.
   //
-  // Storage:
+  // Storage: chrome.storage.session, NOT local. We want the cooldown to
+  // reset on every Chrome cold start — otherwise the pill greets the
+  // user with "you've been working for 8h" first thing in the morning.
+  // session storage clears when the browser process exits and is shared
+  // across windows within a session, which is exactly the right scope.
+  //
   //   lastZenSessionAt: ms — last time Zen actually started OR a reminder
   //   pill was rendered. Either counts as "the reminder happened" so it
   //   won't fire again until the next interval is up.
@@ -33,14 +38,14 @@
 
     (async () => {
       try {
-        const { lastZenSessionAt } = await chrome.storage.local.get(
+        const { lastZenSessionAt } = await chrome.storage.session.get(
           'lastZenSessionAt',
         );
         const now = Date.now();
         // First-run case: no anchor, treat now as the start. Don't fire
         // immediately — wait one full interval.
         if (!lastZenSessionAt) {
-          await chrome.storage.local.set({ lastZenSessionAt: now });
+          await chrome.storage.session.set({ lastZenSessionAt: now });
           return;
         }
         const elapsedMs = now - lastZenSessionAt;
@@ -48,7 +53,7 @@
           elapsedMinutes = Math.floor(elapsedMs / 60_000);
           // Stamp BEFORE rendering so any concurrent / immediately
           // following new-tab page doesn't double-fire.
-          await chrome.storage.local.set({ lastZenSessionAt: now });
+          await chrome.storage.session.set({ lastZenSessionAt: now });
           if (cancelled) return;
           visible = true;
         }

@@ -3,9 +3,12 @@
 // from here, so a session can start whether or not the new-tab UI is
 // showing the button at the moment.
 //
-// Storage key:
+// Storage key (chrome.storage.session — wipes on Chrome cold start):
 //   lastZenSessionAt — ms timestamp set on every enterZen(); the reminder
-//   pill uses this to compute "minutes since last session".
+//   pill uses this to compute "minutes since last session". Using session
+//   storage instead of local means the cooldown resets each time Chrome
+//   restarts, so users don't get hit with a stale "X hours ago" pill on
+//   first launch of the day.
 
 import { settings } from './settings.svelte.js';
 
@@ -98,7 +101,7 @@ export async function enterZen() {
 
   // Reset the reminder cooldown timer.
   try {
-    await chrome.storage.local.set({ lastZenSessionAt: Date.now() });
+    await chrome.storage.session.set({ lastZenSessionAt: Date.now() });
   } catch {
     // best-effort, swallow
   }
