@@ -356,9 +356,6 @@
   "options_zen_auto_exit": {
     "message": "Auto exit"
   },
-  "options_zen_off": {
-    "message": "Off"
-  },
   "options_zen_minutes_suffix": {
     "message": "min"
   },

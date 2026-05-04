@@ -356,9 +356,6 @@
   "options_zen_auto_exit": {
     "message": "自動終了"
   },
-  "options_zen_off": {
-    "message": "オフ"
-  },
   "options_zen_minutes_suffix": {
     "message": "分"
   },
