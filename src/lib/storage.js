@@ -1,5 +1,7 @@
 import { DEFAULTS, KNOWN_KEYS } from './defaults.js';
 
+const memorySession = new Map();
+
 // Convert legacy stored keys to their replacements before defaults are
 // filled in. Each migration is one-shot: it runs only if the legacy
 // key is still present, then deletes it. Adding a new entry here is
@@ -52,5 +54,47 @@ export const cache = {
   },
   async remove(key) {
     await chrome.storage.local.remove(key);
+  },
+};
+
+export const sessionCache = {
+  area() {
+    return chrome.storage.session;
+  },
+  async get(keys) {
+    const area = this.area();
+    if (area) return area.get(keys);
+
+    if (keys == null) {
+      return Object.fromEntries(memorySession.entries());
+    }
+    const result = {};
+    const list = Array.isArray(keys) ? keys : [keys];
+    for (const key of list) {
+      const value = memorySession.get(key);
+      if (value !== undefined) result[key] = value;
+    }
+    return result;
+  },
+  async set(values) {
+    const area = this.area();
+    if (area) {
+      await area.set(values);
+      return;
+    }
+    for (const [key, value] of Object.entries(values)) {
+      memorySession.set(key, value);
+    }
+  },
+  async remove(keys) {
+    const area = this.area();
+    if (area) {
+      await area.remove(keys);
+      return;
+    }
+    const list = Array.isArray(keys) ? keys : [keys];
+    for (const key of list) {
+      memorySession.delete(key);
+    }
   },
 };

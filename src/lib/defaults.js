@@ -1,3 +1,5 @@
+const isSafari = import.meta.env.VITE_BUILD_TARGET === 'safari';
+
 export const DEFAULTS = Object.freeze({
   userLanguage: 'auto',
   city: 'San Francisco',
@@ -9,18 +11,18 @@ export const DEFAULTS = Object.freeze({
   hourSystem: '24',
   showWeather: true,
   showMotto: true,
-  showTopSites: true,
+  showTopSites: !isSafari,
   showZenMode: true,
   videoSourceUrl: 'http://localhost:18000/videos/',
   refreshButton: true,
   tempUnit: 'celsius',
   authorInfo: true,
   videoSrc: 'apple',
-  reverseProxy: true,
+  reverseProxy: !isSafari,
   shuffleScopes: ['all'],
   showVideoMetadata: true,
   translateMotto: false,
-  zenMusic: true,
+  zenMusic: !isSafari,
   zenBreathingPattern: 'coherent', // 'off' | 'coherent' | 'box' | '478'
   zenReminderEnabled: false,
   zenReminderMinutes: 60,

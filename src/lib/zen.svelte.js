@@ -10,7 +10,8 @@
 import { settings } from './settings.svelte.js';
 import { resetTracking } from './zen-tracking.js';
 
-const MUSIC_BASE = `${import.meta.env.VITE_MACIFY_BASE}/music/`;
+const MACIFY_BASE = import.meta.env.VITE_MACIFY_BASE;
+const MUSIC_BASE = MACIFY_BASE ? `${MACIFY_BASE}/music/` : '';
 const TRACK_COUNT = 40;
 
 // Final 5 seconds of an auto-exit session: ramp music volume to 0 so
@@ -32,6 +33,7 @@ export function bindAudioElement(el) {
 }
 
 function randomTrackUrl() {
+  if (!MUSIC_BASE) return '';
   const n = Math.floor(Math.random() * TRACK_COUNT) + 1;
   return MUSIC_BASE + `music${String(n).padStart(5, '0')}.mp3`;
 }
@@ -106,7 +108,7 @@ export async function enterZen() {
   }
 
   // Music — opt-out via settings.
-  if (settings.zenMusic && audioEl) {
+  if (settings.zenMusic && audioEl && MUSIC_BASE) {
     try {
       // Reset to full volume in case a previous session faded it down.
       audioEl.volume = 1;

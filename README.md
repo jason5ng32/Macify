@@ -1,11 +1,11 @@
-# Macify — macOS Aerial Screensavers in Chrome's New Tab
+# Macify — macOS Aerial Screensavers in Safari or Chrome's New Tab
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab)
 ![GitHub](https://img.shields.io/github/license/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab)
 ![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/lgdipcalomggcjkohjhkhkbcpgladnoe)
 ![GitHub contributors](https://img.shields.io/github/contributors/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab)
 
-Replace Chrome's new tab page with macOS's aerial screensaver videos and a small set of calm, optional widgets. macOS is **not** required — videos are streamed from Apple's CDN and play in any platform that runs Chrome.
+Replace Safari or Chrome's new tab page with macOS's aerial screensaver videos and a small set of calm, optional widgets. macOS is **not** required — videos are streamed from Apple's CDN.
 
 ![screenshot](docs/screenshot.png)
 
@@ -13,7 +13,7 @@ Replace Chrome's new tab page with macOS's aerial screensaver videos and a small
 
 - 🎥 **156 aerial videos** in 4K SDR, sourced from Apple's current macOS catalog (Landscapes, Cities, Underwater, Space, and more).
 - 🌤️ **Live weather** — current temperature, "feels like", 3-day forecast, sunrise/sunset, UV, wind, air quality. Powered by [Open-Meteo](https://open-meteo.com/), no API key required.
-- 📌 **Top sites** widget pulled from Chrome's built-in list (no history permission needed).
+- 📌 **Top sites** widget pulled from the browser's built-in list when available (no history permission needed).
 - 💬 **Random quotes** from a curated 500-entry public-domain set.
 - 🧘 **Zen mode** — fullscreen the video with optional ambient music.
 - 🔤 **4 languages** — English, 简体中文, 繁體中文, 日本語.
@@ -23,6 +23,7 @@ Replace Chrome's new tab page with macOS's aerial screensaver videos and a small
 [Install from Chrome Web Store](https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe).
 
 Building from source or contributing? See [DEVELOPMENT.md](DEVELOPMENT.md).
+For an experimental local Safari build, see [SAFARI.md](SAFARI.md).
 
 ## Choosing a video source
 
@@ -30,11 +31,11 @@ Two options. Each has a built-in step-by-step guide inside Macify's settings pag
 
 ### 1. Apple Server (default — zero setup)
 
-Streams directly from `sylvan.apple.com`. Chrome may not trust Apple's certificate by default; two ways to fix it:
+Streams directly from `sylvan.apple.com`. If direct video playback fails, two fallback paths are available:
 
-**Option A — Reverse proxy (default on, easiest).** Video requests are routed through a hosted Cloudflare Worker that handles the certificate dance. Zero local setup. Convenient but should not be relied on long-term — set up local hosting or trust the cert when possible.
+**Option A — Reverse proxy.** Video requests are routed through your own Cloudflare Worker. Convenient, but it requires a CDN host you control.
 
-**Option B — Trust Apple's cert manually (cleanest).** Visit [https://sylvan.apple.com](https://sylvan.apple.com) once in Chrome. You'll see a security warning — click "Advanced", then "Proceed to sylvan.apple.com (unsafe)". Chrome remembers the trust and direct connection works thereafter.
+**Option B — Trust Apple's cert manually.** Visit [https://sylvan.apple.com](https://sylvan.apple.com) once in the target browser. If you see a security warning, use the browser's advanced option to proceed. The browser should remember that trust.
 
 ![Chrome warning when trusting sylvan.apple.com](docs/chromewarnning.jpg)
 
