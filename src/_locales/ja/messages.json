@@ -56,6 +56,9 @@
   "options_video_source_local": {
     "message": "ローカルサーバー"
   },
+  "options_video_reverse_proxy_warning": {
+    "message": "リバースプロキシは作者運営のインフラを利用しており、長期的な提供は保証されません。安定運用には Apple の証明書を手動で信頼するか、ローカル Apache サーバーをご利用ください（下記参照）。"
+  },
   "options_video_reverse_proxy": {
     "message": "リバースプロキシを使用"
   },
@@ -327,6 +330,15 @@
     "message": "支援する"
   },
   "donate_pill_dismiss": {
+    "message": "閉じる"
+  },
+  "proxy_advisory_message": {
+    "message": "リバースプロキシの長期提供は保証されません。Apple 直接接続またはローカルサーバーへの切り替えをご検討ください。"
+  },
+  "proxy_advisory_cta": {
+    "message": "設定を開く"
+  },
+  "proxy_advisory_dismiss": {
     "message": "閉じる"
   },
   "options_zen_section": {

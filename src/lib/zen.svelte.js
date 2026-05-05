@@ -1,7 +1,7 @@
 // Shared Zen mode state. Both the on-screen Zen button (ZenMode.svelte)
-// and the break-reminder pill (ZenReminderPill.svelte) call enterZen()
-// from here, so a session can start whether or not the new-tab UI is
-// showing the button at the moment.
+// and the break-reminder pill candidate (lib/zen-reminder.js, surfaced
+// via PillStack) call enterZen() from here, so a session can start
+// whether or not the new-tab UI is showing the button at the moment.
 //
 // Storage key (chrome.storage.session — wipes on Chrome cold start):
 //   lastZenSessionAt — ms timestamp set on every enterZen(); the reminder

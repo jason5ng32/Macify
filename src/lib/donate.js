@@ -1,4 +1,4 @@
-// Donate prompt scheduling.
+// Donate prompt scheduling and pill candidate.
 //
 // Behavior:
 // - First prompt: shown on the first new-tab open after the user has had
@@ -21,6 +21,9 @@
 //
 // You can also persist a value in .env.local (gitignored) — see
 // .env.example. Vite inlines this at build time.
+import IconHeart from '~icons/mingcute/heart-fill';
+import { t } from './i18n.svelte.js';
+
 const PRODUCTION_INTERVAL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 function resolveInterval() {
@@ -98,4 +101,34 @@ export async function markDonateSponsored() {
   } catch {
     // best-effort, swallow
   }
+}
+
+/**
+ * PillStack candidate. Wraps the eligibility check + side effects in
+ * the shape PillStack expects so it can sit next to other pill
+ * candidates (proxy advisory, zen reminder) in priority order.
+ */
+export async function checkDonatePill() {
+  if (!(await shouldShowDonatePrompt())) return null;
+
+  return {
+    icon: IconHeart,
+    iconClass: 'text-pink-300',
+    message: t('donate_pill_message'),
+    cta: {
+      label: t('donate_pill_cta'),
+      onClick: () => {
+        // Treat a Sponsor click as "the message landed, never nag again."
+        // Fire-and-forget: don't block navigation on the storage write.
+        markDonateSponsored();
+        window.open(DONATE_URL, '_blank', 'noopener,noreferrer');
+      },
+    },
+    dismissLabel: t('donate_pill_dismiss'),
+    onShow: async () => {
+      // Stamp first, render second — guarantees the next-tab-page open
+      // doesn't double-fire if storage write is slow.
+      await markDonatePromptShown();
+    },
+  };
 }

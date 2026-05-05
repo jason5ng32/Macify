@@ -269,6 +269,13 @@
               onchange={set("reverseProxy")}
             />
           </label>
+          {#if settings.reverseProxy}
+            <p
+              class="rounded-md bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900 ring-1 ring-amber-200"
+            >
+              {t("options_video_reverse_proxy_warning")}
+            </p>
+          {/if}
         {:else}
           <label class="flex items-center gap-3">
             <span class="whitespace-nowrap text-sm text-slate-700">
@@ -283,7 +290,7 @@
           </label>
         {/if}
 
-        <VideoSetupHelp src={settings.videoSrc} />
+        <VideoSetupHelp />
       </div>
     </section>
 

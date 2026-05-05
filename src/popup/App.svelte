@@ -10,8 +10,7 @@
   import ZenMode from "../components/ZenMode.svelte";
   import RefreshButton from "../components/RefreshButton.svelte";
   import Motto from "../components/Motto.svelte";
-  import DonatePill from "../components/DonatePill.svelte";
-  import ZenReminderPill from "../components/ZenReminderPill.svelte";
+  import PillStack from "../components/PillStack.svelte";
   import BreathingGuide from "../components/BreathingGuide.svelte";
 
   $effect(() => {
@@ -31,8 +30,7 @@
 
 <VideoMetadata />
 <Weather />
-<DonatePill />
-<ZenReminderPill />
+<PillStack />
 
 <!-- Bottom-left button stack. flex-col-reverse anchors the first DOM
      child at the bottom; subsequent buttons appear above it. -->

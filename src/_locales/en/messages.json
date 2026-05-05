@@ -59,6 +59,9 @@
   "options_video_reverse_proxy": {
     "message": "Use reverse proxy"
   },
+  "options_video_reverse_proxy_warning": {
+    "message": "The reverse proxy runs on author-hosted infrastructure with no long-term availability guarantee. For a stable setup, trust Apple's certificate manually or run a local Apache server (see help below)."
+  },
   "options_video_local_url": {
     "message": "Local server URL"
   },
@@ -327,6 +330,15 @@
     "message": "Sponsor"
   },
   "donate_pill_dismiss": {
+    "message": "Dismiss"
+  },
+  "proxy_advisory_message": {
+    "message": "The reverse proxy isn't guaranteed long-term. Consider switching to Apple direct or a local server."
+  },
+  "proxy_advisory_cta": {
+    "message": "Open settings"
+  },
+  "proxy_advisory_dismiss": {
     "message": "Dismiss"
   },
   "options_zen_section": {
