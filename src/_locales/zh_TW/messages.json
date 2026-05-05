@@ -56,6 +56,9 @@
   "options_video_source_local": {
     "message": "本地伺服器"
   },
+  "options_video_reverse_proxy_warning": {
+    "message": "反向代理使用作者自建的基礎設施，不保證長期可用。如需穩定使用，請手動信任 Apple 憑證，或搭建本地 Apache 伺服器（參見下方說明）。"
+  },
   "options_video_reverse_proxy": {
     "message": "使用反向代理"
   },
@@ -328,6 +331,15 @@
   },
   "donate_pill_dismiss": {
     "message": "關閉"
+  },
+  "proxy_advisory_message": {
+    "message": "反向代理不保證長期可用，建議改用 Apple 直連或本地伺服器。"
+  },
+  "proxy_advisory_cta": {
+    "message": "前往設定"
+  },
+  "proxy_advisory_dismiss": {
+    "message": "知道了"
   },
   "options_zen_section": {
     "message": "禪意模式"
