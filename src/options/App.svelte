@@ -645,7 +645,7 @@
     >
       <p>{t("about_created_by")}</p>
       <a
-        href="https://github.com/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab"
+        href="https://github.com/jason5ng32/Macify"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-1.5 text-slate-500 transition hover:text-slate-800"

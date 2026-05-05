@@ -131,8 +131,8 @@ Skip this if you don't care — the worker still works.
 ### 2. Set the build env
 
 ```bash
-git clone https://github.com/jason5ng32/macOS-Screen-Saver-as-Chrome-New-Tab.git
-cd macOS-Screen-Saver-as-Chrome-New-Tab
+git clone https://github.com/jason5ng32/Macify.git
+cd Macify
 cp .env.example .env
 # edit .env — fill in VITE_MACIFY_BASE (required)
 # and VITE_APPLE_PROXY_KEY (only if you set up the WAF rule above)
