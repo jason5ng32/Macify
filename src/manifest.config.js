@@ -23,5 +23,5 @@ export default defineManifest({
   chrome_url_overrides: {
     newtab: 'popup/index.html',
   },
-  permissions: ['storage', 'topSites', 'favicon'],
+  permissions: ['storage', 'topSites', 'favicon', 'idle'],
 });

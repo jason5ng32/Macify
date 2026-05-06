@@ -1,3 +1,24 @@
+import { beginAway, endAway } from './lib/zen-tracking.js';
+
+// chrome.idle minimum is 15s; default is 60s. 60s avoids churning state
+// for brief desk-shifts but still catches a real lock or step-away
+// quickly. Re-setting on each service-worker wake is idempotent.
+chrome.idle.setDetectionInterval(60);
+
+chrome.idle.onStateChanged.addListener(async (state) => {
+  try {
+    if (state === 'active') {
+      await endAway();
+    } else {
+      // 'idle' or 'locked' — both pause the active accumulator. A long
+      // enough away period is later treated as a natural break.
+      await beginAway();
+    }
+  } catch {
+    // best-effort
+  }
+});
+
 chrome.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === 'install') {
     // Stamp install time so the donate prompt can compute "days since install".

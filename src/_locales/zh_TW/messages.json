@@ -386,7 +386,7 @@
   "zen_reminder_cta": {
     "message": "進入禪意"
   },
-  "zen_reminder_dismiss": {
+  "zen_reminder_snooze": {
     "message": "稍後"
   },
   "options_zen_reminder_prefix": {
