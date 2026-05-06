@@ -3,6 +3,7 @@
   import { loadLanguage, resolveLanguage } from "../lib/i18n.svelte.js";
   import { zen } from "../lib/zen.svelte.js";
   import Clock from "../components/Clock.svelte";
+  import SkyArc from "../components/SkyArc.svelte";
   import VideoBackground from "../components/VideoBackground.svelte";
   import VideoMetadata from "../components/VideoMetadata.svelte";
   import Weather from "../components/Weather.svelte";
@@ -48,12 +49,15 @@
   <TopSites />
 </div>
 
-<!-- Clock anchored at fixed viewport position; doesn't shift when motto length changes -->
+<!-- Time slot anchored at fixed viewport position. Clock and SkyArc
+     each render based on settings.timeDisplay; only one is visible at
+     a time (or neither, if 'off'). Motto is below the time. -->
 <div
   class="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center flex flex-col items-center justify-center min-h-[240px] h-[240px] gap-4"
 >
   <div>
     <Clock class="min-h-[120px] h-[120px]" />
+    <SkyArc />
   </div>
   <div class="min-h-[120px] h-[120px]">
     <Motto />

@@ -210,13 +210,40 @@
     "message": "时钟"
   },
   "options_show_weather_short": {
-    "message": "天气"
+    "message": "显示天气"
   },
   "options_show_motto_short": {
     "message": "格言"
   },
   "options_show_topsites_short": {
     "message": "常用站点"
+  },
+  "options_location_section": {
+    "message": "位置"
+  },
+  "options_location_hint": {
+    "message": "供「时间（天文图）」和「天气」使用。城市需通过校验后这两个功能才能启用。"
+  },
+  "options_time_display_label": {
+    "message": "显示方式"
+  },
+  "options_time_display_off": {
+    "message": "关闭"
+  },
+  "options_time_display_clock": {
+    "message": "时钟"
+  },
+  "options_time_display_sky_arc": {
+    "message": "天文图"
+  },
+  "options_sky_arc_needs_city": {
+    "message": "启用天文图时钟需要先校验城市，请在位置设置中校验城市。"
+  },
+  "options_sky_arc_time_zone": {
+    "message": "在天文图时钟中，时间会以所设置的城市时区显示。"
+  },
+  "options_weather_needs_city": {
+    "message": "启用天气需要先校验城市，请在位置设置中校验城市。"
   },
   "options_show_zen_short": {
     "message": "禅意模式按钮"

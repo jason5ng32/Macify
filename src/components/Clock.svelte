@@ -22,7 +22,7 @@
   });
 </script>
 
-{#if settings.showTime}
+{#if settings.timeDisplay === 'clock'}
   <div class="clock">
     <span class="time">{display.time}</span>
     {#if display.suffix}
