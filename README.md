@@ -91,6 +91,7 @@ Macify requests three permissions, all non-sensitive:
 | `storage` | Persist user preferences and cache weather data. |
 | `topSites` | Read Chrome's most-visited list for the Top Sites widget. |
 | `favicon` | Show favicons next to Top Sites entries (uses Chrome's built-in cache; no external network). |
+| `idle` | Track when the user is away from the computer to determine showing Zen mode notification or not. |
 
 No `history` permission. No host permissions for arbitrary sites.
 
