@@ -386,8 +386,8 @@
   "zen_reminder_cta": {
     "message": "Enter Zen"
   },
-  "zen_reminder_dismiss": {
-    "message": "Later"
+  "zen_reminder_snooze": {
+    "message": "Snooze"
   },
   "options_zen_reminder_prefix": {
     "message": "every"

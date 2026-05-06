@@ -386,7 +386,7 @@
   "zen_reminder_cta": {
     "message": "禅モードへ"
   },
-  "zen_reminder_dismiss": {
+  "zen_reminder_snooze": {
     "message": "あとで"
   },
   "options_zen_reminder_prefix": {

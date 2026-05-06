@@ -3,14 +3,12 @@
 // via PillStack) call enterZen() from here, so a session can start
 // whether or not the new-tab UI is showing the button at the moment.
 //
-// Storage key (chrome.storage.session — wipes on Chrome cold start):
-//   lastZenSessionAt — ms timestamp set on every enterZen(); the reminder
-//   pill uses this to compute "minutes since last session". Using session
-//   storage instead of local means the cooldown resets each time Chrome
-//   restarts, so users don't get hit with a stale "X hours ago" pill on
-//   first launch of the day.
+// enterZen() resets the reminder tracker (lib/zen-tracking.js) so the
+// next reminder is one full interval away. See that file for the
+// active-time model.
 
 import { settings } from './settings.svelte.js';
+import { resetTracking } from './zen-tracking.js';
 
 const MUSIC_BASE = `${import.meta.env.VITE_MACIFY_BASE}/music/`;
 const TRACK_COUNT = 40;
@@ -77,8 +75,8 @@ function fadeAudioOut(durationMs) {
 
 /**
  * Enter Zen mode: fullscreen the video stage, optionally start music,
- * optionally start the auto-exit timer. Stamps lastZenSessionAt so the
- * reminder pill cooldown begins now.
+ * optionally start the auto-exit timer. Resets the active-time tracker
+ * so the next break reminder is one full interval away.
  *
  * Must be called from a user gesture (browser fullscreen + autoplay rules).
  */
@@ -99,9 +97,10 @@ export async function enterZen() {
 
   zen.active = true;
 
-  // Reset the reminder cooldown timer.
+  // Reset the active-time tracker — taking a real break starts the
+  // cycle over.
   try {
-    await chrome.storage.session.set({ lastZenSessionAt: Date.now() });
+    await resetTracking();
   } catch {
     // best-effort, swallow
   }
