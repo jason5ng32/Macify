@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "zip": "node scripts/zip.js",
     "build:quotes": "node scripts/build-quotes.mjs",
-    "build:videos": "node scripts/build-videos.mjs"
+    "build:videos": "node scripts/build-videos.mjs",
+    "download:aerials": "python3 scripts/download-macos-aerials.py"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.4.0",
