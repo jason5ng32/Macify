@@ -65,6 +65,30 @@
   "options_video_local_url": {
     "message": "本地伺服器位址"
   },
+  "options_video_shuffle_scope": {
+    "message": "隨機範圍"
+  },
+  "options_video_shuffle_scope_hint": {
+    "message": "如果目前影片來源中沒有所選類別的影片，將改為播放所有影片。"
+  },
+  "shuffle_scope_all": {
+    "message": "所有影片"
+  },
+  "shuffle_scope_landscape": {
+    "message": "自然景觀"
+  },
+  "shuffle_scope_cityscape": {
+    "message": "城市景觀"
+  },
+  "shuffle_scope_underwater": {
+    "message": "水下"
+  },
+  "shuffle_scope_space": {
+    "message": "地球"
+  },
+  "shuffle_scope_mac": {
+    "message": "Mac"
+  },
   "refresh_video": {
     "message": "切換影片"
   },

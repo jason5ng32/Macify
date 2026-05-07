@@ -1,8 +1,22 @@
 <script>
-  import { settings, bindSetting } from '../../lib/settings.svelte.js';
+  import {
+    settings,
+    updateSetting,
+    bindSetting,
+  } from '../../lib/settings.svelte.js';
   import { t } from '../../lib/i18n.svelte.js';
+  import {
+    SHUFFLE_SCOPE_OPTIONS,
+    primaryShuffleScope,
+  } from '../../lib/shuffle-scope.js';
   import SettingsCard from './SettingsCard.svelte';
   import VideoSetupHelp from '../VideoSetupHelp.svelte';
+
+  const selectedScope = $derived(primaryShuffleScope(settings.shuffleScopes));
+
+  function setShuffleScope(event) {
+    return updateSetting('shuffleScopes', [event.currentTarget.value]);
+  }
 </script>
 
 <SettingsCard emoji="📺" title={t('options_video_section')}>
@@ -20,6 +34,24 @@
         <option value="local">{t('options_video_source_local')}</option>
       </select>
     </label>
+
+    <label class="flex items-center justify-between gap-4">
+      <span class="text-sm text-slate-700">
+        {t('options_video_shuffle_scope')}
+      </span>
+      <select
+        class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+        value={selectedScope}
+        onchange={setShuffleScope}
+      >
+        {#each SHUFFLE_SCOPE_OPTIONS as scope}
+          <option value={scope.value}>{t(scope.labelKey)}</option>
+        {/each}
+      </select>
+    </label>
+    <p class="text-xs leading-relaxed text-slate-500">
+      {t('options_video_shuffle_scope_hint')}
+    </p>
 
     {#if settings.videoSrc === 'apple'}
       <label class="flex items-center justify-between gap-4">

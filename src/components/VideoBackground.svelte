@@ -8,6 +8,11 @@
     isAppleProxyFailed,
   } from '../lib/video-source.js';
   import { nowPlaying, registerVideoNext } from '../lib/now-playing.svelte.js';
+  import {
+    normalizeShuffleScopes,
+    pickInitialVideoIndex,
+    pickNextVideoIndex,
+  } from '../lib/shuffle-scope.js';
 
   let items = $state([]);
   let currentIndex = $state(-1);
@@ -15,6 +20,8 @@
   let errorMessage = $state('');
   let consecutiveErrors = 0;
   let proxyFallbackUsedThisLoad = false;
+  let activeShuffleScopesKey = JSON.stringify(normalizeShuffleScopes(settings.shuffleScopes));
+  let transitionTimer = null;
 
   const current = $derived(currentIndex >= 0 ? items[currentIndex] : null);
   const currentUrl = $derived(current?.url ?? '');
@@ -39,7 +46,7 @@
             : t('error_video_apple');
         return;
       }
-      currentIndex = Math.floor(Math.random() * items.length);
+      currentIndex = pickInitialVideoIndex(items, settings.shuffleScopes);
       opacity = 0;
     } catch (e) {
       console.error('Playlist load failed:', e);
@@ -58,6 +65,15 @@
   });
 
   $effect(() => {
+    const scopes = normalizeShuffleScopes(settings.shuffleScopes);
+    const scopeKey = JSON.stringify(scopes);
+    if (scopeKey === activeShuffleScopesKey) return;
+    activeShuffleScopesKey = scopeKey;
+    if (items.length === 0) return;
+    scheduleVideoChange(scopes);
+  });
+
+  $effect(() => {
     nowPlaying.item = current;
   });
 
@@ -66,12 +82,32 @@
     return () => registerVideoNext(null);
   });
 
-  function nextVideo() {
+  $effect(() => {
+    return () => clearTransitionTimer();
+  });
+
+  function clearTransitionTimer() {
+    if (!transitionTimer) return;
+    clearTimeout(transitionTimer);
+    transitionTimer = null;
+  }
+
+  function scheduleVideoChange(scopes) {
     if (items.length === 0) return;
+    clearTransitionTimer();
     opacity = 0;
-    setTimeout(() => {
-      currentIndex = (currentIndex + 1) % items.length;
+    transitionTimer = setTimeout(() => {
+      currentIndex = pickNextVideoIndex(items, currentIndex, scopes);
+      transitionTimer = null;
     }, 650);
+  }
+
+  function nextVideo(options = {}) {
+    const scopes = normalizeShuffleScopes(options.scopes ?? settings.shuffleScopes);
+    if (options.setActiveScope) {
+      activeShuffleScopesKey = JSON.stringify(scopes);
+    }
+    scheduleVideoChange(scopes);
   }
 
   function onCanPlay() {

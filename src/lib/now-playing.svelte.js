@@ -9,6 +9,6 @@ let nextHandler = null;
 export function registerVideoNext(fn) {
   nextHandler = fn;
 }
-export function requestVideoNext() {
-  nextHandler?.();
+export function requestVideoNext(options) {
+  nextHandler?.(options);
 }

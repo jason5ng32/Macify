@@ -65,6 +65,30 @@
   "options_video_local_url": {
     "message": "ローカルサーバーのURL"
   },
+  "options_video_shuffle_scope": {
+    "message": "シャッフル範囲"
+  },
+  "options_video_shuffle_scope_hint": {
+    "message": "現在のソースに選択したカテゴリの動画がない場合、すべての動画が再生されます。"
+  },
+  "shuffle_scope_all": {
+    "message": "すべて"
+  },
+  "shuffle_scope_landscape": {
+    "message": "ランドスケープ"
+  },
+  "shuffle_scope_cityscape": {
+    "message": "シティスケープ"
+  },
+  "shuffle_scope_underwater": {
+    "message": "水中"
+  },
+  "shuffle_scope_space": {
+    "message": "地球"
+  },
+  "shuffle_scope_mac": {
+    "message": "Mac"
+  },
   "refresh_video": {
     "message": "動画を切り替え"
   },
