@@ -65,6 +65,30 @@
   "options_video_local_url": {
     "message": "Local server URL"
   },
+  "options_video_shuffle_scope": {
+    "message": "Shuffle range"
+  },
+  "options_video_shuffle_scope_hint": {
+    "message": "If the selected category has no videos in the current source, all videos will play instead."
+  },
+  "shuffle_scope_all": {
+    "message": "All"
+  },
+  "shuffle_scope_landscape": {
+    "message": "Landscape"
+  },
+  "shuffle_scope_cityscape": {
+    "message": "Cityscape"
+  },
+  "shuffle_scope_underwater": {
+    "message": "Underwater"
+  },
+  "shuffle_scope_space": {
+    "message": "Earth"
+  },
+  "shuffle_scope_mac": {
+    "message": "Mac"
+  },
   "refresh_video": {
     "message": "Switch video"
   },
