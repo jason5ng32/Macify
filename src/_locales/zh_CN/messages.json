@@ -282,21 +282,27 @@
     "message": "提示：以下步骤基于 macOS 自带的 Apache。其他系统可以用任何支持目录列表和 CORS 的 HTTP 服务器替代，自行调整命令即可。"
   },
   "video_local_step1": {
-    "message": "打开系统设置 → 屏幕保护程序 → 航拍，点击你想下载的视频。每个 500 MB – 1 GB，下载较慢且可能需要重试。"
+    "message": "在终端中运行以下命令，自动配置 macOS 自带的 Apache 来托管航拍视频。中途会提示输入一次密码。"
   },
   "video_local_step2": {
-    "message": "将以下内容保存为 videoserver.conf，放到一个稳定的目录（替换 YOUR_MAC_USER_NAME 为你的 macOS 用户名）："
+    "message": "下载视频。有两种方式："
   },
-  "video_local_step3": {
-    "message": "把配置文件软链到 Apache 的 drop-in 配置目录："
+  "video_local_step2_manual_title": {
+    "message": "手动下载"
   },
-  "video_local_step4": {
-    "message": "重启 Apache："
+  "video_local_step2_manual_body": {
+    "message": "打开系统设置 → 屏幕保护程序 → 航拍，点击你想下载的视频。每个 500 MB – 1 GB，下载较慢且可能需要重试。"
   },
-  "video_local_step5_pre": {
+  "video_local_step2_script_title": {
+    "message": "一键下载脚本"
+  },
+  "video_local_step2_script_body": {
+    "message": "在终端中运行以下命令，按提示操作即可。脚本会先估算下载大小和你的可用磁盘空间，征得确认后再开始。"
+  },
+  "video_local_step3_pre": {
     "message": "上方默认地址（"
   },
-  "video_local_step5_post": {
+  "video_local_step3_post": {
     "message": "）现在应该能列出你下载的视频了。"
   },
   "about_created_by": {

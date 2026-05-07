@@ -6,25 +6,11 @@
   // the cert OR run a local server), so both need to be reachable from
   // any source selection.
 
-  const APACHE_CONF = `# Load necessary modules
-LoadModule headers_module libexec/apache2/mod_headers.so
+  const SETUP_SCRIPT =
+    'bash <(curl -fsSL https://raw.githubusercontent.com/jason5ng32/Macify/main/scripts/local-server/setup.sh)';
 
-# Run Apache as your user so it can read your home directory
-User YOUR_MAC_USER_NAME
-Group staff
-
-# Listen on port 18000
-Listen 18000
-
-<VirtualHost *:18000>
-    Header always set Access-Control-Allow-Origin "*"
-    Alias /videos "/Users/YOUR_MAC_USER_NAME/Library/Application Support/com.apple.wallpaper/aerials/videos"
-
-    <Directory "/Users/YOUR_MAC_USER_NAME/Library/Application Support/com.apple.wallpaper/aerials/videos">
-        Options +Indexes
-        Require all granted
-    </Directory>
-</VirtualHost>`;
+  const DOWNLOADER_SCRIPT =
+    'bash <(curl -fsSL https://raw.githubusercontent.com/jason5ng32/Macify/main/scripts/aerial_downloader/install.sh)';
 </script>
 
 <details
@@ -71,29 +57,37 @@ Listen 18000
     >
       {t('video_local_macos_only')}
     </p>
-    <ol class="list-decimal space-y-3 pl-5">
-      <li>{t('video_local_step1')}</li>
+    <ol class="list-decimal space-y-4 pl-5">
+      <li>
+        {t('video_local_step1')}
+        <pre
+          class="mt-2 overflow-x-auto rounded-md bg-slate-900 p-3 font-mono text-xs leading-relaxed text-slate-100">{SETUP_SCRIPT}</pre>
+      </li>
       <li>
         {t('video_local_step2')}
-        <pre
-          class="mt-2 overflow-x-auto rounded-md bg-slate-900 p-3 font-mono text-xs leading-relaxed text-slate-100">{APACHE_CONF}</pre>
+        <div class="mt-2 space-y-3">
+          <div>
+            <p class="font-medium text-slate-700">
+              {t('video_local_step2_manual_title')}
+            </p>
+            <p class="mt-1">{t('video_local_step2_manual_body')}</p>
+          </div>
+          <div>
+            <p class="font-medium text-slate-700">
+              {t('video_local_step2_script_title')}
+            </p>
+            <p class="mt-1">{t('video_local_step2_script_body')}</p>
+            <pre
+              class="mt-2 overflow-x-auto rounded-md bg-slate-900 p-3 font-mono text-xs leading-relaxed text-slate-100">{DOWNLOADER_SCRIPT}</pre>
+          </div>
+        </div>
       </li>
       <li>
-        {t('video_local_step3')}
-        <pre
-          class="mt-2 overflow-x-auto rounded-md bg-slate-900 p-2 font-mono text-xs text-slate-100">sudo ln -s /path/to/videoserver.conf /private/etc/apache2/other</pre>
-      </li>
-      <li>
-        {t('video_local_step4')}
-        <pre
-          class="mt-2 overflow-x-auto rounded-md bg-slate-900 p-2 font-mono text-xs text-slate-100">sudo apachectl restart</pre>
-      </li>
-      <li>
-        {t('video_local_step5_pre')}
+        {t('video_local_step3_pre')}
         <code class="rounded bg-slate-200 px-1 py-0.5 font-mono text-xs"
           >http://localhost:18000/videos/</code
         >
-        {t('video_local_step5_post')}
+        {t('video_local_step3_post')}
       </li>
     </ol>
   </div>

@@ -12,7 +12,7 @@
     "zip": "node scripts/zip.js",
     "build:quotes": "node scripts/build-quotes.mjs",
     "build:videos": "node scripts/build-videos.mjs",
-    "download:aerials": "python3 scripts/download-macos-aerials.py"
+    "download:aerials": "cd scripts && python3 -m aerial_downloader.main"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.4.0",

@@ -282,21 +282,27 @@
     "message": "メモ：以下の手順は macOS 内蔵の Apache を前提としています。他の OS では、ディレクトリリスティングと CORS をサポートする HTTP サーバーであれば代用可能です。"
   },
   "video_local_step1": {
-    "message": "システム設定 → スクリーンセーバー → エアリアルを開き、ダウンロードしたい動画をクリックします。各動画は 500 MB – 1 GB あり、ダウンロードに時間がかかり、再試行が必要な場合もあります。"
+    "message": "このコマンドをターミナルで実行すると、macOS 内蔵の Apache がエアリアル動画を配信するように自動的に設定されます。途中で一度パスワードを求められます。"
   },
   "video_local_step2": {
-    "message": "以下を videoserver.conf として保存し、安定した場所に置きます(YOUR_MAC_USER_NAME を実際の macOS ユーザー名に置き換える):"
+    "message": "動画をダウンロードします。2 つの方法があります:"
   },
-  "video_local_step3": {
-    "message": "Apache の drop-in 設定フォルダにシンボリックリンクを作成します:"
+  "video_local_step2_manual_title": {
+    "message": "手動でダウンロード"
   },
-  "video_local_step4": {
-    "message": "Apache を再起動:"
+  "video_local_step2_manual_body": {
+    "message": "システム設定 → スクリーンセーバー → エアリアルを開き、ダウンロードしたい動画をクリックします。各動画は 500 MB – 1 GB あり、ダウンロードに時間がかかり、再試行が必要な場合もあります。"
   },
-  "video_local_step5_pre": {
+  "video_local_step2_script_title": {
+    "message": "ワンクリックダウンローダー"
+  },
+  "video_local_step2_script_body": {
+    "message": "このコマンドをターミナルで実行し、画面の指示に従ってください。スクリプトはダウンロード予定サイズと空き容量を表示してから確認を求めます。"
+  },
+  "video_local_step3_pre": {
     "message": "上の既定のURL("
   },
-  "video_local_step5_post": {
+  "video_local_step3_post": {
     "message": ")でダウンロードした動画が配信されるはずです。"
   },
   "about_created_by": {

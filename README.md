@@ -22,13 +22,13 @@ Replace Chrome's new tab page with macOS's aerial screensaver videos and a small
 
 [Install from Chrome Web Store](https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe).
 
-Or load unpacked: see [Building from source](#building-from-source).
+Building from source or contributing? See [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ## Choosing a video source
 
-Three options. Each section in the extension's settings page also includes a built-in step-by-step setup guide — this README only summarises.
+Two options. Each has a built-in step-by-step guide inside Macify's settings page; this section just summarises.
 
-### 1. Apple Server (default)
+### 1. Apple Server (default — zero setup)
 
 Streams directly from `sylvan.apple.com`. Chrome may not trust Apple's certificate by default; two ways to fix it:
 
@@ -38,70 +38,39 @@ Streams directly from `sylvan.apple.com`. Chrome may not trust Apple's certifica
 
 ![Chrome warning when trusting sylvan.apple.com](docs/chromewarnning.jpg)
 
-### 2. Local Apache server (recommended for macOS users)
+### 2. Local server (recommended for macOS users)
 
-For best performance and zero third-party dependency, host the videos yourself on macOS's own Apache.
-
-#### Step 1 — Download the videos
-
-Open System Settings → Screen Saver → Aerial. Click each video you want to download (each is 500MB–1GB). Downloads can be slow and may need retries.
-
-If you want a complete local Aerial library, Macify also includes a helper script that downloads the full Aerial catalog listed in your local macOS Aerial manifest. This can be a very large download, often tens or hundreds of GB across the full catalog.
+Best performance, zero third-party dependency. **One command** configures macOS's built-in Apache to serve your local Aerial videos at `http://localhost:18000/videos/`:
 
 ```bash
-npm run download:aerials
-npm run download:aerials -- --dry-run
-npm run download:aerials -- --limit 5
-npm run download:aerials -- --list-categories
-npm run download:aerials -- --category Landscapes,Cities
-npm run download:aerials -- --parallel 3
+bash <(curl -fsSL https://raw.githubusercontent.com/jason5ng32/Macify/main/scripts/local-server/setup.sh)
 ```
 
-Running without flags opens an interactive menu where you can choose the full catalog, a random sample, or one or more categories. Category selection uses numbered choices so typos do not accidentally expand the scope. Run `--dry-run` first to see the number of videos, estimated download size, available disk space, and files that are already present. Use `--limit N` to test with a small number of videos before downloading the full catalog. Downloads run with 3 parallel transfers by default; use `--parallel N` to tune this up or down, capped at 8. During a real download, the script asks for confirmation; pass `--yes` if you want to skip the prompt.
+Asks for your password once (sudo). Then in Macify's settings, switch the source to **Local server**.
 
-The script reads the current macOS manifest at `~/Library/Application Support/com.apple.wallpaper/aerials/manifest/entries.json`, then saves videos to `~/Library/Application Support/com.apple.wallpaper/aerials/videos`. macOS stores Aerial videos as `<asset.id>.mov`, so the helper uses the same UUID filename from the manifest. It skips files whose UUID filename is already present and whose size matches Apple's `Content-Length`, and resumes from an existing `.part` file or short final file when the Apple server supports HTTP range requests. Do not use `sudo` for the current macOS user path. If Python reports a certificate verification error for Apple's Aerial host, re-run with `--insecure-ssl`. Use `--force` only when you want to redownload matching files too.
+To uninstall:
 
-Macify does not ship or mirror Apple's video files; this helper only downloads the Apple video URLs already listed by your local macOS Aerial manifest. Make sure you have enough free disk space before downloading the full catalog.
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/jason5ng32/Macify/main/scripts/local-server/uninstall.sh)
+```
+
+The local server needs the videos on disk first. Two ways:
+
+**Through System Settings.** Open System Settings → Screen Saver → Aerial. Click each video you want (each is 500MB–1GB). Tedious for the full 156-video catalog but no extras needed.
 
 ![macOS screen saver settings](docs/systempreferrence.jpg)
 
-#### Step 2 — Configure Apache
-
-Save the following as `videoserver.conf`, replacing `YOUR_MAC_USER_NAME` with your actual macOS username:
-
-```apache
-LoadModule headers_module libexec/apache2/mod_headers.so
-
-User YOUR_MAC_USER_NAME
-Group staff
-
-Listen 18000
-
-<VirtualHost *:18000>
-    Header always set Access-Control-Allow-Origin "*"
-    Alias /videos "/Users/YOUR_MAC_USER_NAME/Library/Application Support/com.apple.wallpaper/aerials/videos"
-
-    <Directory "/Users/YOUR_MAC_USER_NAME/Library/Application Support/com.apple.wallpaper/aerials/videos">
-        Options +Indexes
-        Require all granted
-    </Directory>
-</VirtualHost>
-```
-
-Symlink it into Apache's drop-in folder and restart:
+**One-line batch downloader.** Macify includes a Python downloader that pulls the full Aerial catalog (or a subset) directly from Apple's CDN, with progress bars, resume support, and category/random/limit filters:
 
 ```bash
-sudo ln -s /path/to/videoserver.conf /private/etc/apache2/other
-sudo apachectl restart
+bash <(curl -fsSL https://raw.githubusercontent.com/jason5ng32/Macify/main/scripts/aerial_downloader/install.sh)
 ```
 
-#### Step 3 — Point Macify at it
-
-In Macify settings, switch the source to **Local server** and confirm the URL is `http://localhost:18000/videos/`.
+Copy the command, paste it in Terminal, and follow the on-screen prompts. The full catalog is ~80–150 GB; the script reports the estimated size and your free disk space before asking for confirmation, so you can safely back out.
 
 ## Permissions
 
-Macify requests three permissions, all non-sensitive:
+Macify requests these permissions, all non-sensitive:
 
 | Permission | Used for |
 |---|---|
@@ -111,62 +80,6 @@ Macify requests three permissions, all non-sensitive:
 | `idle` | Track when the user is away from the computer to determine showing Zen mode notification or not. |
 
 No `history` permission. No host permissions for arbitrary sites.
-
-## Building from source
-
-Requirements: Node.js 20+ and npm.
-
-The build is **not zero-config** — Macify needs a CDN you control for the Apple aerial reverse proxy and the zen-mode music. The published Chrome Store build uses my own infrastructure; if you fork, you bring your own. The build refuses to run without these set.
-
-### 1. Stand up your CDN host
-
-Pick a single hostname you control, sitting behind Cloudflare. The same hostname serves two paths:
-
-| Path | Backed by |
-|---|---|
-| `<host>/itunes-assets/*` | A Cloudflare Worker (see [`cloudflare-worker/worker.js`](cloudflare-worker/worker.js)) reverse-proxying `sylvan.apple.com` |
-| `<host>/music/musicNNNNN.mp3` | An R2 bucket containing 40 zen-mode music files (`music00001.mp3` … `music00040.mp3`) bound to the same hostname |
-
-#### Worker setup
-
-1. Cloudflare dashboard → Workers & Pages → Create Worker → paste [`cloudflare-worker/worker.js`](cloudflare-worker/worker.js) → Deploy.
-2. Settings → Triggers → Add Custom Domain or Route → `<host>/itunes-assets/*`.
-
-**Optional anti-abuse layer.** If you want to keep random callers off your worker, add a Cloudflare WAF rule:
-
-- Security → WAF → Custom Rules → Create rule:
-  - Match: `URI Path starts with "/itunes-assets/"` AND `URI Query String does not contain "k=<your-token>"`
-  - Action: Block
-- Generate the token with `openssl rand -hex 16` and set it as `VITE_APPLE_PROXY_KEY` (next section). The build appends `?k=<token>` to every video request.
-
-Skip this if you don't care — the worker still works.
-
-#### Music R2 bucket
-
-1. Create an R2 bucket and bind it to your `<host>` as a custom domain.
-2. Upload your 40 audio files as `music/music00001.mp3` … `music/music00040.mp3`. Macify itself doesn't ship music — pick anything calm and ambient (royalty-free or your own).
-
-### 2. Set the build env
-
-```bash
-git clone https://github.com/jason5ng32/Macify.git
-cd Macify
-cp .env.example .env
-# edit .env — fill in VITE_MACIFY_BASE (required)
-# and VITE_APPLE_PROXY_KEY (only if you set up the WAF rule above)
-npm install
-npm run build
-```
-
-If `.env` is missing or incomplete the build aborts with a list of what's missing. See [`.env.example`](.env.example) for the full reference.
-
-### 3. Load the extension
-
-The built extension is in `dist/`. Chrome → `chrome://extensions` → Developer mode → "Load unpacked" → select `dist/`.
-
-## Contributing
-
-PRs welcome — bug fixes, translations, new aerial-source adapters, performance improvements, accessibility fixes.
 
 ## License
 
