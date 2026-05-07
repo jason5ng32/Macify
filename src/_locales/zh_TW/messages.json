@@ -282,21 +282,27 @@
     "message": "提示：以下步驟基於 macOS 內建的 Apache。其他系統可以用任何支援目錄列表和 CORS 的 HTTP 伺服器替代，自行調整指令即可。"
   },
   "video_local_step1": {
-    "message": "開啟系統設定 → 螢幕保護程式 → 空拍,點擊你想下載的影片。每個 500 MB – 1 GB,下載較慢且可能需要重試。"
+    "message": "在終端中執行以下指令，自動設定 macOS 內建的 Apache 來服務空拍影片。中途會提示輸入一次密碼。"
   },
   "video_local_step2": {
-    "message": "將以下內容存為 videoserver.conf,放到一個穩定的目錄(替換 YOUR_MAC_USER_NAME 為你的 macOS 使用者名稱):"
+    "message": "下載影片。有兩種方式："
   },
-  "video_local_step3": {
-    "message": "將設定檔軟連結到 Apache 的 drop-in 設定目錄:"
+  "video_local_step2_manual_title": {
+    "message": "手動下載"
   },
-  "video_local_step4": {
-    "message": "重啟 Apache:"
+  "video_local_step2_manual_body": {
+    "message": "開啟系統設定 → 螢幕保護程式 → 空拍，點擊你想下載的影片。每個 500 MB – 1 GB，下載較慢且可能需要重試。"
   },
-  "video_local_step5_pre": {
+  "video_local_step2_script_title": {
+    "message": "一鍵下載腳本"
+  },
+  "video_local_step2_script_body": {
+    "message": "在終端中執行以下指令，依提示操作即可。腳本會先估算下載大小和你的可用磁碟空間，徵得確認後再開始。"
+  },
+  "video_local_step3_pre": {
     "message": "上方預設位址("
   },
-  "video_local_step5_post": {
+  "video_local_step3_post": {
     "message": ")現在應該能列出你下載的影片了。"
   },
   "about_created_by": {

@@ -282,21 +282,27 @@
     "message": "Note: the steps below use macOS's built-in Apache. On other platforms, any HTTP server with directory listing and CORS enabled will work — adapt accordingly."
   },
   "video_local_step1": {
-    "message": "Open System Settings → Screen Saver → Aerial. Click each video you want to download. Each is 500 MB – 1 GB; downloads can take a while and may need retries."
+    "message": "Run this command in Terminal to configure macOS's built-in Apache to serve the Aerial videos. It asks for your password once."
   },
   "video_local_step2": {
-    "message": "Save the following as videoserver.conf somewhere stable (replace YOUR_MAC_USER_NAME with your actual macOS username):"
+    "message": "Download the videos. There are two ways:"
   },
-  "video_local_step3": {
-    "message": "Symlink the config into Apache's drop-in folder:"
+  "video_local_step2_manual_title": {
+    "message": "Manual"
   },
-  "video_local_step4": {
-    "message": "Restart Apache:"
+  "video_local_step2_manual_body": {
+    "message": "Open System Settings → Screen Saver → Aerial. Click each video you want to download. Each is 500 MB – 1 GB; downloads can take a while and may need retries."
   },
-  "video_local_step5_pre": {
+  "video_local_step2_script_title": {
+    "message": "One-click downloader"
+  },
+  "video_local_step2_script_body": {
+    "message": "Run this command in Terminal and follow the on-screen prompts. The script reports the estimated size and your free disk space before asking for confirmation."
+  },
+  "video_local_step3_pre": {
     "message": "The default URL above ("
   },
-  "video_local_step5_post": {
+  "video_local_step3_post": {
     "message": ") should now serve your downloaded videos."
   },
   "about_created_by": {
