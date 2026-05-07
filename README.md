@@ -46,14 +46,17 @@ For best performance and zero third-party dependency, host the videos yourself o
 
 Open System Settings → Screen Saver → Aerial. Click each video you want to download (each is 500MB–1GB). Downloads can be slow and may need retries.
 
-If you want a complete local Aerial library, Macify also includes a helper script that downloads every missing video listed in your local macOS Aerial manifest:
+If you want a complete local Aerial library, Macify also includes a helper script that downloads the full Aerial catalog listed in your local macOS Aerial manifest. This can be a very large download, often tens or hundreds of GB across the full catalog.
 
 ```bash
 npm run download:aerials -- --dry-run
+npm run download:aerials -- --limit 5
 npm run download:aerials
 ```
 
-The script reads the current macOS manifest at `~/Library/Application Support/com.apple.wallpaper/aerials/manifest/entries.json`, with legacy and system-manifest fallbacks, then saves videos to `~/Library/Application Support/com.apple.wallpaper/aerials/videos`. It skips files that already exist, so it is safe to run again after an interrupted download. Do not use `sudo` for the current macOS user path.
+Run `--dry-run` first to see the number of videos, estimated download size, and available disk space. Use `--limit N` to test with a small number of videos before downloading the full catalog. During a real download, the script asks for confirmation; pass `--yes` if you want to skip the prompt.
+
+The script reads the current macOS manifest at `~/Library/Application Support/com.apple.wallpaper/aerials/manifest/entries.json`, then saves videos to `~/Library/Application Support/com.apple.wallpaper/aerials/videos`. It skips files that already exist and resumes from an existing `.part` file when the Apple server supports HTTP range requests. Do not use `sudo` for the current macOS user path. If Python reports a certificate verification error for Apple's Aerial host, re-run with `--insecure-ssl`.
 
 Macify does not ship or mirror Apple's video files; this helper only downloads the Apple video URLs already listed by your local macOS Aerial manifest. Make sure you have enough free disk space before downloading the full catalog.
 
