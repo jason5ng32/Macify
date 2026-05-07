@@ -61,7 +61,8 @@ class DownloadPlan:
         if self.remote_size is None:
             return None
         if self.action == "resume":
-            return max(self.remote_size - self.partial_size, 0)
+            local_progress = max(self.existing_size, self.partial_size)
+            return max(self.remote_size - local_progress, 0)
         return self.remote_size
 
 
@@ -87,7 +88,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--overwrite",
         action="store_true",
-        help="Download again even when a destination file already exists.",
+        help="Redownload files whose size does not match the remote size.",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Redownload every file, even when the local size matches the remote size.",
     )
     parser.add_argument(
         "--dry-run",
@@ -281,6 +287,7 @@ def build_download_plan(
     videos: List[AerialVideo],
     output_dir: Path,
     overwrite: bool,
+    force: bool,
     timeout: int,
     context: Optional[ssl.SSLContext],
 ) -> List[DownloadPlan]:
@@ -294,12 +301,21 @@ def build_download_plan(
         partial_size = partial.stat().st_size if partial.exists() else 0
         remote_size = fetch_remote_size(video, timeout, context)
 
-        if destination.exists() and existing_size > 0 and not overwrite:
+        if force:
+            action = "overwrite" if existing_size > 0 else "download"
+        elif (
+            destination.exists()
+            and existing_size > 0
+            and remote_size is not None
+            and existing_size == remote_size
+        ):
             action = "skip"
+        elif destination.exists() and existing_size > 0 and remote_size is None:
+            action = "overwrite" if overwrite else "skip"
+        elif destination.exists() and existing_size > 0 and remote_size is not None:
+            action = "resume"
         elif partial_size > 0 and not overwrite:
             action = "resume"
-        elif destination.exists() and overwrite:
-            action = "overwrite"
         else:
             action = "download"
 
@@ -323,7 +339,7 @@ def build_download_plan(
 
 def summarize_plan(plans: List[DownloadPlan], output_dir: Path) -> bool:
     to_download = [plan for plan in plans if plan.action != "skip"]
-    skipped = len(plans) - len(to_download)
+    skipped_plans = [plan for plan in plans if plan.action == "skip"]
     known_remaining = sum(
         plan.remaining_size or 0
         for plan in to_download
@@ -336,7 +352,13 @@ def summarize_plan(plans: List[DownloadPlan], output_dir: Path) -> bool:
 
     print("")
     print(f"Will download: {len(to_download)} of {len(plans)} videos")
-    print(f"Already present: {skipped}")
+    print(f"Already present: {len(skipped_plans)}")
+    if skipped_plans:
+        print("Skipped files:")
+        for plan in skipped_plans[:10]:
+            print(f"  - {plan.video.filename}")
+        if len(skipped_plans) > 10:
+            print(f"  ... and {len(skipped_plans) - 10} more")
     if unknown_count:
         print(
             "Estimated remaining size: "
@@ -405,11 +427,18 @@ def download_file(
     timeout: int,
     remote_size: Optional[int],
     overwrite: bool,
+    force: bool,
     context: Optional[ssl.SSLContext],
 ) -> None:
     tmp_destination = destination.with_name(destination.name + ".part")
-    if overwrite and tmp_destination.exists():
+    if force and tmp_destination.exists():
         tmp_destination.unlink()
+
+    if not force and destination.exists() and destination.stat().st_size > 0:
+        destination_size = destination.stat().st_size
+        partial_size = tmp_destination.stat().st_size if tmp_destination.exists() else 0
+        if destination_size >= partial_size:
+            destination.replace(tmp_destination)
 
     resume_from = tmp_destination.stat().st_size if tmp_destination.exists() else 0
     if remote_size is not None and resume_from >= remote_size and resume_from > 0:
@@ -497,6 +526,7 @@ def main() -> int:
         videos,
         output_dir,
         args.overwrite,
+        args.force,
         args.timeout,
         context,
     )
@@ -546,6 +576,7 @@ def main() -> int:
                     args.timeout,
                     plan.remote_size,
                     args.overwrite,
+                    args.force,
                     context,
                 )
                 downloaded += 1

@@ -56,7 +56,7 @@ npm run download:aerials
 
 Run `--dry-run` first to see the number of videos, estimated download size, and available disk space. Use `--limit N` to test with a small number of videos before downloading the full catalog. During a real download, the script asks for confirmation; pass `--yes` if you want to skip the prompt.
 
-The script reads the current macOS manifest at `~/Library/Application Support/com.apple.wallpaper/aerials/manifest/entries.json`, then saves videos to `~/Library/Application Support/com.apple.wallpaper/aerials/videos`. It skips files that already exist and resumes from an existing `.part` file when the Apple server supports HTTP range requests. Do not use `sudo` for the current macOS user path. If Python reports a certificate verification error for Apple's Aerial host, re-run with `--insecure-ssl`.
+The script reads the current macOS manifest at `~/Library/Application Support/com.apple.wallpaper/aerials/manifest/entries.json`, then saves videos to `~/Library/Application Support/com.apple.wallpaper/aerials/videos`. It skips files whose filename matches the manifest URL's basename and whose size matches Apple's `Content-Length`, and resumes from an existing `.part` file or short final file when the Apple server supports HTTP range requests. Do not use `sudo` for the current macOS user path. If Python reports a certificate verification error for Apple's Aerial host, re-run with `--insecure-ssl`. Use `--force` only when you want to redownload matching files too.
 
 Macify does not ship or mirror Apple's video files; this helper only downloads the Apple video URLs already listed by your local macOS Aerial manifest. Make sure you have enough free disk space before downloading the full catalog.
 
