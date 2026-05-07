@@ -1,5 +1,22 @@
 import { DEFAULTS, KNOWN_KEYS } from './defaults.js';
 
+// Convert legacy stored keys to their replacements before defaults are
+// filled in. Each migration is one-shot: it runs only if the legacy
+// key is still present, then deletes it. Adding a new entry here is
+// the safe way to evolve the settings shape across releases.
+export async function migrateLegacyKeys() {
+  // showTime (boolean) → timeDisplay (enum). Existing users who had
+  // the clock disabled keep it disabled; everyone else gets 'clock',
+  // which matches the behavior they had before.
+  const data = await chrome.storage.sync.get(['showTime', 'timeDisplay']);
+  if (data.showTime !== undefined && data.timeDisplay === undefined) {
+    await chrome.storage.sync.set({
+      timeDisplay: data.showTime ? 'clock' : 'off',
+    });
+    await chrome.storage.sync.remove('showTime');
+  }
+}
+
 export async function getKnown() {
   const data = await chrome.storage.sync.get(KNOWN_KEYS);
   const result = {};

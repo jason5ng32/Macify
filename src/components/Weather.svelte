@@ -11,6 +11,7 @@
     nextFutureTime,
     formatTimeOfDay,
   } from '../lib/weather.js';
+  import { getSunTimes } from '../lib/sky.js';
 
   let forecast = $state(null);
   let hovering = $state(false);
@@ -86,9 +87,17 @@
   {@const showAir = air && (air.aqi != null || air.pm25 != null)}
   <!-- Next sunrise/sunset across today + tomorrow + day-after. We never
        show a stale (past) one — at 9pm "next sunrise" is tomorrow's.
-       Cells are sorted by ISO time so the soonest event is on the left. -->
-  {@const allSunrises = forecast.daily?.map((d) => d.sunrise) ?? []}
-  {@const allSunsets = forecast.daily?.map((d) => d.sunset) ?? []}
+       Times come from the shared sky module (suncalc), the same source
+       SkyArc uses, so the two views can never disagree. -->
+  {@const sunDays = forecast.geo
+    ? [0, 1, 2].map((offset) => {
+        const d = new Date(now);
+        d.setDate(d.getDate() + offset);
+        return getSunTimes(d, forecast.geo.lat, forecast.geo.lng);
+      })
+    : []}
+  {@const allSunrises = sunDays.map((s) => s.sunrise?.toISOString()).filter(Boolean)}
+  {@const allSunsets = sunDays.map((s) => s.sunset?.toISOString()).filter(Boolean)}
   {@const nextSunrise = nextFutureTime(allSunrises, now)}
   {@const nextSunset = nextFutureTime(allSunsets, now)}
   {@const sunEvents = [
@@ -213,6 +222,7 @@
                   <div class="sun-time">
                     {formatTimeOfDay(event.iso, {
                       hour12: settings.hourSystem === '12',
+                      offsetMs: (forecast.geo?.utcOffsetSeconds ?? 0) * 1000,
                     })}
                   </div>
                   {#if countdown}

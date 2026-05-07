@@ -1,7 +1,11 @@
 export const DEFAULTS = Object.freeze({
   userLanguage: 'auto',
   city: 'San Francisco',
-  showTime: true,
+  // Time display mode. 'off' hides time entirely; 'clock' is the
+  // classic numeric clock; 'sky-arc' is the sun/moon trajectory chart
+  // (requires a validated city for lat/lng). Replaces the older
+  // boolean `showTime` — see migrateLegacyKeys() in storage.js.
+  timeDisplay: 'clock',
   hourSystem: '24',
   showWeather: true,
   showMotto: true,

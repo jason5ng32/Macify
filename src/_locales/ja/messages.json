@@ -210,13 +210,40 @@
     "message": "時計"
   },
   "options_show_weather_short": {
-    "message": "天気"
+    "message": "天気を表示"
   },
   "options_show_motto_short": {
     "message": "格言"
   },
   "options_show_topsites_short": {
     "message": "よく見るサイト"
+  },
+  "options_location_section": {
+    "message": "位置"
+  },
+  "options_location_hint": {
+    "message": "「時刻（天空アーク）」と「天気」で使用します。これらの機能を有効にするには、まず都市の検証が必要です。"
+  },
+  "options_time_display_label": {
+    "message": "表示方法"
+  },
+  "options_time_display_off": {
+    "message": "オフ"
+  },
+  "options_time_display_clock": {
+    "message": "時計"
+  },
+  "options_time_display_sky_arc": {
+    "message": "天空アーク"
+  },
+  "options_sky_arc_needs_city": {
+    "message": "天空アーク時計を有効にするには、まず「位置」セクションで都市を検証してください。"
+  },
+  "options_sky_arc_time_zone": {
+    "message": "天空アーク時計では、設定した都市のタイムゾーンで時刻が表示されます。"
+  },
+  "options_weather_needs_city": {
+    "message": "天気を有効にするには、まず「位置」セクションで都市を検証してください。"
   },
   "options_show_zen_short": {
     "message": "禅モードボタン"

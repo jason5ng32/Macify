@@ -43,8 +43,10 @@ async function fetchWeather(geo, tempUnit) {
       'weather_code',
       'temperature_2m_max',
       'temperature_2m_min',
-      'sunrise',
-      'sunset',
+      // sunrise/sunset are computed locally via the shared sky module
+      // (suncalc) — see src/lib/sky.js. Keeping them out of the API
+      // request shrinks the payload and removes a possible source of
+      // disagreement with the SkyArc visualization.
       'precipitation_probability_max',
       'wind_speed_10m_max',
       'wind_direction_10m_dominant',
@@ -108,8 +110,6 @@ function parseDaily(data) {
       const v = arrayItem(d.temperature_2m_min, i);
       return v == null ? null : Math.round(v);
     })(),
-    sunrise: (Array.isArray(d.sunrise) ? d.sunrise[i] : null) || null,
-    sunset: (Array.isArray(d.sunset) ? d.sunset[i] : null) || null,
     precipProbability: arrayItem(d.precipitation_probability_max, i),
     windSpeed: (() => {
       const v = arrayItem(d.wind_speed_10m_max, i);
@@ -136,7 +136,9 @@ function parseAirQuality(data) {
 }
 
 export async function getForecast({ city, tempUnit }) {
-  const cacheKey = `${city.trim().toLowerCase()}|${tempUnit}`;
+  // Versioned key: bump whenever the fetched payload shape changes so
+  // we don't serve stale caches that lack newly-added fields.
+  const cacheKey = `v4|${city.trim().toLowerCase()}|${tempUnit}`;
   const cached = await cache.get(FORECAST_CACHE_KEY);
   if (
     cached &&
@@ -159,6 +161,17 @@ export async function getForecast({ city, tempUnit }) {
 
   const result = {
     location: geo.displayName,
+    // lat/lng feed suncalc for sun/moon positions. utcOffsetSeconds
+    // and timezoneAbbr come from Open-Meteo's `timezone=auto` (so they
+    // already account for DST) and let the UI render the city's wall
+    // clock — important when the user picks a city in a different
+    // timezone than their browser.
+    geo: {
+      lat: geo.lat,
+      lng: geo.lng,
+      utcOffsetSeconds: weatherSettled.value?.utc_offset_seconds ?? 0,
+      timezoneAbbr: weatherSettled.value?.timezone_abbreviation ?? null,
+    },
     current: parseCurrent(weatherSettled.value),
     daily: parseDaily(weatherSettled.value),
     airQuality:
@@ -256,13 +269,29 @@ export function isFutureTime(isoString) {
  *
  *   24h: "06:14"  (zero-padded hour)
  *   12h: "6:14 AM" / "6:42 PM"  (no leading zero on hour, literal AM/PM)
+ *
+ * `offsetMs` (optional) shifts the rendered hour to a target timezone.
+ * When provided, we read UTC fields off a date offset by `offsetMs`
+ * — the standard "fake-UTC date" trick — to display wall-clock time
+ * for a city that isn't the browser's local timezone. Without it, we
+ * use browser-local time (the original behavior).
  */
-export function formatTimeOfDay(isoString, { hour12 = false } = {}) {
+export function formatTimeOfDay(
+  isoString,
+  { hour12 = false, offsetMs } = {},
+) {
   if (!isoString) return null;
   const d = new Date(isoString);
   if (!Number.isFinite(d.getTime())) return null;
-  let h = d.getHours();
-  const m = d.getMinutes().toString().padStart(2, '0');
+  let h, m;
+  if (offsetMs != null) {
+    const wall = new Date(d.getTime() + offsetMs);
+    h = wall.getUTCHours();
+    m = wall.getUTCMinutes().toString().padStart(2, '0');
+  } else {
+    h = d.getHours();
+    m = d.getMinutes().toString().padStart(2, '0');
+  }
   if (hour12) {
     const suffix = h >= 12 ? 'PM' : 'AM';
     h = h % 12 || 12;

@@ -210,13 +210,40 @@
     "message": "Clock"
   },
   "options_show_weather_short": {
-    "message": "Weather"
+    "message": "Show Weather"
   },
   "options_show_motto_short": {
     "message": "Motto"
   },
   "options_show_topsites_short": {
     "message": "Top Sites"
+  },
+  "options_location_section": {
+    "message": "Location"
+  },
+  "options_location_hint": {
+    "message": "Used by Time (Sky Arc) and Weather. The city must validate before those features become available."
+  },
+  "options_time_display_label": {
+    "message": "Display"
+  },
+  "options_time_display_off": {
+    "message": "Off"
+  },
+  "options_time_display_clock": {
+    "message": "Clock"
+  },
+  "options_time_display_sky_arc": {
+    "message": "Sky Arc"
+  },
+  "options_sky_arc_needs_city": {
+    "message": "To enable the Sky Arc clock, validate a city in the Location section first."
+  },
+  "options_sky_arc_time_zone": {
+    "message": "The Sky Arc clock displays time in the selected city's local timezone."
+  },
+  "options_weather_needs_city": {
+    "message": "To enable Weather, validate a city in the Location section first."
   },
   "options_show_zen_short": {
     "message": "Zen Mode button"

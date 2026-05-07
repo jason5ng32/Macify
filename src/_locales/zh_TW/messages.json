@@ -210,13 +210,40 @@
     "message": "時鐘"
   },
   "options_show_weather_short": {
-    "message": "天氣"
+    "message": "顯示天氣"
   },
   "options_show_motto_short": {
     "message": "格言"
   },
   "options_show_topsites_short": {
     "message": "常用網站"
+  },
+  "options_location_section": {
+    "message": "位置"
+  },
+  "options_location_hint": {
+    "message": "供「時間（天文圖）」和「天氣」使用。城市需通過校驗後這兩個功能才能啟用。"
+  },
+  "options_time_display_label": {
+    "message": "顯示方式"
+  },
+  "options_time_display_off": {
+    "message": "關閉"
+  },
+  "options_time_display_clock": {
+    "message": "時鐘"
+  },
+  "options_time_display_sky_arc": {
+    "message": "天文圖"
+  },
+  "options_sky_arc_needs_city": {
+    "message": "啟用天文圖時鐘需要先校驗城市，請在位置設定中校驗城市。"
+  },
+  "options_sky_arc_time_zone": {
+    "message": "在天文圖時鐘中，時間會以所設定的城市時區顯示。"
+  },
+  "options_weather_needs_city": {
+    "message": "啟用天氣需要先校驗城市，請在位置設定中校驗城市。"
   },
   "options_show_zen_short": {
     "message": "禪意模式按鈕"
