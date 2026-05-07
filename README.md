@@ -54,9 +54,10 @@ npm run download:aerials -- --dry-run
 npm run download:aerials -- --limit 5
 npm run download:aerials -- --list-categories
 npm run download:aerials -- --category Landscapes,Cities
+npm run download:aerials -- --parallel 3
 ```
 
-Running without flags opens an interactive menu where you can choose the full catalog, a random sample, or one or more categories. Run `--dry-run` first to see the number of videos, estimated download size, and available disk space. Use `--limit N` to test with a small number of videos before downloading the full catalog. During a real download, the script asks for confirmation; pass `--yes` if you want to skip the prompt.
+Running without flags opens an interactive menu where you can choose the full catalog, a random sample, or one or more categories. Category selection uses numbered choices so typos do not accidentally expand the scope. Run `--dry-run` first to see the number of videos, estimated download size, available disk space, and files that are already present. Use `--limit N` to test with a small number of videos before downloading the full catalog. Downloads run with 3 parallel transfers by default; use `--parallel N` to tune this up or down, capped at 8. During a real download, the script asks for confirmation; pass `--yes` if you want to skip the prompt.
 
 The script reads the current macOS manifest at `~/Library/Application Support/com.apple.wallpaper/aerials/manifest/entries.json`, then saves videos to `~/Library/Application Support/com.apple.wallpaper/aerials/videos`. macOS stores Aerial videos as `<asset.id>.mov`, so the helper uses the same UUID filename from the manifest. It skips files whose UUID filename is already present and whose size matches Apple's `Content-Length`, and resumes from an existing `.part` file or short final file when the Apple server supports HTTP range requests. Do not use `sudo` for the current macOS user path. If Python reports a certificate verification error for Apple's Aerial host, re-run with `--insecure-ssl`. Use `--force` only when you want to redownload matching files too.
 
