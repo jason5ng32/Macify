@@ -1,0 +1,1346 @@
+{
+  "locales": [
+    "en",
+    "ja",
+    "zh_CN",
+    "zh_TW"
+  ],
+  "categories": {
+    "Landscapes": {
+      "en": "Landscape",
+      "ja": "風景",
+      "zh_CN": "自然景观",
+      "zh_TW": "風景"
+    },
+    "Cities": {
+      "en": "Cityscape",
+      "ja": "街並み",
+      "zh_CN": "城市景观",
+      "zh_TW": "城市風光"
+    },
+    "Underwater": {
+      "en": "Underwater",
+      "ja": "水中",
+      "zh_CN": "水下景观",
+      "zh_TW": "水中世界"
+    },
+    "Space": {
+      "en": "Earth",
+      "ja": "Earth, 地球",
+      "zh_CN": "地球",
+      "zh_TW": "地球"
+    },
+    "Mac": {
+      "en": "Mac",
+      "ja": "Mac",
+      "zh_CN": "Mac",
+      "zh_TW": "Mac"
+    }
+  },
+  "subcategories": {
+    "Tahoe": {
+      "en": "Tahoe",
+      "ja": "Tahoe",
+      "zh_CN": "Tahoe",
+      "zh_TW": "Tahoe"
+    },
+    "Sequoia": {
+      "en": "Sequoia",
+      "ja": "Sequoia",
+      "zh_CN": "Sequoia",
+      "zh_TW": "Sequoia"
+    },
+    "Sonoma": {
+      "en": "Sonoma",
+      "ja": "Sonoma",
+      "zh_CN": "Sonoma",
+      "zh_TW": "Sonoma"
+    },
+    "Goa": {
+      "en": "Goa",
+      "ja": "ゴア州",
+      "zh_CN": "果阿邦",
+      "zh_TW": "果阿州"
+    },
+    "Uttarakhand": {
+      "en": "Uttarakhand",
+      "ja": "ウッタラーカンド州",
+      "zh_CN": "北阿坎德邦",
+      "zh_TW": "北阿坎德州"
+    },
+    "Kerala": {
+      "en": "Kerala",
+      "ja": "ケララ州",
+      "zh_CN": "喀拉拉邦",
+      "zh_TW": "喀拉拉州"
+    },
+    "Superbloom": {
+      "en": "Superbloom",
+      "ja": "スーパーブルーム",
+      "zh_CN": "超级花期",
+      "zh_TW": "超級花期"
+    },
+    "Redwoods": {
+      "en": "Redwoods",
+      "ja": "セコイアスギ",
+      "zh_CN": "红杉",
+      "zh_TW": "紅杉"
+    },
+    "MonumentValley": {
+      "en": "Monument Valley",
+      "ja": "モニュメントバレー",
+      "zh_CN": "纪念碑谷",
+      "zh_TW": "紀念碑谷"
+    },
+    "GrandCanyon": {
+      "en": "Grand Canyon",
+      "ja": "グランドキャニオン",
+      "zh_CN": "大峡谷",
+      "zh_TW": "大峽谷"
+    },
+    "Liwa": {
+      "en": "Liwa",
+      "ja": "リワ",
+      "zh_CN": "利瓦",
+      "zh_TW": "利瓦"
+    },
+    "Scotland": {
+      "en": "Scotland",
+      "ja": "スコットランド",
+      "zh_CN": "苏格兰",
+      "zh_TW": "蘇格蘭"
+    },
+    "Iceland": {
+      "en": "Iceland",
+      "ja": "アイスランド",
+      "zh_CN": "冰岛",
+      "zh_TW": "冰島"
+    },
+    "Patagonia": {
+      "en": "Patagonia",
+      "ja": "パタゴニア",
+      "zh_CN": "巴塔哥尼亚",
+      "zh_TW": "巴塔哥尼亞"
+    },
+    "Hawaii": {
+      "en": "Hawaii",
+      "ja": "ハワイ",
+      "zh_CN": "夏威夷",
+      "zh_TW": "夏威夷"
+    },
+    "China": {
+      "en": "China",
+      "ja": "中国",
+      "zh_CN": "中国",
+      "zh_TW": "中國"
+    },
+    "Yosemite": {
+      "en": "Yosemite",
+      "ja": "Yosemite",
+      "zh_CN": "Yosemite",
+      "zh_TW": "Yosemite"
+    },
+    "Greenland": {
+      "en": "Greenland",
+      "ja": "グリーンランド",
+      "zh_CN": "格陵兰",
+      "zh_TW": "格陵蘭"
+    },
+    "CitiesNewYork": {
+      "en": "New York",
+      "ja": "ニューヨーク",
+      "zh_CN": "纽约",
+      "zh_TW": "紐約"
+    },
+    "CitiesSanFrancisco": {
+      "en": "San Francisco",
+      "ja": "サンフランシスコ",
+      "zh_CN": "旧金山",
+      "zh_TW": "舊金山"
+    },
+    "CitiesLosAngeles": {
+      "en": "Los Angeles",
+      "ja": "ロサンゼルス",
+      "zh_CN": "洛杉矶",
+      "zh_TW": "洛杉磯"
+    },
+    "CitiesHongKong": {
+      "en": "Hong Kong",
+      "ja": "香港",
+      "zh_CN": "香港",
+      "zh_TW": "香港"
+    },
+    "CitiesLondon": {
+      "en": "London",
+      "ja": "ロンドン",
+      "zh_CN": "伦敦",
+      "zh_TW": "倫敦"
+    },
+    "CitiesDubai": {
+      "en": "Dubai",
+      "ja": "ドバイ",
+      "zh_CN": "迪拜",
+      "zh_TW": "杜拜"
+    },
+    "PalauJellies": {
+      "en": "Palau Jellies",
+      "ja": "パラオのクラゲ",
+      "zh_CN": "帕劳水母",
+      "zh_TW": "帛琉水母"
+    },
+    "TahitiWaves": {
+      "en": "Tahiti Waves",
+      "ja": "タヒチの波",
+      "zh_CN": "塔希提岛的浪花",
+      "zh_TW": "大溪地浪潮"
+    },
+    "GrayReefSharks": {
+      "en": "Gray Reef Sharks",
+      "ja": "オグロメジロザメ",
+      "zh_CN": "灰礁鲨",
+      "zh_TW": "黑尾真鯊"
+    },
+    "PalauCoral": {
+      "en": "Palau Coral",
+      "ja": "パラオのサンゴ",
+      "zh_CN": "帕劳珊瑚",
+      "zh_TW": "帛琉珊瑚"
+    },
+    "CostaRicaDolphins": {
+      "en": "Costa Rica Dolphins",
+      "ja": "コスタリカのイルカ",
+      "zh_CN": "哥斯达黎加海豚",
+      "zh_TW": "哥斯大黎加海豚"
+    },
+    "SeaStars": {
+      "en": "Sea Stars",
+      "ja": "ヒトデ",
+      "zh_CN": "海星",
+      "zh_TW": "海星"
+    },
+    "Bumpheads": {
+      "en": "Bumpheads",
+      "ja": "カンムリブダイ",
+      "zh_CN": "隆头鹦嘴鱼",
+      "zh_TW": "隆頭鸚哥魚"
+    },
+    "CaliforniaKelpForest": {
+      "en": "California Kelp Forest",
+      "ja": "カリフォルニアのケルプの森",
+      "zh_CN": "加州海藻林",
+      "zh_TW": "加州海藻林"
+    },
+    "Barracuda": {
+      "en": "Barracuda",
+      "ja": "バラクーダ",
+      "zh_CN": "梭鱼",
+      "zh_TW": "梭魚"
+    },
+    "AlaskanJellies": {
+      "en": "Alaskan Jellies",
+      "ja": "アラスカのクラゲ",
+      "zh_CN": "阿拉斯加水母",
+      "zh_TW": "阿拉斯加水母"
+    },
+    "Seals": {
+      "en": "Seals",
+      "ja": "アザラシ",
+      "zh_CN": "海豹",
+      "zh_TW": "海豹"
+    },
+    "HumpbackWhale": {
+      "en": "Humpback Whale",
+      "ja": "ザトウクジラ",
+      "zh_CN": "座头鲸",
+      "zh_TW": "座頭鯨"
+    },
+    "Jacks": {
+      "en": "Jacks",
+      "ja": "ジャックス",
+      "zh_CN": "杰克鱼",
+      "zh_TW": "大眼鰺"
+    },
+    "Kelp": {
+      "en": "Kelp",
+      "ja": "ケルプ",
+      "zh_CN": "海藻",
+      "zh_TW": "海藻"
+    },
+    "CownoseRays": {
+      "en": "Cownose Rays",
+      "ja": "クロガネウシバナトビエイ",
+      "zh_CN": "牛鼻鲼",
+      "zh_TW": "牛鼻鰩"
+    },
+    "CaliforniaDolphins": {
+      "en": "California Dolphins",
+      "ja": "カリフォルニアのイルカ",
+      "zh_CN": "加州海豚",
+      "zh_TW": "加州海豚"
+    },
+    "RedSeaCoral": {
+      "en": "Red Sea Coral",
+      "ja": "紅海のサンゴ",
+      "zh_CN": "红海珊瑚",
+      "zh_TW": "紅海珊瑚"
+    },
+    "NewZealand": {
+      "en": "New Zealand",
+      "ja": "ニュージーランド",
+      "zh_CN": "新西兰",
+      "zh_TW": "紐西蘭"
+    },
+    "SaharaandItaly": {
+      "en": "Sahara and Italy",
+      "ja": "サハラとイタリア",
+      "zh_CN": "撒哈拉和意大利",
+      "zh_TW": "撒哈拉和義大利"
+    },
+    "NorthAmericaAurora": {
+      "en": "North America Aurora",
+      "ja": "北米のオーロラ",
+      "zh_CN": "北美极光",
+      "zh_TW": "北美極光"
+    },
+    "SouthernCaliforniatoBaja": {
+      "en": "Southern California to Baja",
+      "ja": "南カリフォルニアからバハ",
+      "zh_CN": "南加州至下加州",
+      "zh_TW": "南加州至下加利福尼亞洲"
+    },
+    "WestAfricatotheAlps": {
+      "en": "West Africa to the Alps",
+      "ja": "西アフリカからアルプス",
+      "zh_CN": "西非至阿尔卑斯山脉",
+      "zh_TW": "西非至阿爾卑斯山"
+    },
+    "Antarctica": {
+      "en": "Antarctica",
+      "ja": "南極",
+      "zh_CN": "南极洲",
+      "zh_TW": "南極洲"
+    },
+    "AfricaandtheMiddleEast": {
+      "en": "Middle East",
+      "ja": "中近東",
+      "zh_CN": "中东",
+      "zh_TW": "中東"
+    },
+    "CaliforniatoVegas": {
+      "en": "California to Vegas",
+      "ja": "カリフォルニアからラスベガス",
+      "zh_CN": "加州至拉斯维加斯",
+      "zh_TW": "加州至拉斯維加斯"
+    },
+    "AtlanticOceantoSpainandFrance": {
+      "en": "Atlantic Ocean to Spain and France",
+      "ja": "スペインからフランスにかけての大西洋",
+      "zh_CN": "大西洋至西班牙和法国",
+      "zh_TW": "往西班牙和法國的大西洋"
+    },
+    "KoreaandJapanNight": {
+      "en": "Korea and Japan Night",
+      "ja": "韓国と日本の夜景",
+      "zh_CN": "韩国和日本夜晚",
+      "zh_TW": "韓國和日本夜晚"
+    },
+    "Caribbean": {
+      "en": "Caribbean",
+      "ja": "カリブ",
+      "zh_CN": "加勒比",
+      "zh_TW": "加勒比海"
+    },
+    "NileDelta": {
+      "en": "Nile Delta",
+      "ja": "ナイル川デルタ",
+      "zh_CN": "尼罗河三角洲",
+      "zh_TW": "尼羅河三角洲"
+    },
+    "IrelandtoAsia": {
+      "en": "Ireland to Asia",
+      "ja": "アイルランドからアジア",
+      "zh_CN": "爱尔兰至亚洲",
+      "zh_TW": "愛爾蘭至亞洲"
+    },
+    "Australia": {
+      "en": "Australia",
+      "ja": "オーストラリア",
+      "zh_CN": "澳大利亚",
+      "zh_TW": "澳洲"
+    },
+    "SouthAfricatoNorthAsia": {
+      "en": "South Africa to North Asia",
+      "ja": "南アフリカから北アジア",
+      "zh_CN": "南非至北亚",
+      "zh_TW": "南非至北亞"
+    },
+    "AfricaNight": {
+      "en": "Africa Night",
+      "ja": "アフリカの夜景",
+      "zh_CN": "非洲夜晚",
+      "zh_TW": "非洲夜晚"
+    },
+    "CaribbeanDay": {
+      "en": "Caribbean Day",
+      "ja": "カリブの一日",
+      "zh_CN": "加勒比白天",
+      "zh_TW": "加勒比海白晝"
+    },
+    "NewYorkNight": {
+      "en": "New York Night",
+      "ja": "ニューヨークの夜景",
+      "zh_CN": "纽约夜晚",
+      "zh_TW": "紐約夜晚"
+    },
+    "ItalytoAsia": {
+      "en": "Italy to Asia",
+      "ja": "イタリアからアジア",
+      "zh_CN": "意大利至亚洲",
+      "zh_TW": "義大利至亞洲"
+    },
+    "IranandAfghanistan": {
+      "en": "Iran and Afghanistan",
+      "ja": "イランとアフガニスタン",
+      "zh_CN": "伊朗和阿富汗",
+      "zh_TW": "伊朗和阿富汗"
+    }
+  },
+  "videos": {
+    "TA_L_002": {
+      "en": "Tahoe Day",
+      "ja": "昼のタホ",
+      "zh_CN": "太浩湖白天",
+      "zh_TW": "太浩湖白天"
+    },
+    "TA_L_001": {
+      "en": "Tahoe Morning",
+      "ja": "朝のタホ",
+      "zh_CN": "太浩湖清晨",
+      "zh_TW": "太浩湖清晨"
+    },
+    "TA_D_001": {
+      "en": "Tahoe Evening",
+      "ja": "夕方のタホ",
+      "zh_CN": "太浩湖黄昏",
+      "zh_TW": "太浩湖傍晚"
+    },
+    "TA_D_002": {
+      "en": "Tahoe Night",
+      "ja": "夜のタホ",
+      "zh_CN": "太浩湖夜晚",
+      "zh_TW": "太浩湖夜晚"
+    },
+    "A007_C0001": {
+      "en": "Sequoia Sunrise",
+      "ja": "セコイアの日の出",
+      "zh_CN": "红杉国家公园日出",
+      "zh_TW": "紅衫國家公園日出"
+    },
+    "A010_C0005": {
+      "en": "Sequoia Morning",
+      "ja": "朝のセコイア",
+      "zh_CN": "红杉国家公园清晨",
+      "zh_TW": "紅衫國家公園清晨"
+    },
+    "A018_C0002": {
+      "en": "Sequoia Night",
+      "ja": "夜のセコイア",
+      "zh_CN": "红杉国家公园夜晚",
+      "zh_TW": "紅衫國家公園夜晚"
+    },
+    "W010_C003_F01": {
+      "en": "Sonoma Horizon",
+      "ja": "ソノマの地平線",
+      "zh_CN": "索诺马地平线",
+      "zh_TW": "索諾馬地平線"
+    },
+    "S013_C001_F01": {
+      "en": "Sonoma Evening",
+      "ja": "夕方のソノマ",
+      "zh_CN": "索诺马黄昏",
+      "zh_TW": "索諾馬傍晚"
+    },
+    "S011_C003_F01": {
+      "en": "Sonoma Clouds",
+      "ja": "ソノマの雲",
+      "zh_CN": "索诺马的云层",
+      "zh_TW": "索諾馬雲層"
+    },
+    "S009_C018_F01": {
+      "en": "Sonoma from Above",
+      "ja": "上空からのソノマ",
+      "zh_CN": "俯瞰索诺马",
+      "zh_TW": "俯瞰索諾馬"
+    },
+    "S005_C013_F01": {
+      "en": "Sonoma River",
+      "ja": "ソノマの川",
+      "zh_CN": "索诺马河流",
+      "zh_TW": "索諾馬河"
+    },
+    "ANN0060": {
+      "en": "Goa Beaches",
+      "ja": "ゴア州のビーチ",
+      "zh_CN": "果阿邦海滩",
+      "zh_TW": "果阿海灘"
+    },
+    "ANN0080": {
+      "en": "Goa Coast",
+      "ja": "ゴア州の海岸",
+      "zh_CN": "果阿邦海岸",
+      "zh_TW": "果阿海岸"
+    },
+    "ANN0020": {
+      "en": "Through Himalayas",
+      "ja": "ヒマラヤ山脈通過中",
+      "zh_CN": "穿越喜马拉雅",
+      "zh_TW": "穿過喜馬拉雅山區"
+    },
+    "ANN0090": {
+      "en": "Himalayas Day",
+      "ja": "ヒマラヤの一日",
+      "zh_CN": "喜马拉雅山白天",
+      "zh_TW": "喜馬拉雅山白晝"
+    },
+    "ANN0110": {
+      "en": "The Ganges",
+      "ja": "ガンジス川",
+      "zh_CN": "恒河",
+      "zh_TW": "恆河"
+    },
+    "ANN0010": {
+      "en": "Ghansali from Above",
+      "ja": "上空からのガンサリ",
+      "zh_CN": "俯瞰甘萨里",
+      "zh_TW": "俯瞰甘薩利"
+    },
+    "ANN0120": {
+      "en": "Himalayan Peaks",
+      "ja": "ヒマラヤ連峰",
+      "zh_CN": "喜马拉雅山峰",
+      "zh_TW": "喜馬拉雅山峰"
+    },
+    "ANN0040": {
+      "en": "Tea Gardens from Above",
+      "ja": "上空からの茶園",
+      "zh_CN": "俯瞰茶园",
+      "zh_TW": "俯瞰茶園"
+    },
+    "ANN0100": {
+      "en": "Tea Gardens Day",
+      "ja": "茶園の一日",
+      "zh_CN": "茶园白天",
+      "zh_TW": "茶園白晝"
+    },
+    "ANN0070": {
+      "en": "Reservoir Day",
+      "ja": "貯水池の一日",
+      "zh_CN": "水库白天",
+      "zh_TW": "水庫白晝"
+    },
+    "ANN0130": {
+      "en": "Tea Gardens Mist",
+      "ja": "茶園の霧",
+      "zh_CN": "茶园雾霭",
+      "zh_TW": "茶園薄霧"
+    },
+    "W014_C018_F01": {
+      "en": "California’s Temblor Range",
+      "ja": "カリフォルニアのテンブラー山脈",
+      "zh_CN": "加州坦布洛岭",
+      "zh_TW": "加州坦布勒嶺"
+    },
+    "W015_C010_F01": {
+      "en": "California’s Carrizo Plain",
+      "ja": "カリフォルニアのカリーゾ平原",
+      "zh_CN": "加州卡里佐平原",
+      "zh_TW": "加州蘆葦平原"
+    },
+    "W015_C006_F01": {
+      "en": "California Wildflowers",
+      "ja": "カリフォルニアの野草",
+      "zh_CN": "加州野花",
+      "zh_TW": "加州野花"
+    },
+    "R010_C003_F01": {
+      "en": "Redwoods from Above",
+      "ja": "上空からのセコイアスギ",
+      "zh_CN": "俯瞰红杉林",
+      "zh_TW": "俯瞰紅杉"
+    },
+    "R013_C039_F01": {
+      "en": "Redwoods River",
+      "ja": "レッドウッズの川",
+      "zh_CN": "红杉林河流",
+      "zh_TW": "紅杉河"
+    },
+    "R006_C013_S05": {
+      "en": "Oregon Sunset",
+      "ja": "オレゴンの日没",
+      "zh_CN": "俄勒冈州日落",
+      "zh_TW": "奧勒岡州日落"
+    },
+    "R004_C012_F01": {
+      "en": "Oregon Coastline",
+      "ja": "オレゴンの海岸線",
+      "zh_CN": "俄勒冈州海岸线",
+      "zh_TW": "奧勒岡州海岸線"
+    },
+    "M012_C065_S04": {
+      "en": "Utah Evening",
+      "ja": "夕方のユタ",
+      "zh_CN": "犹他州黄昏",
+      "zh_TW": "猶他州傍晚"
+    },
+    "M013_C012_F01": {
+      "en": "Arizona’s Coal Mine Canyon",
+      "ja": "アリゾナのコールマインキャニオン",
+      "zh_CN": "亚利桑那州煤矿峡谷",
+      "zh_TW": "亞利桑那州的煤礦峽谷"
+    },
+    "M010_C009_F01": {
+      "en": "Utah’s Lake Powell",
+      "ja": "ユタのパウエル湖",
+      "zh_CN": "犹他州鲍威尔湖",
+      "zh_TW": "猶他州的鮑威爾湖"
+    },
+    "M010_C005_F01": {
+      "en": "Utah’s Cathedral Canyon",
+      "ja": "ユタのカテドラルキャニオン",
+      "zh_CN": "犹他州大教堂峡谷",
+      "zh_TW": "猶他州的大教堂峽谷"
+    },
+    "M005_C017_F01": {
+      "en": "Utah’s Olympia Bar",
+      "ja": "ユタのオリンピアバー",
+      "zh_CN": "犹他州奥林匹亚沙洲",
+      "zh_TW": "猶他州的奧林匹克沙洲"
+    },
+    "M007_C007_F01": {
+      "en": "Utah’s Monument Valley",
+      "ja": "ユタのモニュメントバレー",
+      "zh_CN": "犹他州纪念碑谷",
+      "zh_TW": "猶他州的紀念碑谷"
+    },
+    "M012_C023_S04": {
+      "en": "Utah’s Factory Butte",
+      "ja": "ユタのファクトリービュート",
+      "zh_CN": "犹他州Factory Butte山丘",
+      "zh_TW": "猶他州的工廠孤峰"
+    },
+    "G010_C026_0107KE": {
+      "en": "Grand Canyon River Valley",
+      "ja": "グランドキャニオン峡谷",
+      "zh_CN": "大峡谷河谷",
+      "zh_TW": "大峽谷河谷"
+    },
+    "G007_C004": {
+      "en": "Grand Canyon Evening",
+      "ja": "夕方のグランドキャニオン",
+      "zh_CN": "大峡谷黄昏",
+      "zh_TW": "大峽谷傍晚"
+    },
+    "G009_C003_010678": {
+      "en": "Grand Canyon Sunset",
+      "ja": "グランドキャニオンの日没",
+      "zh_CN": "大峡谷日落",
+      "zh_TW": "大峽谷日落"
+    },
+    "G009_C014_0106B9": {
+      "en": "Grand Canyon Sediment",
+      "ja": "グランドキャニオンの堆積物",
+      "zh_CN": "大峡谷沉积层",
+      "zh_TW": "大峽谷沈積層"
+    },
+    "G008_C015_0106MB": {
+      "en": "Grand Canyon from Above",
+      "ja": "上空からのグランドキャニオン",
+      "zh_CN": "俯瞰大峡谷",
+      "zh_TW": "俯瞰大峽谷"
+    },
+    "LW_L001_C006": {
+      "en": "Liwa Dune Fields",
+      "ja": "リワの砂漠地帯",
+      "zh_CN": "利瓦沙丘场",
+      "zh_TW": "利瓦沙丘地"
+    },
+    "LW_L001_C003": {
+      "en": "Liwa Horizon",
+      "ja": "リワの地平線",
+      "zh_CN": "利瓦地平线",
+      "zh_TW": "利瓦地平線"
+    },
+    "S006_C007": {
+      "en": "Scotland Castle",
+      "ja": "スコットランドの城",
+      "zh_CN": "苏格兰城堡",
+      "zh_TW": "蘇格蘭城堡"
+    },
+    "S003_C020": {
+      "en": "Scotland Coast",
+      "ja": "スコットランド沿岸部",
+      "zh_CN": "苏格兰海岸",
+      "zh_TW": "蘇格蘭海岸"
+    },
+    "S005_C015": {
+      "en": "Scotland Loch",
+      "ja": "スコットランドのロッホ",
+      "zh_CN": "苏格兰湖",
+      "zh_TW": "蘇格蘭湖"
+    },
+    "I003_C008": {
+      "en": "Iceland Glacier",
+      "ja": "アイスランドの氷河",
+      "zh_CN": "冰岛大冰川",
+      "zh_TW": "冰島冰河"
+    },
+    "I005_C008": {
+      "en": "Iceland Snow Caps",
+      "ja": "アイスランドの冠雪",
+      "zh_CN": "冰岛积雪",
+      "zh_TW": "冰島雪峰"
+    },
+    "I004_C014": {
+      "en": "Iceland Fjord from Above",
+      "ja": "上空からのアイスランドのフィヨルド",
+      "zh_CN": "俯瞰冰岛峡湾",
+      "zh_TW": "俯瞰冰島峽灣"
+    },
+    "I003_C011": {
+      "en": "Iceland Fjord",
+      "ja": "アイスランドのフィヨルド",
+      "zh_CN": "冰岛峡湾",
+      "zh_TW": "冰島峽灣"
+    },
+    "I003_C004": {
+      "en": "Iceland Coast",
+      "ja": "アイスランド沿岸部",
+      "zh_CN": "冰岛海岸",
+      "zh_TW": "冰島海岸"
+    },
+    "I003_C005": {
+      "en": "Iceland Lake",
+      "ja": "アイスランドの湖",
+      "zh_CN": "冰岛湖",
+      "zh_TW": "冰島湖泊"
+    },
+    "I003_C015": {
+      "en": "Iceland Riverbed",
+      "ja": "アイスランドの川底",
+      "zh_CN": "冰岛河床",
+      "zh_TW": "冰島河床"
+    },
+    "P001_C005_11059D": {
+      "en": "Patagonia Mountain",
+      "ja": "パタゴニアの山",
+      "zh_CN": "巴塔哥尼亚的高山",
+      "zh_TW": "巴塔哥尼亞山"
+    },
+    "P005_C002_1109E1": {
+      "en": "Patagonia Lake",
+      "ja": "パタゴニアの湖",
+      "zh_CN": "巴塔哥尼亚湖",
+      "zh_TW": "巴塔哥尼亞湖"
+    },
+    "P007_C027": {
+      "en": "Patagonia Range",
+      "ja": "パタゴニア地帯",
+      "zh_CN": "巴塔哥尼亚山脉",
+      "zh_TW": "巴塔哥尼亞山脈"
+    },
+    "P006_C002_11106T": {
+      "en": "Patagonia River",
+      "ja": "パタゴニアの川",
+      "zh_CN": "巴塔哥尼亚河流",
+      "zh_TW": "巴塔哥尼亞河"
+    },
+    "H004_C009": {
+      "en": "Hawaii Clouds Light",
+      "ja": "ハワイの雲（ライト）",
+      "zh_CN": "夏威夷云层（浅色）",
+      "zh_TW": "夏威夷雲層亮色"
+    },
+    "H007_C003": {
+      "en": "Hawaii Coastline",
+      "ja": "ハワイの海岸線",
+      "zh_CN": "夏威夷海岸线",
+      "zh_TW": "夏威夷海岸線"
+    },
+    "H012_C009_0": {
+      "en": "Hawaii Ocean",
+      "ja": "ハワイの海",
+      "zh_CN": "夏威夷洋",
+      "zh_TW": "夏威夷海洋"
+    },
+    "H005_C012": {
+      "en": "Hawaii Valley",
+      "ja": "ハワイの渓谷",
+      "zh_CN": "夏威夷谷",
+      "zh_TW": "夏威夷峽谷"
+    },
+    "H004_C007": {
+      "en": "Hawaii Clouds Dark",
+      "ja": "ハワイの雲（ダーク）",
+      "zh_CN": "夏威夷云层（深色）",
+      "zh_TW": "夏威夷雲層暗色"
+    },
+    "C003_C003": {
+      "en": "China Silhouette",
+      "ja": "中国のシルエット",
+      "zh_CN": "中国剪影",
+      "zh_TW": "中國剪影"
+    },
+    "C004_C003": {
+      "en": "China’s Great Wall",
+      "ja": "中国の万里の長城",
+      "zh_CN": "中国长城",
+      "zh_TW": "中國萬里長城"
+    },
+    "CH_C002_C005": {
+      "en": "China Paddy Field",
+      "ja": "中国の水田",
+      "zh_CN": "中国稻田",
+      "zh_TW": "中國稻田"
+    },
+    "CH_C007_C011": {
+      "en": "China Mountains",
+      "ja": "中国の山",
+      "zh_CN": "中国的高山",
+      "zh_TW": "中國群山"
+    },
+    "CH_C007_C004": {
+      "en": "China Mountain Cliffs",
+      "ja": "中国の断崖",
+      "zh_CN": "中国的崇山峻岭",
+      "zh_TW": "中國山壁斷崖"
+    },
+    "C001_C005": {
+      "en": "China’s Great Wall Daylight",
+      "ja": "日中の中国の万里の長城",
+      "zh_CN": "日光下的中国长城",
+      "zh_TW": "中國萬里長城白晝"
+    },
+    "Y005_C003_0228SC": {
+      "en": "Yosemite Clouds",
+      "ja": "ヨセミテの雲",
+      "zh_CN": "优胜美地的云层",
+      "zh_TW": "優勝美地雲層"
+    },
+    "Y004_C015_0227PD": {
+      "en": "Yosemite Silhouette",
+      "ja": "ヨセミテのシルエット",
+      "zh_CN": "优胜美地轮廓线",
+      "zh_TW": "優勝美地剪影"
+    },
+    "Y009_C015_0304I": {
+      "en": "Yosemite from Above",
+      "ja": "上空からのヨセミテ",
+      "zh_CN": "俯瞰优胜美地",
+      "zh_TW": "俯瞰優勝美地"
+    },
+    "Y002_C013_0226": {
+      "en": "Yosemite Horizon",
+      "ja": "ヨセミテの地平線",
+      "zh_CN": "优胜美地地平线",
+      "zh_TW": "優勝美地地平線"
+    },
+    "Y011_C008_030584": {
+      "en": "Yosemite Snow Caps",
+      "ja": "ヨセミテの冠雪",
+      "zh_CN": "优胜美地的积雪",
+      "zh_TW": "優勝美地雪峰"
+    },
+    "Y003_C009_027": {
+      "en": "Yosemite Mountains",
+      "ja": "ヨセミテの山",
+      "zh_CN": "优胜美地的高山",
+      "zh_TW": "優勝美地山脈"
+    },
+    "Y011_C001_0305": {
+      "en": "Yosemite Valley",
+      "ja": "Yosemite Valley",
+      "zh_CN": "Yosemite Valley",
+      "zh_TW": "Yosemite Valley"
+    },
+    "GL_G010_C006": {
+      "en": "Greenland Evening",
+      "ja": "夕方のグリーンランド",
+      "zh_CN": "格陵兰黄昏",
+      "zh_TW": "格陵蘭傍晚"
+    },
+    "GL_G002_C002": {
+      "en": "Greenland Coast",
+      "ja": "グリーンランド沿岸部",
+      "zh_CN": "格陵兰海岸",
+      "zh_TW": "格陵蘭海岸"
+    },
+    "GL_G004_C010": {
+      "en": "Greenland Glacier",
+      "ja": "グリーンランドの氷河",
+      "zh_CN": "格陵兰大冰川",
+      "zh_TW": "格陵蘭冰河"
+    },
+    "N013_C004": {
+      "en": "New York Night",
+      "ja": "ニューヨークの夜景",
+      "zh_CN": "纽约夜晚",
+      "zh_TW": "紐約夜晚"
+    },
+    "N003_C006": {
+      "en": "New York Midtown",
+      "ja": "ニューヨークのミッドタウン",
+      "zh_CN": "纽约中城区",
+      "zh_TW": "紐約中城"
+    },
+    "N008_C009": {
+      "en": "New York from Above",
+      "ja": "上空からのニューヨーク",
+      "zh_CN": "俯瞰纽约",
+      "zh_TW": "俯瞰紐約"
+    },
+    "N008_C003": {
+      "en": "New York Skyline",
+      "ja": "ニューヨークのスカイライン",
+      "zh_CN": "纽约天际线",
+      "zh_TW": "紐約天際線"
+    },
+    "A007_C017": {
+      "en": "San Francisco Evening",
+      "ja": "夕方のサンフランシスコ",
+      "zh_CN": "旧金山黄昏",
+      "zh_TW": "舊金山傍晚"
+    },
+    "A013_C012": {
+      "en": "San Francisco’s Golden Gate Bridge",
+      "ja": "サンフランシスコのゴールデンゲートブリッジ",
+      "zh_CN": "旧金山金门大桥",
+      "zh_TW": "舊金山金門大橋"
+    },
+    "A013_C004": {
+      "en": "San Francisco’s Ferry Building",
+      "ja": "サンフランシスコのフェリービルディング",
+      "zh_CN": "旧金山渡轮大厦",
+      "zh_TW": "舊金山渡輪大廈"
+    },
+    "A015_C018": {
+      "en": "San Francisco Night",
+      "ja": "夜のサンフランシスコ",
+      "zh_CN": "旧金山夜色",
+      "zh_TW": "舊金山夜晚"
+    },
+    "A012_C014": {
+      "en": "San Francisco Skyline",
+      "ja": "サンフランシスコのスカイライン",
+      "zh_CN": "旧金山天际线",
+      "zh_TW": "舊金山天際線"
+    },
+    "A006_C003": {
+      "en": "San Francisco Bay",
+      "ja": "サンフランシスコ湾",
+      "zh_CN": "旧金山湾区",
+      "zh_TW": "舊金山灣"
+    },
+    "A008_C007": {
+      "en": "San Francisco Fog",
+      "ja": "サンフランシスコの霧",
+      "zh_CN": "雾中旧金山",
+      "zh_TW": "舊金山濃霧"
+    },
+    "LA_A005_C009": {
+      "en": "Los Angeles Overpass",
+      "ja": "ロサンゼルスの陸橋",
+      "zh_CN": "洛杉矶立交桥",
+      "zh_TW": "洛杉磯高架橋"
+    },
+    "LA_A008_C004": {
+      "en": "Los Angeles Beach",
+      "ja": "ロサンゼルスのビーチ",
+      "zh_CN": "洛杉矶海滩",
+      "zh_TW": "洛杉磯海灘"
+    },
+    "LA_A006_C008": {
+      "en": "Los Angeles Airport",
+      "ja": "ロサンゼルス空港",
+      "zh_CN": "洛杉矶机场",
+      "zh_TW": "洛杉磯機場"
+    },
+    "LA_A009_C009": {
+      "en": "Los Angeles Sunset",
+      "ja": "ロサンゼルスの日没",
+      "zh_CN": "洛杉矶日落",
+      "zh_TW": "洛杉磯日落"
+    },
+    "LA_A006_C004": {
+      "en": "Los Angeles Hills",
+      "ja": "ロサンゼルスの丘陵",
+      "zh_CN": "洛杉矶山丘",
+      "zh_TW": "洛杉磯山丘"
+    },
+    "LA_A011_C003": {
+      "en": "Los Angeles Night",
+      "ja": "夜のロサンゼルス",
+      "zh_CN": "洛杉矶夜色",
+      "zh_TW": "洛杉磯夜晚"
+    },
+    "HK_H004_C008": {
+      "en": "Hong Kong Harbor",
+      "ja": "香港の港",
+      "zh_CN": "香港港湾",
+      "zh_TW": "香港港口"
+    },
+    "HK_H004_C013": {
+      "en": "Hong Kong Skyline",
+      "ja": "香港のスカイライン",
+      "zh_CN": "香港天际线",
+      "zh_TW": "香港天際線"
+    },
+    "HK_H004_C010": {
+      "en": "Hong Kong Horizon",
+      "ja": "香港の地平線",
+      "zh_CN": "香港地平线",
+      "zh_TW": "香港地平線"
+    },
+    "HK_B005_C011": {
+      "en": "Hong Kong Night",
+      "ja": "夜の香港",
+      "zh_CN": "香港夜色",
+      "zh_TW": "香港夜晚"
+    },
+    "L012_C002": {
+      "en": "London Evening",
+      "ja": "夕方のロンドン",
+      "zh_CN": "伦敦黄昏",
+      "zh_TW": "倫敦傍晚"
+    },
+    "L010_C006": {
+      "en": "London Skyline",
+      "ja": "ロンドンのスカイライン",
+      "zh_CN": "伦敦天际线",
+      "zh_TW": "倫敦天際線"
+    },
+    "L004_C011": {
+      "en": "London Thames",
+      "ja": "ロンドンのテムズ川",
+      "zh_CN": "伦敦泰晤士河",
+      "zh_TW": "倫敦泰晤士河"
+    },
+    "L007_C007": {
+      "en": "London from Above",
+      "ja": "上空からのロンドン",
+      "zh_CN": "俯瞰伦敦",
+      "zh_TW": "俯瞰倫敦"
+    },
+    "DB_D002_C003": {
+      "en": "Dubai Skyline",
+      "ja": "ドバイのスカイライン",
+      "zh_CN": "迪拜天际线",
+      "zh_TW": "杜拜天際線"
+    },
+    "DB_D011_C010": {
+      "en": "Dubai Night",
+      "ja": "夜のドバイ",
+      "zh_CN": "迪拜夜色",
+      "zh_TW": "杜拜夜晚"
+    },
+    "DB_D001_C005": {
+      "en": "Dubai Creek",
+      "ja": "ドバイクリーク",
+      "zh_CN": "迪拜湾",
+      "zh_TW": "杜拜灣"
+    },
+    "DB_D008_C010": {
+      "en": "Dubai from Above",
+      "ja": "上空からのドバイ",
+      "zh_CN": "俯瞰迪拜",
+      "zh_TW": "俯瞰杜拜"
+    },
+    "DB_D001_C001": {
+      "en": "Dubai Creek Harbor",
+      "ja": "ドバイクリーク港",
+      "zh_CN": "迪拜湾码头",
+      "zh_TW": "杜拜灣碼頭"
+    },
+    "PA_A001_C007": {
+      "en": "Palau Jellies Dark",
+      "ja": "パラオのクラゲ（ダーク）",
+      "zh_CN": "帕劳水母（深色）",
+      "zh_TW": "帛琉水母暗色"
+    },
+    "PA_A010_C007": {
+      "en": "Palau Jellies Light",
+      "ja": "パラオのクラゲ（ライト）",
+      "zh_CN": "帕劳水母（浅色）",
+      "zh_TW": "帛琉水母亮色"
+    },
+    "PA_A002_C009": {
+      "en": "Palau Jellies Blue",
+      "ja": "パラオのクラゲ（ブルー）",
+      "zh_CN": "帕劳水母（蓝色）",
+      "zh_TW": "帛琉水母藍色"
+    },
+    "TH_804_A001_8": {
+      "en": "Tahiti Coast",
+      "ja": "タヒチ沿岸部",
+      "zh_CN": "塔希提岛海岸",
+      "zh_TW": "大溪地海岸"
+    },
+    "TH_803_A001_8": {
+      "en": "Tahiti Waves Mist",
+      "ja": "タヒチの波しぶき",
+      "zh_CN": "塔希提岛波浪雾",
+      "zh_TW": "大溪地海浪薄霧"
+    },
+    "U009_C004": {
+      "en": "Gray Reef Sharks",
+      "ja": "オグロメジロザメ",
+      "zh_CN": "灰礁鲨",
+      "zh_TW": "黑尾真鯊"
+    },
+    "PA_A004_C003": {
+      "en": "Palau Coral Colors",
+      "ja": "パラオのサンゴ（カラー）",
+      "zh_CN": "帕劳珊瑚（彩色）",
+      "zh_TW": "帛琉珊瑚彩色"
+    },
+    "A009_C007": {
+      "en": "Costa Rica Dolphin Pod",
+      "ja": "コスタリカのイルカの群れ",
+      "zh_CN": "哥斯达黎加海豚群",
+      "zh_TW": "哥斯大黎加海豚群"
+    },
+    "A012_C031": {
+      "en": "Sea Stars",
+      "ja": "ヒトデ",
+      "zh_CN": "海星",
+      "zh_TW": "海星"
+    },
+    "BO_A014_C008": {
+      "en": "Bumpheads",
+      "ja": "カンムリブダイ",
+      "zh_CN": "隆头鹦嘴鱼",
+      "zh_TW": "隆頭鸚哥魚"
+    },
+    "A016_C002": {
+      "en": "California Kelp Forest",
+      "ja": "カリフォルニアのケルプの森",
+      "zh_CN": "加州海藻林",
+      "zh_TW": "加州海藻林"
+    },
+    "BO_A018_C029": {
+      "en": "Barracuda Battery",
+      "ja": "バラクーダの群れ",
+      "zh_CN": "梭鱼群",
+      "zh_TW": "金梭魚群"
+    },
+    "A003_C014": {
+      "en": "Alaskan Jellies Light",
+      "ja": "アラスカのクラゲ（ライト）",
+      "zh_CN": "阿拉斯加水母（浅色）",
+      "zh_TW": "阿拉斯加水母亮色"
+    },
+    "A004_C012": {
+      "en": "Alaskan Jellies Dark",
+      "ja": "アラスカのクラゲ（ダーク）",
+      "zh_CN": "阿拉斯加水母（深色）",
+      "zh_TW": "阿拉斯加水母暗色"
+    },
+    "SE_A016_C009": {
+      "en": "Seal Pod",
+      "ja": "アザラシの群れ",
+      "zh_CN": "海豹群",
+      "zh_TW": "海豹群"
+    },
+    "D004_L014": {
+      "en": "Humpback Whale",
+      "ja": "ザトウクジラ",
+      "zh_CN": "座头鲸",
+      "zh_TW": "座頭鯨"
+    },
+    "A014_C023": {
+      "en": "Jack School",
+      "ja": "アジの群れ",
+      "zh_CN": "杰克鱼群",
+      "zh_TW": "傑克魚群"
+    },
+    "KP_A010_C002": {
+      "en": "Kelp Dark",
+      "ja": "ケルプ（ダーク）",
+      "zh_CN": "海藻（深色）",
+      "zh_TW": "海藻暗色"
+    },
+    "A006_C008": {
+      "en": "Cownose Rays",
+      "ja": "クロガネウシバナトビエイ",
+      "zh_CN": "牛鼻鲼",
+      "zh_TW": "牛鼻鰩"
+    },
+    "B002_C011": {
+      "en": "California Dolphin Pod",
+      "ja": "カリフォルニアのイルカの群れ",
+      "zh_CN": "加州海豚群",
+      "zh_TW": "加州海豚群"
+    },
+    "A008_C010": {
+      "en": "Red Sea Coral from Above",
+      "ja": "上空からの紅海のサンゴ",
+      "zh_CN": "俯瞰红海珊瑚",
+      "zh_TW": "俯瞰紅海珊瑚"
+    },
+    "A105_C003_0212CT": {
+      "en": "New Zealand",
+      "ja": "ニュージーランド",
+      "zh_CN": "新西兰",
+      "zh_TW": "紐西蘭"
+    },
+    "A009_C001_10181A": {
+      "en": "Sahara",
+      "ja": "サハラ",
+      "zh_CN": "撒哈拉",
+      "zh_TW": "撒哈拉"
+    },
+    "GMT314_139M_170NC_NORTH_AMERICA_AURORA": {
+      "en": "North America Aurora",
+      "ja": "北米のオーロラ",
+      "zh_CN": "北美极光",
+      "zh_TW": "北美極光"
+    },
+    "GMT329_2_113NC_396B_1105": {
+      "en": "China Night",
+      "ja": "夜の中国",
+      "zh_CN": "中国夜色",
+      "zh_TW": "中國夜晚"
+    },
+    "A114_C001": {
+      "en": "Southern California",
+      "ja": "南カリフォルニア",
+      "zh_CN": "南加州",
+      "zh_TW": "南加州"
+    },
+    "A001_C004_1207W5": {
+      "en": "West Africa",
+      "ja": "西アフリカ",
+      "zh_CN": "西非",
+      "zh_TW": "西非"
+    },
+    "GMT110_112NC_364D_1054_AURORA_ANTARCTICA": {
+      "en": "Antarctica’s Southern Lights",
+      "ja": "南極のオーロラ",
+      "zh_CN": "南极洲极光",
+      "zh_TW": "南極光"
+    },
+    "A103_C002_0205DG": {
+      "en": "North Africa",
+      "ja": "北アフリカ",
+      "zh_CN": "北非",
+      "zh_TW": "北非"
+    },
+    "GMT306_139NC_139J_3066_CALI_TO_VEGAS": {
+      "en": "California",
+      "ja": "カリフォルニア",
+      "zh_CN": "加州",
+      "zh_TW": "加州"
+    },
+    "A001_C001_120530": {
+      "en": "North Atlantic",
+      "ja": "北大西洋",
+      "zh_CN": "北大西洋",
+      "zh_TW": "北大西洋"
+    },
+    "GMT026_363A_103NC_E1027_KOREA_JAPAN_NIGHT": {
+      "en": "East Asia",
+      "ja": "東アジア",
+      "zh_CN": "东亚",
+      "zh_TW": "東亞"
+    },
+    "A108_C001": {
+      "en": "Caribbean Islands",
+      "ja": "カリブ海の島",
+      "zh_CN": "加勒比海岛",
+      "zh_TW": "加勒比海群島"
+    },
+    "A105_C002": {
+      "en": "Caribbean Sea",
+      "ja": "カリブ海",
+      "zh_CN": "加勒比海",
+      "zh_TW": "加勒比海"
+    },
+    "A050_C004_1027V8": {
+      "en": "Nile Delta",
+      "ja": "ナイル川デルタ",
+      "zh_CN": "尼罗河三角洲",
+      "zh_TW": "尼羅河三角洲"
+    },
+    "GMT329_117NC_401C_1037_IRELAND_TO_ASIA": {
+      "en": "Europe Night",
+      "ja": "夜のヨーロッパ",
+      "zh_CN": "欧洲夜色",
+      "zh_TW": "歐洲夜晚"
+    },
+    "GMT060_117NC_363D_1034_AUSTRALIA": {
+      "en": "Australia",
+      "ja": "オーストラリア",
+      "zh_CN": "澳大利亚",
+      "zh_TW": "澳洲"
+    },
+    "A351_C001_1213SK": {
+      "en": "South Africa",
+      "ja": "南アフリカ",
+      "zh_CN": "南非",
+      "zh_TW": "南非"
+    },
+    "GMT312_162NC_139M_1041_AFRICA_NIGHT": {
+      "en": "Africa",
+      "ja": "アフリカ",
+      "zh_CN": "非洲",
+      "zh_TW": "非洲"
+    },
+    "GMT308_139K_142NC_CARIBBEAN_DAY": {
+      "en": "Caribbean",
+      "ja": "カリブ",
+      "zh_CN": "加勒比",
+      "zh_TW": "加勒比海"
+    },
+    "GMT307_136NC_134K_8277_NY_NIGHT": {
+      "en": "New York",
+      "ja": "ニューヨーク",
+      "zh_CN": "纽约",
+      "zh_TW": "紐約"
+    },
+    "GMT329_113NC_396B_1105_ITALY_TO_ASIA": {
+      "en": "Southern Europe Night",
+      "ja": "夜の南ヨーロッパ",
+      "zh_CN": "南欧夜色",
+      "zh_TW": "南歐夜晚"
+    },
+    "A083_C002_1130KZ": {
+      "en": "Middle East",
+      "ja": "中近東",
+      "zh_CN": "中东",
+      "zh_TW": "中東"
+    },
+    "MAC_WP_PPL": {
+      "en": "Mac Purple",
+      "ja": "Mac（パープル）",
+      "zh_CN": "紫色Mac",
+      "zh_TW": "Mac紫色"
+    },
+    "MAC_WP_BLU": {
+      "en": "Mac Blue",
+      "ja": "Mac（ブルー）",
+      "zh_CN": "蓝色Mac",
+      "zh_TW": "Mac藍色"
+    },
+    "MAC_WP_PNK": {
+      "en": "Mac Pink",
+      "ja": "Mac（ピンク）",
+      "zh_CN": "粉色Mac",
+      "zh_TW": "Mac粉色"
+    },
+    "MAC_WP_YLW": {
+      "en": "Mac Yellow",
+      "ja": "Mac（イエロー）",
+      "zh_CN": "黄色Mac",
+      "zh_TW": "Mac黃色"
+    }
+  }
+}

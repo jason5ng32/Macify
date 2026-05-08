@@ -4,18 +4,25 @@
     updateSetting,
     bindSetting,
   } from '../../lib/settings.svelte.js';
-  import { t } from '../../lib/i18n.svelte.js';
+  import { t, resolveLanguage } from '../../lib/i18n.svelte.js';
   import {
     SHUFFLE_SCOPE_OPTIONS,
     primaryShuffleScope,
   } from '../../lib/shuffle-scope.js';
+  import { categoryName } from '../../lib/video-i18n.js';
   import SettingsCard from './SettingsCard.svelte';
   import VideoSetupHelp from '../VideoSetupHelp.svelte';
 
   const selectedScope = $derived(primaryShuffleScope(settings.shuffleScopes));
+  const lang = $derived(resolveLanguage(settings.userLanguage));
 
   function setShuffleScope(event) {
     return updateSetting('shuffleScopes', [event.currentTarget.value]);
+  }
+
+  function scopeLabel(scope) {
+    if (scope.category) return categoryName(scope.category, lang);
+    return t(scope.labelKey);
   }
 </script>
 
@@ -45,7 +52,7 @@
         onchange={setShuffleScope}
       >
         {#each SHUFFLE_SCOPE_OPTIONS as scope}
-          <option value={scope.value}>{t(scope.labelKey)}</option>
+          <option value={scope.value}>{scopeLabel(scope)}</option>
         {/each}
       </select>
     </label>

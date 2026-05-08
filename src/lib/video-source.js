@@ -41,6 +41,7 @@ function applyProxy(url, useProxy) {
 function metaFromVideo(v) {
   return {
     id: v.id,
+    shotID: v.shotID,
     name: v.name,
     category: v.category,
     subcategories: v.subcategories,

@@ -1,16 +1,20 @@
 <script>
   import { settings } from '../lib/settings.svelte.js';
+  import { resolveLanguage } from '../lib/i18n.svelte.js';
   import { nowPlaying } from '../lib/now-playing.svelte.js';
+  import { videoName, categoryName } from '../lib/video-i18n.js';
 
   const meta = $derived(nowPlaying.item?.meta);
+  const lang = $derived(resolveLanguage(settings.userLanguage));
 
   // Fields to surface, in display order. Any null/empty is skipped.
+  // Translations come from Apple's bundled loctable (see videos-i18n.json),
+  // with English (then the raw value) as fallback.
   const fields = $derived.by(() => {
     if (!meta) return [];
-    const subs = (meta.subcategories ?? []).filter(Boolean);
     return [
-      meta.name,
-      meta.category,
+      videoName(meta.shotID, lang) ?? meta.name,
+      categoryName(meta.category, lang) ?? meta.category,
     ].filter(Boolean);
   });
 

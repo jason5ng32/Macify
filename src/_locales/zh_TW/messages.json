@@ -74,21 +74,6 @@
   "shuffle_scope_all": {
     "message": "所有影片"
   },
-  "shuffle_scope_landscape": {
-    "message": "自然景觀"
-  },
-  "shuffle_scope_cityscape": {
-    "message": "城市景觀"
-  },
-  "shuffle_scope_underwater": {
-    "message": "水下"
-  },
-  "shuffle_scope_space": {
-    "message": "地球"
-  },
-  "shuffle_scope_mac": {
-    "message": "Mac"
-  },
   "refresh_video": {
     "message": "切換影片"
   },

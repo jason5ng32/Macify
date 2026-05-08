@@ -1,10 +1,13 @@
+// Non-"all" scopes derive their UI label from videos-i18n.json by looking up
+// `category` (Apple's localized category names). Only "all" needs an in-app
+// i18n string because it doesn't correspond to any Apple category.
 export const SHUFFLE_SCOPE_OPTIONS = Object.freeze([
-  { value: 'all', labelKey: 'shuffle_scope_all', category: null },
-  { value: 'landscapes', labelKey: 'shuffle_scope_landscape', category: 'Landscapes' },
-  { value: 'cities', labelKey: 'shuffle_scope_cityscape', category: 'Cities' },
-  { value: 'underwater', labelKey: 'shuffle_scope_underwater', category: 'Underwater' },
-  { value: 'space', labelKey: 'shuffle_scope_space', category: 'Space' },
-  { value: 'mac', labelKey: 'shuffle_scope_mac', category: 'Mac' },
+  { value: 'all', category: null, labelKey: 'shuffle_scope_all' },
+  { value: 'landscapes', category: 'Landscapes' },
+  { value: 'cities', category: 'Cities' },
+  { value: 'underwater', category: 'Underwater' },
+  { value: 'space', category: 'Space' },
+  { value: 'mac', category: 'Mac' },
 ]);
 
 const OPTION_BY_VALUE = new Map(SHUFFLE_SCOPE_OPTIONS.map((o) => [o.value, o]));

@@ -18,6 +18,7 @@
  * paths before the new URLs work in proxy mode.
  */
 
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -33,7 +34,26 @@ const USER_MANIFEST = path.join(
 const SYSTEM_MANIFEST =
   '/System/Library/PrivateFrameworks/WallpaperAerialAssets.framework/Versions/A/Resources/entries.json';
 
+// Apple bundles all locales into a single .loctable (binary plist) under the
+// translations bundle alongside entries.json. We decode it via `plutil` (macOS
+// only) and project just the locales we ship.
+const LOCTABLE = path.join(
+  os.homedir(),
+  'Library/Application Support/com.apple.wallpaper/aerials/manifest/TVIdleScreenStrings.bundle/Contents/Resources/Localizable.nocache.loctable',
+);
+
+// Source of truth for shipped locales is the _locales directory. Reading it
+// here avoids drift with i18n.svelte.js, which derives the same list at
+// runtime via `import.meta.glob`.
+const LOCALES_DIR = path.join(repoRoot, 'src/_locales');
+const LOCALES = fs
+  .readdirSync(LOCALES_DIR, { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => d.name)
+  .sort();
+
 const OUT_PATH = path.join(repoRoot, 'src/data/videos.json');
+const I18N_OUT_PATH = path.join(repoRoot, 'src/data/videos-i18n.json');
 
 function loadManifest() {
   for (const p of [USER_MANIFEST, SYSTEM_MANIFEST]) {
@@ -48,17 +68,55 @@ function loadManifest() {
   );
 }
 
-function buildCategoryIndex(manifest) {
+function loadLoctable() {
+  if (!fs.existsSync(LOCTABLE)) {
+    throw new Error(`Loctable not found: ${LOCTABLE}`);
+  }
+  console.log(`reading: ${LOCTABLE}`);
+  const json = execFileSync(
+    'plutil',
+    ['-convert', 'json', '-o', '-', LOCTABLE],
+    { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 },
+  );
+  return JSON.parse(json);
+}
+
+// Look up `key` across all shipped locales. Missing values are omitted; the
+// runtime helper falls back to `en`, which the loctable has for every key
+// we care about.
+function lookupLocales(loctable, key) {
+  if (!key) return null;
+  const out = {};
+  for (const loc of LOCALES) {
+    const v = loctable[loc]?.[key];
+    if (v) out[loc] = v;
+  }
+  return Object.keys(out).length > 0 ? out : null;
+}
+
+function buildCategoryIndex(manifest, loctable) {
   const byId = new Map();
+  const categoryI18n = {};
+  const subcategoryI18n = {};
   for (const cat of manifest.categories || []) {
-    const topName = (cat.localizedNameKey || '').replace(/^AerialCategory/, '');
+    const catKey = cat.localizedNameKey || '';
+    const topName = catKey.replace(/^AerialCategory/, '');
     byId.set(cat.id, { kind: 'category', name: topName });
+    if (topName && !categoryI18n[topName]) {
+      const t = lookupLocales(loctable, catKey);
+      if (t) categoryI18n[topName] = t;
+    }
     for (const sub of cat.subcategories || []) {
-      const subName = (sub.localizedNameKey || '').replace(/^AerialSubcategory/, '');
+      const subKey = sub.localizedNameKey || '';
+      const subName = subKey.replace(/^AerialSubcategory/, '');
       byId.set(sub.id, { kind: 'subcategory', name: subName, parent: topName });
+      if (subName && !subcategoryI18n[subName]) {
+        const t = lookupLocales(loctable, subKey);
+        if (t) subcategoryI18n[subName] = t;
+      }
     }
   }
-  return byId;
+  return { byId, categoryI18n, subcategoryI18n };
 }
 
 function inferTimeOfDay(asset, subNames) {
@@ -77,9 +135,12 @@ function inferTimeOfDay(asset, subNames) {
 }
 
 const manifest = loadManifest();
-const categoryIndex = buildCategoryIndex(manifest);
+const loctable = loadLoctable();
+const { byId: categoryIndex, categoryI18n, subcategoryI18n } =
+  buildCategoryIndex(manifest, loctable);
 
 const videos = [];
+const videoI18n = {};
 for (const a of manifest.assets) {
   const url = a['url-4K-SDR-240FPS'];
   if (!url) continue;
@@ -104,6 +165,13 @@ for (const a of manifest.assets) {
     subcategories: subNames,
     timeOfDay: inferTimeOfDay(a, subNames),
   });
+
+  // Translations are keyed by shotID (stable, Apple-defined) so the i18n
+  // lookup file stays decoupled from runtime URL changes.
+  if (a.shotID && a.localizedNameKey) {
+    const t = lookupLocales(loctable, a.localizedNameKey);
+    if (t) videoI18n[a.shotID] = t;
+  }
 }
 
 const stats = {
@@ -121,3 +189,17 @@ console.log('by time of day:', stats.byTimeOfDay);
 
 fs.writeFileSync(OUT_PATH, JSON.stringify(videos, null, 2) + '\n');
 console.log(`wrote ${OUT_PATH}`);
+
+const i18nPayload = {
+  locales: LOCALES,
+  categories: categoryI18n,
+  subcategories: subcategoryI18n,
+  videos: videoI18n,
+};
+fs.writeFileSync(I18N_OUT_PATH, JSON.stringify(i18nPayload, null, 2) + '\n');
+console.log(
+  `wrote ${I18N_OUT_PATH} ` +
+    `(categories: ${Object.keys(categoryI18n).length}, ` +
+    `subcategories: ${Object.keys(subcategoryI18n).length}, ` +
+    `videos: ${Object.keys(videoI18n).length})`,
+);
