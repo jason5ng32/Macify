@@ -9,58 +9,58 @@
 
   const features = [
     {
-      title: 'macOS Aerial videos',
-      text: 'A curated 4K SDR Aerial catalog for a new tab that feels open, quiet, and alive.',
+      title: 'Aerial films',
+      text: '4K scenes from the macOS Aerial collection, made for a quieter tab.',
     },
     {
-      title: 'Live weather',
-      text: 'Current conditions, forecast, sunrise, sunset, wind, UV, and air quality through Open-Meteo.',
+      title: 'Weather at a glance',
+      text: 'Temperature, forecast, sunrise, wind, UV, and air quality. No API key.',
     },
     {
-      title: 'Top sites',
-      text: "Fast access to Chrome's built-in most-visited list without asking for browsing history.",
+      title: 'Your top sites',
+      text: "Chrome's most-visited sites, without asking for your browsing history.",
     },
     {
-      title: 'Random quotes',
-      text: 'A calm center point for each new tab, drawn from a public-domain quote set.',
+      title: 'A quiet thought',
+      text: 'A simple quote in the middle of the screen. Nothing more.',
     },
     {
       title: 'Zen mode',
-      text: 'Fullscreen Aerial video with optional ambient music when you want a short visual reset.',
+      text: 'Let the video fill the screen, with optional ambient sound.',
     },
     {
       title: 'Four languages',
-      text: 'English, Simplified Chinese, Traditional Chinese, and Japanese are built in.',
+      text: 'English, Simplified Chinese, Traditional Chinese, and Japanese.',
     },
   ];
 
   const trustItems = [
     {
-      label: 'No history permission',
-      detail: 'Macify uses Chrome top sites instead of reading your browsing history.',
+      label: 'No browsing history',
+      detail: 'Macify uses Chrome top sites. It does not ask to read your history.',
     },
     {
       label: 'No weather API key',
-      detail: 'Weather runs on Open-Meteo, so there is no account setup or secret key.',
+      detail: 'Weather runs on Open-Meteo, with no account setup or secret key.',
     },
     {
-      label: 'Small permission set',
-      detail: 'Storage, top sites, favicon, and idle are the only requested permissions.',
+      label: 'Only what it needs',
+      detail: 'Storage, top sites, favicon, and idle are the only permissions.',
     },
   ];
 
   const sources = [
     {
       name: 'Apple Server',
-      summary: 'The default path streams Aerial videos from Apple, with an optional Cloudflare proxy for certificate handling.',
+      summary: 'Stream Aerial videos from Apple by default.',
     },
     {
       name: 'Cloudflare proxy',
-      summary: 'A Worker can proxy Apple Aerial requests and share the same host as other Macify media assets.',
+      summary: 'Use a Worker proxy when you want a shared media host.',
     },
     {
       name: 'Local server',
-      summary: 'macOS users can host downloaded Aerial videos locally for the fastest and most private playback.',
+      summary: 'Play downloaded Aerial videos from your own Mac.',
     },
   ];
 </script>
@@ -127,21 +127,12 @@
         </blockquote>
       </div>
 
-      <div class="scene-control left" aria-hidden="true">
-        <span></span>
-      </div>
-      <div class="scene-control-stack" aria-hidden="true">
-        <span class="grid-icon"></span>
-        <span class="refresh-icon"></span>
-      </div>
     </div>
 
     <div class="hero-content">
-      <p class="availability">Chrome Extension</p>
       <h1 id="hero-title">Macify</h1>
       <p class="hero-copy">
-        Turn Chrome's new tab into a calm macOS Aerial screen with weather, top sites,
-        quotes, and Zen mode.
+        Bring the Mac screensaver to every new tab.
       </p>
       <div class="hero-actions" aria-label="Primary actions">
         <a class="button primary" href={chromeStoreUrl}>Install from Chrome Web Store</a>
@@ -151,14 +142,17 @@
   </section>
 
   <section class="intro-band" aria-label="Macify summary">
-    <p>Macify keeps the new tab useful, quiet, and visually spacious.</p>
-    <p>macOS is not required. Any Chrome user can install it.</p>
+    <p>Open a tab. See the world.</p>
+    <p>Weather, sites, and quotes stay close. Never in the way.</p>
   </section>
 
   <section id="features" class="section features-section" aria-labelledby="features-title">
     <div class="section-heading">
-      <h2 id="features-title">A new tab that feels less like a dashboard.</h2>
-      <p>Everything on screen has a reason to be there. Nothing asks for attention unless you ask for it.</p>
+      <h2 id="features-title" class="split-title">
+        <span>Everything you need.</span>
+        <span>Nothing in the way.</span>
+      </h2>
+      <p>Aerial video leads. The small tools stay quiet until you need them.</p>
     </div>
     <div class="feature-grid">
       {#each features as feature}
@@ -172,8 +166,8 @@
 
   <section id="privacy" class="section trust-section" aria-labelledby="privacy-title">
     <div class="section-heading">
-      <h2 id="privacy-title">Useful without being nosy.</h2>
-      <p>Macify stays intentionally light on permissions and external dependencies.</p>
+      <h2 id="privacy-title">Your browsing stays yours.</h2>
+      <p>Macify keeps permissions light and avoids unnecessary accounts, keys, and tracking.</p>
     </div>
     <div class="trust-list">
       {#each trustItems as item}
@@ -187,8 +181,8 @@
 
   <section id="sources" class="section sources-section" aria-labelledby="sources-title">
     <div class="section-heading">
-      <h2 id="sources-title">Choose the video path that fits you.</h2>
-      <p>Start with the default Apple source, then move to Cloudflare or local hosting when you want more control.</p>
+      <h2 id="sources-title">Play it your way.</h2>
+      <p>Stream from Apple, proxy through Cloudflare, or use local files on your Mac.</p>
     </div>
     <div class="source-steps">
       {#each sources as source, index}
@@ -204,8 +198,11 @@
   </section>
 
   <section class="final-cta" aria-labelledby="final-title">
-    <h2 id="final-title">Make every new tab feel like a short visual reset.</h2>
-    <a class="button primary" href={chromeStoreUrl}>Install Macify</a>
+    <h2 id="final-title" class="split-title">
+      <span>Open a new tab.</span>
+      <span>Take a breath.</span>
+    </h2>
+    <a class="button primary" href={chromeStoreUrl}>Macify your Chrome, now!</a>
   </section>
 </main>
 
