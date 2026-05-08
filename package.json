@@ -7,7 +7,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --mode chrome",
+    "build:safari": "vite build --mode safari && node scripts/prepare-safari-dist.mjs",
+    "package:safari": "npm run build:safari && xcrun safari-web-extension-packager dist --macos-only",
     "preview": "vite preview",
     "zip": "node scripts/zip.js",
     "build:quotes": "node scripts/build-quotes.mjs",

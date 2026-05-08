@@ -4,7 +4,8 @@ import { cache } from './storage.js';
 // Apple's modern aerial CDN. Reverse proxy mode swaps the host;
 // the path stays the same (Worker must accept /itunes-assets/*).
 //
-// VITE_MACIFY_BASE is required at build time (vite.config.js enforces).
+// VITE_MACIFY_BASE is optional. When omitted, Apple mode streams directly
+// from sylvan.apple.com, which is the Safari-friendly self-use default.
 // VITE_APPLE_PROXY_KEY is optional — when set, it's appended as ?k=<token>
 // to every video request so a Cloudflare firewall rule in front of the
 // worker can drop callers that don't know it. Token is build-time inlined
@@ -13,6 +14,7 @@ import { cache } from './storage.js';
 const APPLE_HOST = 'https://sylvan.apple.com';
 const APPLE_PROXY_HOST = import.meta.env.VITE_MACIFY_BASE;
 const APPLE_PROXY_KEY = import.meta.env.VITE_APPLE_PROXY_KEY ?? '';
+const HAS_APPLE_PROXY = Boolean(APPLE_PROXY_HOST);
 
 const LOCAL_CACHE_KEY = 'localVideoList';
 const LOCAL_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
@@ -33,7 +35,7 @@ export function isAppleProxyFailed() {
 }
 
 function applyProxy(url, useProxy) {
-  if (!useProxy) return url;
+  if (!useProxy || !HAS_APPLE_PROXY) return url;
   const proxied = url.replace(APPLE_HOST, APPLE_PROXY_HOST);
   return APPLE_PROXY_KEY ? `${proxied}?k=${APPLE_PROXY_KEY}` : proxied;
 }
@@ -69,7 +71,7 @@ export async function getPlaylist({ videoSrc, videoSourceUrl, reverseProxy }) {
 }
 
 function getApplePlaylist(reverseProxy) {
-  const useProxy = reverseProxy && !appleProxyFailedThisSession;
+  const useProxy = reverseProxy && HAS_APPLE_PROXY && !appleProxyFailedThisSession;
   const items = videos.map((v) => ({
     url: applyProxy(v.url, useProxy),
     meta: metaFromVideo(v),

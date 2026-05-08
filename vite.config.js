@@ -5,30 +5,29 @@ import tailwindcss from '@tailwindcss/vite';
 import Icons from 'unplugin-icons/vite';
 import manifest from './src/manifest.config.js';
 
-// Required env vars — build fails fast if any of these are missing or
-// blank. Inlined into the published bundle. See .env.example for what
-// each one is for.
 const REQUIRED_ENV = ['VITE_MACIFY_BASE'];
 
 export default defineConfig(({ mode }) => {
-  // loadEnv() resolves its envDir argument relative to process.cwd(),
-  // which is already the project root when invoked via `npm run build`.
-  // The vite `envDir` config is resolved relative to vite's `root`
-  // (= 'src'), so '..' points to the same project root.
+  const target = mode === 'safari' ? 'safari' : 'chrome';
   const env = loadEnv(mode, process.cwd(), 'VITE_');
 
-  const missing = REQUIRED_ENV.filter((k) => !env[k] || !env[k].trim());
-  if (missing.length > 0) {
-    throw new Error(
-      `\n\nMissing required env var(s): ${missing.join(', ')}\n` +
-        `Set them in .env (or .env.local). See .env.example for what each one is for.\n`,
-    );
+  if (target === 'chrome') {
+    const missing = REQUIRED_ENV.filter((k) => !env[k] || !env[k].trim());
+    if (missing.length > 0) {
+      throw new Error(
+        `\n\nMissing required env var(s): ${missing.join(', ')}\n` +
+          `Set them in .env (or .env.local). See .env.example for what each one is for.\n`,
+      );
+    }
   }
 
   return {
     root: 'src',
     envDir: '..',
     publicDir: false,
+    define: {
+      'import.meta.env.VITE_BUILD_TARGET': JSON.stringify(target),
+    },
     build: {
       outDir: '../dist',
       emptyOutDir: true,

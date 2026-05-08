@@ -23,6 +23,7 @@ Replace Chrome's new tab page with macOS's aerial screensaver videos and a small
 [Install from Chrome Web Store](https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe).
 
 Building from source or contributing? See [DEVELOPMENT.md](DEVELOPMENT.md).
+For an experimental local Safari build, see [SAFARI.md](SAFARI.md).
 
 ## Choosing a video source
 

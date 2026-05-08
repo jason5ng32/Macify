@@ -11,8 +11,11 @@
 // fully resets the accumulator — the user already took the break we
 // would have nudged them toward.
 //
-// All state lives in chrome.storage.session so it wipes on Chrome cold
-// start; opening a fresh browser shouldn't surface a stale pill.
+// All state lives in sessionCache, which delegates to chrome.storage.session
+// when available so it wipes on Chrome cold start. Safari builds that lack
+// storage.session fall back to in-memory state, preserving the same
+// non-persistent cold-start reset semantics without carrying stale reminders
+// across restarts.
 //
 // Storage shape:
 //   zenActiveStartedAt    — ms; current active period began here.
@@ -21,6 +24,8 @@
 //   zenAwayAt             — ms; idle/locked period began here.
 //                           Cleared on return.
 //   zenSnoozedUntil       — ms; reminder is suppressed until this time.
+
+import { sessionCache } from './storage.js';
 
 // Treat away periods of at least this long as a real break.
 // Shorter than this: pause and resume so a quick coffee run doesn't
@@ -47,7 +52,7 @@ const KEYS = [
 ];
 
 async function read() {
-  return chrome.storage.session.get(KEYS);
+  return sessionCache.get(KEYS);
 }
 
 /**
@@ -63,8 +68,8 @@ export async function beginAway(now = Date.now()) {
     const delta = Math.max(0, now - s.zenActiveStartedAt);
     set.zenAccumulatedActiveMs = (s.zenAccumulatedActiveMs || 0) + delta;
   }
-  await chrome.storage.session.set(set);
-  await chrome.storage.session.remove('zenActiveStartedAt');
+  await sessionCache.set(set);
+  await sessionCache.remove('zenActiveStartedAt');
 }
 
 /**
@@ -78,22 +83,22 @@ export async function endAway(now = Date.now()) {
   const s = await read();
   if (s.zenAwayAt == null) {
     if (s.zenActiveStartedAt == null) {
-      await chrome.storage.session.set({ zenActiveStartedAt: now });
+      await sessionCache.set({ zenActiveStartedAt: now });
     }
     return;
   }
   const breakMs = now - s.zenAwayAt;
   if (breakMs >= NATURAL_BREAK_MS) {
-    await chrome.storage.session.set({
+    await sessionCache.set({
       zenActiveStartedAt: now,
       zenAccumulatedActiveMs: 0,
     });
     // The user already broke; clear any pending snooze too — they
     // shouldn't come back to a silenced reminder from before the break.
-    await chrome.storage.session.remove(['zenAwayAt', 'zenSnoozedUntil']);
+    await sessionCache.remove(['zenAwayAt', 'zenSnoozedUntil']);
   } else {
-    await chrome.storage.session.set({ zenActiveStartedAt: now });
-    await chrome.storage.session.remove('zenAwayAt');
+    await sessionCache.set({ zenActiveStartedAt: now });
+    await sessionCache.remove('zenAwayAt');
   }
 }
 
@@ -116,18 +121,18 @@ export async function getEffectiveActiveMs(now = Date.now()) {
 
 /** Called by enterZen(): the user is taking a break, restart the cycle. */
 export async function resetTracking(now = Date.now()) {
-  await chrome.storage.session.set({
+  await sessionCache.set({
     zenAccumulatedActiveMs: 0,
     zenActiveStartedAt: now,
   });
-  await chrome.storage.session.remove(['zenAwayAt', 'zenSnoozedUntil']);
+  await sessionCache.remove(['zenAwayAt', 'zenSnoozedUntil']);
 }
 
 export async function snoozeReminder(durationMs, now = Date.now()) {
-  await chrome.storage.session.set({ zenSnoozedUntil: now + durationMs });
+  await sessionCache.set({ zenSnoozedUntil: now + durationMs });
 }
 
 export async function isSnoozed(now = Date.now()) {
-  const { zenSnoozedUntil } = await chrome.storage.session.get('zenSnoozedUntil');
+  const { zenSnoozedUntil } = await sessionCache.get('zenSnoozedUntil');
   return !!zenSnoozedUntil && now < zenSnoozedUntil;
 }
