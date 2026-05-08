@@ -1,9 +1,11 @@
 <script>
-  import screenshotUrl from '../../docs/screenshot.png';
-
   const chromeStoreUrl =
     'https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe';
   const githubUrl = 'https://github.com/jason5ng32/Macify';
+  const heroVideoUrl = 'https://media.macify.candobear.com/hero/palau-jellies-4k.mov';
+  const heroPosterUrl = 'https://media.macify.candobear.com/hero/palau-jellies-poster.jpg';
+
+  let heroVideoFailed = false;
 
   const features = [
     {
@@ -80,9 +82,60 @@
 </header>
 
 <main id="top">
-  <section class="hero" aria-labelledby="hero-title">
-    <img class="hero-image" src={screenshotUrl} alt="Macify new tab showing an aerial tea garden background with time, quote, and weather widgets." />
+  <section class:video-failed={heroVideoFailed} class="hero" aria-labelledby="hero-title">
+    <video
+      class="hero-video"
+      src={heroVideoUrl}
+      poster={heroPosterUrl}
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      aria-hidden="true"
+      onerror={() => (heroVideoFailed = true)}
+    ></video>
+    <img class="hero-poster-fallback" src={heroPosterUrl} alt="" aria-hidden="true" />
     <div class="hero-shade"></div>
+    <div class="macify-scene" aria-label="Macify new tab preview with Palau Jellies video, weather, quote, and quick controls.">
+      <div class="scene-location">
+        <span>Palau Jellies</span>
+        <small>Underwater</small>
+      </div>
+
+      <div class="scene-weather" aria-label="Sunny, 25 degrees, feels like 22 degrees.">
+        <span class="weather-sun" aria-hidden="true"></span>
+        <span class="weather-temp">25°</span>
+        <small>Feels like 22°</small>
+      </div>
+
+      <div class="scene-center">
+        <svg class="sky-arc" viewBox="0 0 420 128" role="img" aria-label="Sun path chart">
+          <path class="arc-fill" d="M20 86 C118 86 133 24 210 24 C287 24 302 86 400 86" />
+          <path class="arc-line active" d="M20 86 C118 86 133 24 210 24 C287 24 302 86 400 86" />
+          <path class="arc-line soft" d="M20 86 C108 86 138 72 210 86 C282 100 312 86 400 86" />
+          <path class="arc-line soft" d="M72 86 L210 24 L348 86" />
+          <line class="arc-axis" x1="20" y1="86" x2="400" y2="86" />
+          <line class="arc-axis vertical" x1="210" y1="24" x2="210" y2="110" />
+          <circle class="arc-node" cx="210" cy="86" r="8" />
+          <circle class="arc-node active" cx="210" cy="24" r="5" />
+          <text x="210" y="14" text-anchor="middle">12:23</text>
+        </svg>
+        <blockquote>
+          <p>To enjoy life, we must touch much of it lightly.</p>
+          <cite>Voltaire</cite>
+        </blockquote>
+      </div>
+
+      <div class="scene-control left" aria-hidden="true">
+        <span></span>
+      </div>
+      <div class="scene-control-stack" aria-hidden="true">
+        <span class="grid-icon"></span>
+        <span class="refresh-icon"></span>
+      </div>
+    </div>
+
     <div class="hero-content">
       <p class="availability">Chrome Extension</p>
       <h1 id="hero-title">Macify</h1>

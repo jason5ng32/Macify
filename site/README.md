@@ -25,3 +25,14 @@ For direct uploads after Wrangler authentication:
 ```bash
 npm run deploy:site
 ```
+
+## Media assets
+
+Large hero media is hosted outside the Pages build in R2.
+
+- Bucket: `macify-candobear-com-assets`
+- Public media domain: `media.macify.candobear.com`
+- Hero video: `hero/palau-jellies-4k.mov`
+- Hero poster: `hero/palau-jellies-poster.jpg`
+
+Do not commit `.mov` files or generated media downloads to this repository.

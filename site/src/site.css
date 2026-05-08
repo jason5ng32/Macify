@@ -80,15 +80,16 @@ a {
 
 .hero {
   position: relative;
-  min-height: 88svh;
+  min-height: 100svh;
   overflow: hidden;
-  display: grid;
-  align-items: end;
-  padding: 128px clamp(20px, 5vw, 72px) 80px;
+  display: flex;
+  align-items: flex-end;
+  padding: 120px clamp(20px, 5vw, 72px) 44px;
   isolation: isolate;
 }
 
-.hero-image {
+.hero-video,
+.hero-poster-fallback {
   position: absolute;
   inset: 0;
   z-index: -3;
@@ -96,8 +97,19 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transform: scale(1.03);
-  animation: aerialDrift 22s ease-in-out infinite alternate;
+}
+
+.hero-video {
+  background: #0a2d49;
+}
+
+.hero-poster-fallback {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.video-failed .hero-poster-fallback {
+  opacity: 1;
 }
 
 .hero-shade {
@@ -105,43 +117,292 @@ a {
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(90deg, rgba(5, 12, 8, 0.82) 0%, rgba(5, 12, 8, 0.48) 38%, rgba(5, 12, 8, 0.08) 72%),
-    linear-gradient(0deg, rgba(7, 17, 13, 0.78) 0%, rgba(7, 17, 13, 0.12) 44%, rgba(7, 17, 13, 0.38) 100%);
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.08), rgba(4, 16, 26, 0) 42%),
+    linear-gradient(180deg, rgba(3, 18, 32, 0.16) 0%, rgba(4, 25, 38, 0.08) 48%, rgba(2, 30, 37, 0.56) 100%),
+    linear-gradient(90deg, rgba(2, 20, 34, 0.36), rgba(2, 20, 34, 0) 34%, rgba(2, 20, 34, 0.22));
+}
+
+.macify-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 18px rgba(0, 18, 38, 0.38);
+  pointer-events: none;
+}
+
+.scene-location,
+.scene-weather {
+  position: absolute;
+  top: clamp(92px, 9vw, 128px);
+  display: grid;
+  gap: 4px;
+}
+
+.scene-location {
+  left: clamp(22px, 4vw, 48px);
+}
+
+.scene-location span,
+.scene-weather .weather-temp {
+  color: #ffffff;
+  font-size: clamp(16px, 1.6vw, 24px);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.scene-location small,
+.scene-weather small {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: clamp(12px, 1vw, 16px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.scene-weather {
+  right: clamp(22px, 4vw, 48px);
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-items: end;
+}
+
+.scene-weather small {
+  grid-column: 1 / -1;
+}
+
+.weather-sun {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #ffd449;
+  box-shadow:
+    0 0 18px rgba(255, 212, 73, 0.72),
+    0 0 0 4px rgba(255, 212, 73, 0.12);
+}
+
+.scene-center {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  width: min(460px, 54vw);
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  gap: clamp(14px, 2vw, 24px);
+  text-align: center;
+}
+
+.sky-arc {
+  width: min(420px, 100%);
+  height: auto;
+  overflow: visible;
+}
+
+.sky-arc text {
+  fill: rgba(255, 255, 255, 0.86);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.arc-fill {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 18;
+  stroke-linecap: round;
+}
+
+.arc-line {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.arc-line.active {
+  stroke: #ffd447;
+}
+
+.arc-line.soft,
+.arc-axis {
+  stroke: rgba(255, 255, 255, 0.56);
+}
+
+.arc-axis {
+  stroke-dasharray: 4 7;
+  stroke-width: 1;
+}
+
+.arc-axis.vertical {
+  stroke-dasharray: none;
+  opacity: 0.46;
+}
+
+.arc-node {
+  fill: rgba(5, 26, 45, 0.86);
+  stroke: rgba(255, 255, 255, 0.78);
+  stroke-width: 2;
+}
+
+.arc-node.active {
+  fill: #ffd447;
+  stroke: #fff2a7;
+}
+
+.scene-center blockquote {
+  margin: 0;
+}
+
+.scene-center blockquote p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(18px, 2vw, 25px);
+  font-style: italic;
+  font-weight: 650;
+  line-height: 1.28;
+}
+
+.scene-center cite {
+  display: block;
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(13px, 1.2vw, 17px);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.scene-center cite::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.scene-control,
+.scene-control-stack span {
+  position: relative;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(34, 116, 142, 0.46);
+  box-shadow: 0 14px 30px rgba(0, 24, 40, 0.22);
+  backdrop-filter: blur(12px);
+}
+
+.scene-control.left {
+  position: absolute;
+  left: clamp(24px, 4vw, 48px);
+  bottom: clamp(210px, 24vh, 270px);
+}
+
+.scene-control-stack {
+  position: absolute;
+  right: clamp(24px, 4vw, 48px);
+  bottom: clamp(24px, 4vw, 48px);
+  display: grid;
+  gap: 14px;
+}
+
+.scene-control.left span {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+}
+
+.scene-control.left span::before,
+.scene-control.left span::after {
+  position: absolute;
+  content: "";
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.scene-control.left span::before {
+  left: 5px;
+  bottom: -14px;
+  width: 2px;
+  height: 13px;
+}
+
+.scene-control.left span::after {
+  left: -4px;
+  bottom: -11px;
+  width: 22px;
+  height: 2px;
+}
+
+.grid-icon {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.92) 2px, transparent 2.5px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.92) 2px, transparent 2.5px);
+  background-position:
+    15px 15px,
+    25px 25px;
+  background-size: 20px 20px;
+}
+
+.refresh-icon::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-left-color: transparent;
+  border-radius: 999px;
+}
+
+.refresh-icon::after {
+  position: absolute;
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin: -12px 0 0 13px;
+  border-top: 2px solid rgba(255, 255, 255, 0.92);
+  border-right: 2px solid rgba(255, 255, 255, 0.92);
+  transform: rotate(30deg);
 }
 
 .hero-content {
-  width: min(680px, 100%);
+  position: relative;
+  z-index: 2;
+  width: min(560px, 100%);
+  margin-left: clamp(0px, 7vw, 96px);
 }
 
 .availability {
-  margin: 0 0 18px;
-  color: rgba(236, 255, 238, 0.78);
-  font-size: 15px;
+  margin: 0 0 14px;
+  color: rgba(241, 253, 255, 0.78);
+  font-size: 14px;
   font-weight: 700;
 }
 
 .hero h1 {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(64px, 11vw, 146px);
+  font-size: clamp(42px, 5.8vw, 68px);
   font-weight: 800;
-  line-height: 0.9;
+  line-height: 0.98;
   letter-spacing: 0;
 }
 
 .hero-copy {
-  max-width: 620px;
-  margin: 28px 0 0;
-  color: rgba(248, 255, 249, 0.9);
-  font-size: clamp(20px, 2.4vw, 30px);
-  line-height: 1.22;
+  max-width: 540px;
+  margin: 14px 0 0;
+  color: rgba(241, 253, 255, 0.88);
+  font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.38;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 34px;
+  margin-top: 20px;
 }
 
 .button {
@@ -339,7 +600,7 @@ a {
   padding: clamp(72px, 10vw, 128px) clamp(20px, 5vw, 72px);
   background:
     linear-gradient(rgba(7, 17, 13, 0.5), rgba(7, 17, 13, 0.86)),
-    url('../../docs/screenshot.png') center / cover;
+    url('https://media.macify.candobear.com/hero/palau-jellies-poster.jpg') center / cover;
   text-align: center;
 }
 
@@ -380,22 +641,17 @@ a {
   color: #ffffff;
 }
 
-@keyframes aerialDrift {
-  from {
-    transform: scale(1.03) translate3d(-0.8%, -0.4%, 0);
-  }
-  to {
-    transform: scale(1.08) translate3d(0.8%, 0.4%, 0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .hero-image {
-    animation: none;
+  .hero-video {
+    display: none;
+  }
+
+  .hero-poster-fallback {
+    opacity: 1;
   }
 
   .button {
@@ -413,8 +669,21 @@ a {
   }
 
   .hero {
-    min-height: 90svh;
+    min-height: 100svh;
     padding-top: 112px;
+  }
+
+  .hero-content {
+    margin-left: 0;
+  }
+
+  .scene-center {
+    width: min(420px, 82vw);
+  }
+
+  .scene-location,
+  .scene-weather {
+    top: 88px;
   }
 
   .intro-band,
@@ -445,8 +714,45 @@ a {
 
 @media (max-width: 560px) {
   .hero {
-    min-height: 86svh;
-    padding-bottom: 54px;
+    padding-bottom: 38px;
+  }
+
+  .scene-center {
+    top: 42%;
+  }
+
+  .sky-arc {
+    width: min(320px, 90vw);
+  }
+
+  .scene-location span,
+  .scene-weather .weather-temp {
+    font-size: 15px;
+  }
+
+  .scene-location small,
+  .scene-weather small {
+    font-size: 11px;
+  }
+
+  .scene-control,
+  .scene-control-stack span {
+    width: 40px;
+    height: 40px;
+  }
+
+  .scene-control.left,
+  .scene-control-stack {
+    bottom: 18px;
+  }
+
+  .scene-control.left,
+  .scene-control-stack {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 14vw, 58px);
   }
 
   .hero-actions {
