@@ -1,11 +1,110 @@
 <script>
+  import { onMount } from 'svelte';
+
   const chromeStoreUrl =
     'https://chromewebstore.google.com/detail/macify-macos-screensaver/lgdipcalomggcjkohjhkhkbcpgladnoe';
   const githubUrl = 'https://github.com/jason5ng32/Macify';
   const heroVideoUrl = 'https://media.macify.candobear.com/hero/palau-jellies-4k.mov';
   const heroPosterUrl = 'https://media.macify.candobear.com/hero/palau-jellies-poster.jpg';
+  const beijingForecastUrl =
+    'https://api.open-meteo.com/v1/forecast?latitude=39.9042&longitude=116.4074&current=temperature_2m,apparent_temperature,weather_code&daily=sunrise,sunset&timezone=Asia%2FShanghai&forecast_days=1';
+  const arcStartX = 20;
+  const arcEndX = 400;
+  const arcBaseY = 86;
+  const arcPeakLift = 62;
+
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  const roundTemp = (value) => Math.round(Number(value));
 
   let heroVideoFailed = false;
+  let now = new Date();
+  let weatherTemp = 25;
+  let feelsLikeTemp = 22;
+  let weatherCode = 0;
+  let sunriseMinutes = 5 * 60 + 5;
+  let sunsetMinutes = 19 * 60 + 18;
+
+  function getBeijingParts(date) {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Shanghai',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(date);
+    const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+
+    return {
+      hour: Number(byType.hour ?? 0),
+      minute: Number(byType.minute ?? 0),
+    };
+  }
+
+  function formatBeijingTime(date) {
+    const { hour, minute } = getBeijingParts(date);
+    return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+  }
+
+  function minutesFromIsoLocal(value) {
+    const time = value?.split('T')[1] ?? '';
+    const [hour = 0, minute = 0] = time.split(':').map(Number);
+    return hour * 60 + minute;
+  }
+
+  function getWeatherClass(code) {
+    if ([0, 1].includes(code)) return 'is-clear';
+    if ([2, 3].includes(code)) return 'is-cloudy';
+    if ([45, 48].includes(code)) return 'is-fog';
+    if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82) || code >= 95) return 'is-rain';
+    if (code >= 71 && code <= 86) return 'is-snow';
+    return 'is-clear';
+  }
+
+  async function updateBeijingWeather() {
+    const response = await fetch(beijingForecastUrl);
+
+    if (!response.ok) {
+      throw new Error('Unable to load Beijing weather');
+    }
+
+    const data = await response.json();
+    weatherTemp = roundTemp(data.current?.temperature_2m ?? weatherTemp);
+    feelsLikeTemp = roundTemp(data.current?.apparent_temperature ?? feelsLikeTemp);
+    weatherCode = Number(data.current?.weather_code ?? weatherCode);
+    sunriseMinutes = minutesFromIsoLocal(data.daily?.sunrise?.[0]) || sunriseMinutes;
+    sunsetMinutes = minutesFromIsoLocal(data.daily?.sunset?.[0]) || sunsetMinutes;
+  }
+
+  onMount(() => {
+    const clockTimer = window.setInterval(() => {
+      now = new Date();
+    }, 60 * 1000);
+    const weatherTimer = window.setInterval(() => {
+      updateBeijingWeather().catch(() => {});
+    }, 15 * 60 * 1000);
+
+    updateBeijingWeather().catch(() => {});
+
+    return () => {
+      window.clearInterval(clockTimer);
+      window.clearInterval(weatherTimer);
+    };
+  });
+
+  $: beijingTime = formatBeijingTime(now);
+  $: beijingMinutes = (() => {
+    const { hour, minute } = getBeijingParts(now);
+    return hour * 60 + minute;
+  })();
+  $: daylightProgress = clamp(
+    (beijingMinutes - sunriseMinutes) / Math.max(sunsetMinutes - sunriseMinutes, 1),
+    0,
+    1,
+  );
+  $: skyX = arcStartX + daylightProgress * (arcEndX - arcStartX);
+  $: skyY = arcBaseY - Math.sin(daylightProgress * Math.PI) * arcPeakLift;
+  $: timeLabelX = clamp(skyX, 36, 384);
+  $: timeLabelY = Math.max(14, skyY - 10);
+  $: weatherClass = getWeatherClass(weatherCode);
 
   const features = [
     {
@@ -103,23 +202,26 @@
         <small>Underwater</small>
       </div>
 
-      <div class="scene-weather" aria-label="Sunny, 25 degrees, feels like 22 degrees.">
-        <span class="weather-sun" aria-hidden="true"></span>
-        <span class="weather-temp">25°</span>
-        <small>Feels like 22°</small>
+      <div
+        class="scene-weather"
+        aria-label={`Beijing weather, ${weatherTemp} degrees, feels like ${feelsLikeTemp} degrees.`}
+      >
+        <span class={`weather-icon ${weatherClass}`} aria-hidden="true"></span>
+        <span class="weather-temp">{weatherTemp}°</span>
+        <small>Beijing · Feels like {feelsLikeTemp}°</small>
       </div>
 
       <div class="scene-center">
-        <svg class="sky-arc" viewBox="0 0 420 128" role="img" aria-label="Sun path chart">
+        <svg class="sky-arc" viewBox="0 0 420 128" role="img" aria-label={`Beijing sun path, ${beijingTime}.`}>
           <path class="arc-fill" d="M20 86 C118 86 133 24 210 24 C287 24 302 86 400 86" />
           <path class="arc-line active" d="M20 86 C118 86 133 24 210 24 C287 24 302 86 400 86" />
           <path class="arc-line soft" d="M20 86 C108 86 138 72 210 86 C282 100 312 86 400 86" />
           <path class="arc-line soft" d="M72 86 L210 24 L348 86" />
           <line class="arc-axis" x1="20" y1="86" x2="400" y2="86" />
-          <line class="arc-axis vertical" x1="210" y1="24" x2="210" y2="110" />
-          <circle class="arc-node" cx="210" cy="86" r="8" />
-          <circle class="arc-node active" cx="210" cy="24" r="5" />
-          <text x="210" y="14" text-anchor="middle">12:23</text>
+          <line class="arc-axis vertical" x1={skyX} y1={skyY} x2={skyX} y2="110" />
+          <circle class="arc-node" cx={skyX} cy="86" r="8" />
+          <circle class="arc-node active" cx={skyX} cy={skyY} r="5" />
+          <text x={timeLabelX} y={timeLabelY} text-anchor="middle">{beijingTime}</text>
         </svg>
         <blockquote>
           <p>To enjoy life, we must touch much of it lightly.</p>

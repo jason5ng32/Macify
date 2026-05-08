@@ -170,15 +170,54 @@ a {
   grid-column: 1 / -1;
 }
 
-.weather-sun {
+.weather-icon {
   position: relative;
   width: 22px;
   height: 22px;
   border-radius: 999px;
   background: #ffd449;
+}
+
+.weather-icon.is-clear {
+  background: #ffd449;
   box-shadow:
     0 0 18px rgba(255, 212, 73, 0.72),
     0 0 0 4px rgba(255, 212, 73, 0.12);
+}
+
+.weather-icon.is-cloudy,
+.weather-icon.is-fog {
+  border-radius: 12px;
+  background: rgba(234, 246, 250, 0.92);
+  box-shadow:
+    -8px 4px 0 -2px rgba(234, 246, 250, 0.76),
+    8px 4px 0 -2px rgba(234, 246, 250, 0.72),
+    0 0 18px rgba(234, 246, 250, 0.32);
+}
+
+.weather-icon.is-rain,
+.weather-icon.is-snow {
+  border-radius: 12px;
+  background: rgba(234, 246, 250, 0.92);
+  box-shadow:
+    -7px 4px 0 -2px rgba(234, 246, 250, 0.72),
+    7px 4px 0 -2px rgba(234, 246, 250, 0.68);
+}
+
+.weather-icon.is-rain::after,
+.weather-icon.is-snow::after {
+  position: absolute;
+  right: 2px;
+  bottom: -7px;
+  left: 2px;
+  height: 7px;
+  border-radius: 999px;
+  content: "";
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(188, 235, 255, 0.88) 0 2px,
+    transparent 2px 6px
+  );
 }
 
 .scene-center {
