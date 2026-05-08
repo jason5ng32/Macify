@@ -8,6 +8,7 @@ localvideoserver.conf
 
 node_modules/
 dist/
+site-dist/
 releases/
 *.zip
 

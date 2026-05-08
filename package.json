@@ -7,8 +7,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:site": "vite --config vite.site.config.js",
     "build": "vite build",
+    "build:site": "vite build --config vite.site.config.js",
     "preview": "vite preview",
+    "preview:site": "vite preview --config vite.site.config.js",
+    "deploy:site": "npm run build:site && npx wrangler pages deploy site-dist --project-name macify-candobear-com --branch main",
     "zip": "node scripts/zip.js",
     "build:quotes": "node scripts/build-quotes.mjs",
     "build:videos": "node scripts/build-videos.mjs",
