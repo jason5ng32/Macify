@@ -59,7 +59,7 @@ export const cache = {
 
 export const sessionCache = {
   area() {
-    return chrome.storage.session;
+    return chrome.storage?.session;
   },
   async get(keys) {
     const area = this.area();
@@ -69,10 +69,17 @@ export const sessionCache = {
       return Object.fromEntries(memorySession.entries());
     }
     const result = {};
+    if (typeof keys === 'object' && !Array.isArray(keys)) {
+      for (const [key, fallback] of Object.entries(keys)) {
+        result[key] = memorySession.has(key) ? memorySession.get(key) : fallback;
+      }
+      return result;
+    }
     const list = Array.isArray(keys) ? keys : [keys];
     for (const key of list) {
-      const value = memorySession.get(key);
-      if (value !== undefined) result[key] = value;
+      if (memorySession.has(key)) {
+        result[key] = memorySession.get(key);
+      }
     }
     return result;
   },

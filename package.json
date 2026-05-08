@@ -2,7 +2,7 @@
   "name": "macify",
   "version": "2.2.0",
   "private": true,
-  "description": "Transform Safari or Chrome's new tab into a macOS aerial screensaver.",
+  "description": "Transform Chrome's new tab into a macOS aerial screensaver.",
   "license": "MIT",
   "type": "module",
   "scripts": {
